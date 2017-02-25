@@ -25,7 +25,24 @@ module.exports = {
       {
         use: ['style-loader', 'css-loader'],
         test: /\.css$/
-      }
+      },
+      {
+        use: 'url-loader?limit=8192',
+        test: /\.(png|jpg)$/
+      },
+      {
+        use: 'file-loader',
+        test: /\.(ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/
+      },
+      {
+        loader: 'url-loader',
+        test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
+        options: {
+          limit: 50000,
+          mimetype: 'application/font-woff',
+          name: './fonts/[hash].[ext]',
+        }
+      },
     ]
   },
   plugins: [

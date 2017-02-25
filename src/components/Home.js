@@ -3,9 +3,11 @@ import Header from './Header';
 
 const Home = ({ children }) => {
   return (
-    <div className="container">
+    <div className="wrapper">
       <Header />
-      {children}
+      <div className="container">
+        {children}
+      </div>
     </div>
   );
 };
