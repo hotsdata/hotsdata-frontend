@@ -16,6 +16,9 @@ class Header extends Component {
         <Menu.Item name='brand'>
           <Link to="/">Kerrigan</Link>
         </Menu.Item>
+        <Menu.Item name='register'>
+          <Link to="/upload">Upload</Link>
+        </Menu.Item>
         <Menu.Item name='signin'>
           <Link to="/signin">Log In</Link>
         </Menu.Item>
