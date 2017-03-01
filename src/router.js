@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import Home     from './components/Home';
 import Register from './components/Register';
 import SignIn   from './components/SignIn';
-import Uploader from './components/Uploader';
+import Uploader from './components/uploader/Uploader';
 
 const Routes = () => {
   return (

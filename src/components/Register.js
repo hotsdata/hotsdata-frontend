@@ -14,11 +14,15 @@ class Register extends React.Component {
             <Form.Field>
               <Checkbox label='I agree to the Terms and Conditions' />
             </Form.Field>
-            <Button primary type='submit'>Register</Button>
+            <Button primary type='submit' onClick={this.handleRegister}>Register</Button>
           </Form>
         </Grid.Row>
       </Grid>
     );
+  }
+
+  handleRegister() {
+    console.log('handle this shit');
   }
 
 }
