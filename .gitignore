@@ -1,5 +1,2 @@
-.DS_Store
-*.orig
-/*.log
-/node_modules
+.env
 /dist

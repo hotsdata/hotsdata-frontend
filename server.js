@@ -1,12 +1,18 @@
 import express from 'express';
 const app = express();
 
-// Since the root/src dir contains our index.html
-app.use(express.static(__dirname + '/src'));
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 8080;
 
-// Heroku by default set an ENV variable called PORT=443
-// so that you can access your site with https default port.
-// Fallback port will be 8080; bascially for pre-productoin test in localhost
-// YOu will use $ npm run prod for this
+const indexPath = path.join(__dirname, '/src');
+const publicPath = express.static(path.join(__dirname, './dist'));
 
-app.listen(process.env.PORT || 8080);
+app.use('/dist', publicPath);
+app.get('*', (_, res) => {
+  res.sendFile(indexPath);
+});
+
+app.listen(port);
+console.log("SERVER STARTED on PORT ", port);
