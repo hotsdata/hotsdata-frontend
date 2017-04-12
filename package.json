@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && webpack",
+    "clean_build": "npm run clean && webpack",
+    "build": "webpack",
     "start": "webpack-dev-server"
   },
   "author": "",
