@@ -7,6 +7,11 @@ const VENDOR_LIBS = [
 ];
 
 module.exports = {
+  devServer: {
+    port: 8080,
+    inline: true,
+    historyApiFallback: true,
+  },
   entry: {
     bundle: './src/index.js',
     vendor: VENDOR_LIBS

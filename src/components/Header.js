@@ -8,6 +8,9 @@ const Header = (props) => {
       <Menu.Item name='brand'>
         <Link to="/">Kerrigan</Link>
       </Menu.Item>
+      <Menu.Item name='replays'>
+        <Link to="/replays">Replays</Link>
+      </Menu.Item>
       <Menu.Item name='register'>
         <Link to="/upload">Upload</Link>
       </Menu.Item>

@@ -1,6 +1,12 @@
 import { combineReducers } from 'redux';
+import { routerReducer as routing } from 'react-router-redux';
+import ReplayReducer from './replay_reducer';
 import ErrorReducer from './ErrorReducer';
 
-export default combineReducers({
+ const rootReducer = combineReducers({
+  replays: ReplayReducer,
   errors: ErrorReducer,
+  routing: routing
 });
+
+export default rootReducer;
