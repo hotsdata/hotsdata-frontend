@@ -17,25 +17,37 @@ class ReplaysShowPage extends Component {
   }
 
   render() {
-    let statRows = this.props.currentReplay.general_stats.map((playerStats) => {
+    // console.log('transformed stats', this.props.currentReplay);
+    if (!this.props.currentReplay || !this.props.currentReplay.replayId) {
+      return (<div>Loading..</div>);
+    }
+
+    // console.log('transformed stats', this.props.currentReplay);
+
+    let statRows = this.props.currentReplay.stats.map((playerStats) => {
       return (<PlayerMatchStatsRow playerStats={playerStats} />)
     });
 
     return (
       <div>
         <div className="replay-header">
-          Header Goes Here
+          {this.props.currentReplay.mapName}
         </div>
         <div className="stats-summary">
           <h2>Match Stats</h2>
           <Table>
             <Table.Header>
               <Table.Row>
+                <Table.HeaderCell>Player</Table.HeaderCell>
                 <Table.HeaderCell>Hero</Table.HeaderCell>
+                <Table.HeaderCell>Level</Table.HeaderCell>
+                <Table.HeaderCell>Takedowns</Table.HeaderCell>
                 <Table.HeaderCell>Kills</Table.HeaderCell>
+                <Table.HeaderCell>Assists</Table.HeaderCell>
                 <Table.HeaderCell>Deaths</Table.HeaderCell>
                 <Table.HeaderCell>Siege Damage</Table.HeaderCell>
                 <Table.HeaderCell>Hero Damage</Table.HeaderCell>
+                <Table.HeaderCell>XP</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>

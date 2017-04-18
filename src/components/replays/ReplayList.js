@@ -30,7 +30,17 @@ class ReplayList extends Component {
 
     return (
       <Table>
-        {replayItems}
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Hero</Table.HeaderCell>
+            <Table.HeaderCell>Map</Table.HeaderCell>
+            <Table.HeaderCell>Date/Time</Table.HeaderCell>
+            <Table.HeaderCell>View</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {replayItems}
+        </Table.Body>
       </Table>
     )
   }
