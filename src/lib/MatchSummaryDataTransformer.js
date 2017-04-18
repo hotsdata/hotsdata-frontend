@@ -26,13 +26,12 @@ class MatchSummaryDataTransformer {
       }
     });
 
-    stats.forEach((stat) => {
-      let general_stats = _.find(data.player_general_stats, (pgs) => pgs.playerId == stat.playerId)
-      let player_stats = {
-        kills: general_stats.soloKills
-      }
-      console.log('player_stats', player_stats);
-    });
+    // stats.forEach((stat) => {
+    //   let general_stats = _.find(data.player_general_stats, (pgs) => pgs.playerId == stat.playerId)
+    //   let player_stats = {
+    //     kills: general_stats.soloKills
+    //   }
+    // });
 
     return stats;
   }

@@ -13,7 +13,9 @@ const App = () => {
     promise
   )(createStore);
 
-  let store = createStoreWithMiddleware(reducers);
+  let store = createStoreWithMiddleware(
+    reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 
   return (
     <Provider store={store}>

@@ -4,11 +4,19 @@ import { bindActionCreators } from 'redux';
 import { Table } from 'semantic-ui-react';
 
 import { fetchCurrentReplay } from '../actions/replay_actions';
-import PlayerMatchStatsRow from '../components/replays/PlayerMatchStatsRow';
+import ReplayNav from './ReplayNav';
+import MatchStatsTable from '../components/replays/MatchStatsTable';
+import TalentsTable from '../components/replays/TalentsTable';
 
 class ReplaysShowPage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentTab: 'stats'
+    }
+
+    this.changeTab = this.changeTab.bind(this);
   }
 
   componentWillMount() {
@@ -16,45 +24,29 @@ class ReplaysShowPage extends Component {
     this.props.fetchCurrentReplay(replayId)
   }
 
+  changeTab(tabName) {
+    this.setState({ currentTab: tabName });
+  }
+
   render() {
-    // console.log('transformed stats', this.props.currentReplay);
     if (!this.props.currentReplay || !this.props.currentReplay.replayId) {
-      return (<div>Loading..</div>);
+      return (<div>Loading Replay..</div>);
     }
-
-    // console.log('transformed stats', this.props.currentReplay);
-
-    let statRows = this.props.currentReplay.stats.map((playerStats) => {
-      return (<PlayerMatchStatsRow playerStats={playerStats} />)
-    });
 
     return (
       <div>
         <div className="replay-header">
-          {this.props.currentReplay.mapName}
+          <h1>{this.props.currentReplay.mapName}</h1>
         </div>
-        <div className="stats-summary">
-          <h2>Match Stats</h2>
-          <Table>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Player</Table.HeaderCell>
-                <Table.HeaderCell>Hero</Table.HeaderCell>
-                <Table.HeaderCell>Level</Table.HeaderCell>
-                <Table.HeaderCell>Takedowns</Table.HeaderCell>
-                <Table.HeaderCell>Kills</Table.HeaderCell>
-                <Table.HeaderCell>Assists</Table.HeaderCell>
-                <Table.HeaderCell>Deaths</Table.HeaderCell>
-                <Table.HeaderCell>Siege Damage</Table.HeaderCell>
-                <Table.HeaderCell>Hero Damage</Table.HeaderCell>
-                <Table.HeaderCell>XP</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {statRows}
-            </Table.Body>
-          </Table>
-        </div>
+        <ReplayNav onItemClick={this.changeTab} />
+        <section className="stats-summary" style={{display: (this.state.currentTab === 'stats' ? 'inherit' : 'none')}}>
+          <h3>Match Stats</h3>
+          <MatchStatsTable />
+        </section>
+        <section className="talents-table" style={{display: (this.state.currentTab === 'talents' ? 'inherit' : 'none')}}>
+          <h3>Talents</h3>
+          <TalentsTable />
+        </section>
       </div>
     )
   }

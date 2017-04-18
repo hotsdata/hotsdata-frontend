@@ -138,7 +138,7 @@
 .ui.items > .item > .content > .header {
   display: inline-block;
   margin: -0.21425em 0em 0em;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.85);
 }
@@ -185,7 +185,7 @@
   max-width: auto;
   font-size: 1em;
   line-height: 1.4285em;
-  color: #0094c6;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 /*--------------
@@ -240,7 +240,7 @@
   color: rgba(0, 0, 0, 0.85);
 }
 .ui.items > .item > .content > a.header:hover {
-  color: #001242;
+  color: #1e70bf;
 }
 
 /* Meta */
@@ -248,7 +248,7 @@
   color: rgba(0, 0, 0, 0.4);
 }
 .ui.items > .item .meta > a:not(.ui):hover {
-  color: #0094c6;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 /*--------------
@@ -451,7 +451,7 @@
 }
 .ui.items a.item:hover .content .header,
 .ui.link.items > .item:hover .content .header {
-  color: #001242;
+  color: #1e70bf;
 }
 
 /*--------------

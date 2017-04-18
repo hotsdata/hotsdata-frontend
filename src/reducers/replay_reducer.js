@@ -17,6 +17,7 @@ export default function(state = defaultState, action) {
     case FETCH_CURRENT_REPLAY_STATS:
       let matchSummaryDataTransformer = new MatchSummaryDataTransformer(action.payload.data[0]);
       let currentReplay = matchSummaryDataTransformer.transform();
+      console.log('currentReplay', currentReplay);
       return {...state, currentReplay: currentReplay}
     default:
       return state;
