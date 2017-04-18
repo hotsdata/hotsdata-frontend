@@ -1,15 +1,14 @@
 import React from 'react';
-import Header from './Header';
 
-const Home = ({ children }) => {
+const Home = (props) => {
   return (
-    <div className="wrapper">
-      <Header />
-      <div className="container content">
-        {children}
-      </div>
+    <div>
+      <h1>Welcome to HotsData</h1>
+      <p>
+        The goal of our site to help your improve your play through data.
+      </p>
     </div>
-  );
-};
+  )
+}
 
 export default Home;

@@ -19,11 +19,11 @@
   border: none;
   margin: calc(2rem -  0.14285714em ) 0em 1rem;
   padding: 0em 0em;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: #0094c6;
 }
 .ui.header:first-child {
   margin-top: -0.14285714em;
@@ -454,10 +454,10 @@ a.ui.blue.header:hover {
 
 /* Inverted */
 .ui.inverted.blue.header {
-  color: #54C8FF !important;
+  color: #0094c6 !important;
 }
 a.ui.inverted.blue.header:hover {
-  color: #3ac0ff !important;
+  color: #0081ad !important;
 }
 
 /*--- Violet ---*/

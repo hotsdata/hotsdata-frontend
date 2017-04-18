@@ -4,9 +4,9 @@ import { Menu } from 'semantic-ui-react';
 
 const Header = (props) => {
   return (
-    <Menu>
+    <Menu className="fixed">
       <Menu.Item name='brand'>
-        <Link to="/">Kerrigan</Link>
+        <Link to="/">HotsData</Link>
       </Menu.Item>
       <Menu.Item name='replays'>
         <Link to="/replays">Replays</Link>

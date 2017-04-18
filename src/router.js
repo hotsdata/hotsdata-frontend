@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
+import Container     from './components/Container';
 import Home     from './components/Home';
 import Register from './components/Register';
 import SignIn   from './components/SignIn';
@@ -11,7 +12,8 @@ import ReplaysShowPage from './containers/ReplaysShowPage';
 const Routes = () => {
   return (
     <Router history={hashHistory}>
-      <Route path="/" component={Home}>
+      <Route path="/" component={Container}>
+        <IndexRoute component={Home} />
         <Route path="/register" component={Register} />
         <Route path="/signin" component={SignIn} />
         <Route path="/upload" component={Uploader} />
