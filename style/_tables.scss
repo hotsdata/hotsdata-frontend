@@ -1,0 +1,38 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      background-color: $azure;
+      color: $whiteish;
+      height: 38px;
+
+      th {
+        padding: 4px 8px;
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+
+    tr {
+      height: 32px;
+      color: $whiteish;
+    }
+
+    tr:nth-child(even) {
+      background-color: $prussianBlue;
+    }
+
+    tr:nth-child(odd) {
+      background-color: $darkBlue;
+    }
+
+    td {
+      padding: 4px 8px;
+    }
+
+  }
+}

@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchReplays } from '../../actions/replay_actions';
-import { Table } from 'semantic-ui-react';
 import ReplayItem from './ReplayItem';
 
 class ReplayList extends Component {
@@ -29,19 +28,21 @@ class ReplayList extends Component {
     })
 
     return (
-      <Table>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Hero</Table.HeaderCell>
-            <Table.HeaderCell>Map</Table.HeaderCell>
-            <Table.HeaderCell>Date/Time</Table.HeaderCell>
-            <Table.HeaderCell>View</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Hero</th>
+            <th>Map</th>
+            <th>Date/Time</th>
+            <th>Duration</th>
+            <th>Result</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
           {replayItems}
-        </Table.Body>
-      </Table>
+        </tbody>
+      </table>
     )
   }
 }

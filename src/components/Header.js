@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Menu } from 'semantic-ui-react';
 
 const Header = (props) => {
   return (
-    <Menu className="fixed">
-      <Menu.Item name='brand'>
+    <div className="site-header fixed">
+      <div className='nav-link brand'>
         <Link to="/">HotsData</Link>
-      </Menu.Item>
-      <Menu.Item name='replays'>
+      </div>
+      <div className='nav-link'>
         <Link to="/replays">Replays</Link>
-      </Menu.Item>
-      <Menu.Item name='register'>
+      </div>
+      <div className='nav-link'>
         <Link to="/upload">Upload</Link>
-      </Menu.Item>
-      <Menu.Item name='signin'>
+      </div>
+      <div className='nav-link'>
         <Link to="/signin">Log In</Link>
-      </Menu.Item>
-      <Menu.Item name='register'>
+      </div>
+      <div className='nav-link'>
         <Link to="/register">Register</Link>
-      </Menu.Item>
-    </Menu>
+      </div>
+    </div>
   );
 }
 

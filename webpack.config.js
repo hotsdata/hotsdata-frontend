@@ -28,8 +28,8 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        use: ['style-loader', 'css-loader'],
-        test: /\.css$/
+        test: /(\.scss$|\.css)/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         use: 'url-loader?limit=8192',

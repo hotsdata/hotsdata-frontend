@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import promise from 'redux-promise';
 import reducers from './reducers';
 import Routes from './router';
-import '../semantic/dist/semantic.css';
-import '../style/style.css'
+
+import 'normalize.css';
+import '../style/style.scss'
 
 const App = () => {
   const createStoreWithMiddleware = applyMiddleware(
