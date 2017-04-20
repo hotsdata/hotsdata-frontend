@@ -24,6 +24,7 @@ class ReplayNav extends Component {
         <Menu pointing secondary>
           <Menu.Item name="stats" active={this.state.activeItem === 'stats'} onClick={this.handleItemClick} />
           <Menu.Item name="talents" active={this.state.activeItem === 'talents'} onClick={this.handleItemClick} />
+          <Menu.Item name="performance" active={this.state.activeItem === 'performance'} onClick={this.handleItemClick} />
         </Menu>
       </div>
     )

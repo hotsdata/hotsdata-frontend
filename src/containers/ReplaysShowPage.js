@@ -4,9 +4,10 @@ import { bindActionCreators } from 'redux';
 import { Table } from 'semantic-ui-react';
 
 import { fetchCurrentReplay } from '../actions/replay_actions';
-import ReplayNav from './ReplayNav';
+import ReplayNav from '../components/replays/ReplayNav';
 import MatchStatsTable from '../components/replays/MatchStatsTable';
 import TalentsTable from '../components/replays/TalentsTable';
+import MatchPlayerPerformance from '../components/replays/MatchPlayerPerformance';
 
 class ReplaysShowPage extends Component {
   constructor(props) {
@@ -46,6 +47,10 @@ class ReplaysShowPage extends Component {
         <section className="talents-table" style={{display: (this.state.currentTab === 'talents' ? 'inherit' : 'none')}}>
           <h3>Talents</h3>
           <TalentsTable />
+        </section>
+        <section className="player-performance" style={{display: (this.state.currentTab === 'performance' ? 'inherit' : 'none')}}>
+          <h3>Player Performance</h3>
+          <MatchPlayerPerformance />
         </section>
       </div>
     )
