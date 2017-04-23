@@ -1,0 +1,175 @@
+input {
+
+}
+
+button,
+input,
+optgroup,
+select,
+keygen::-webkit-keygen-select,
+select[_moz-type="-mozilla-keygen"],
+textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+	margin-top: 0.5em;
+}
+
+label {
+	display: block;
+	margin: 0.75em 0;
+	font-weight: bold;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+	margin: 0;
+	font-weight: 400;
+}
+
+button,
+input[type=button],
+input[type=reset],
+input[type=submit],
+{
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+button[disabled],
+input[disabled] {
+	cursor: default;
+}
+
+input {
+	line-height: normal;
+}
+
+textarea { line-height: 1.25em; }
+
+select {
+	border: 1px solid #ccc;
+	background-color: #fff;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+	display: block;
+	margin-right: 0.25em;
+	margin-top: 2px;
+	float: left;
+	clear: both;
+}
+
+input[type=search] {
+		-webkit-appearance: textfield;
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=date],
+input[type=month],
+input[type=time],
+input[type=datetime],
+input[type=datetime-local],
+input[type=week],
+input[type=number],
+input[type=search],
+input[type=tel],
+input[type=color],
+select[_moz-type="-mozilla-keygen"],
+keygen::-webkit-keygen-select,
+select,
+textarea {
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 3px #ddd;
+	border-radius: 2px;
+	vertical-align: middle;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: 0.5em 0.6em;
+	margin-bottom: 0.5em;
+}
+
+input[type=color] {
+	padding: 0;
+}
+
+input:not([type]) {
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 3px #ddd;
+	border-radius: 2px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0.5em 0.6em;
+}
+
+input[type=color] {
+	padding: 0.2em 0.5em;
+}
+
+input[type=file]:focus,
+input[type=radio]:focus,
+input[type=checkbox]:focus {
+	outline: 1px auto #129FEA;
+}
+
+input[readonly],
+select[readonly],
+textarea[readonly] {
+	background-color: #eee;
+	color: #777;
+	border-color: #ccc;
+}
+
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+	color: #b94a48;
+	border-color: #e9322d;
+	}
+
+input[type=file]:focus:invalid:focus,
+input[type=radio]:focus:invalid:focus,
+input[type=checkbox]:focus:invalid:focus {
+	outline-color: #e9322d;
+}
+
+
+/* Style your form buttons. Follow your heart */
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+	display: inline-block;
+	padding: 8px 12px;
+	color: white;
+	background-color: $red;
+	border: 0;
+	cursor: pointer;
+	transition: all 300ms ease;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover {
+	background-color: royalblue;
+}
