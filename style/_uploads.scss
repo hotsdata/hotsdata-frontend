@@ -1,0 +1,16 @@
+.dropzone {
+  height: 100px;
+  width: 100%;
+  border: 2px dashed $azure;
+  text-align: center;
+  font-size: 20px;
+  color: $azure;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.upload-status-table {
+  margin-top: 20px;
+}

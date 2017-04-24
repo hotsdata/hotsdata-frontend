@@ -13,15 +13,11 @@ class UploadStatus extends Component {
     const upload = this.state.upload;
 
     return (
-      <List.Item>
-        <Grid>
-          <Grid.Column width={4}>{upload.filename}</Grid.Column>
-          <Grid.Column width={10} verticalAlign={"middle"}>
-            <Progress percent={upload.progress} size={"small"} progress />
-          </Grid.Column>
-          <Grid.Column width={2}>{upload.state}</Grid.Column>
-        </Grid>
-      </List.Item>
+      <tr className="upload-status">
+        <td>{upload.filename}</td>
+        <td>{upload.progress}</td>
+        <td className={(upload.state == 'Finished') ? 'success' : ''}>{upload.state}</td>
+      </tr>
     );
   }
 

@@ -1,9 +1,11 @@
 @import 'colors';
 @import 'tables';
 @import 'nav';
+@import 'uploads';
 
 body {
   margin: 0 0;
+  font-size: 14px;
 }
 
 section {
@@ -20,12 +22,12 @@ a {
   margin: 80px 20px;
 }
 
-.victory {
+.victory, .success {
   color: green !important;
   font-weight: bold;
 }
 
-.defeat {
+.defeat, .failed {
   color: $red !important;
   font-weight: bold;
 }

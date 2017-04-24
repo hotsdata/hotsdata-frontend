@@ -33,9 +33,11 @@
   "dependencies": {
     "axios": "^0.16.1",
     "express": "^4.15.2",
+    "immutability-helper": "^2.1.2",
     "normalize.css": "^6.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-dropzone": "^3.13.0",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "react-router-redux": "^5.0.0-alpha.6",
