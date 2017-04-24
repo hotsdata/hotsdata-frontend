@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import { List, Grid, Progress } from 'semantic-ui-react';
+import { Line } from 'rc-progress';
 
 class UploadStatus extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      upload: props.upload
-    }
   }
 
   render() {
-    const upload = this.state.upload;
-
+    let progressColor = this.props.upload.progress < 100 ? '#3498DB' : 'green';
     return (
       <tr className="upload-status">
-        <td>{upload.filename}</td>
-        <td>{upload.progress}</td>
-        <td className={(upload.state == 'Finished') ? 'success' : ''}>{upload.state}</td>
+        <td>{this.props.upload.filename}</td>
+        <td>
+          <Line
+            percent={this.props.upload.progress}
+            strokeWidth="2"
+            strokeColor={progressColor} />
+        </td>
+        <td className={(this.props.upload.state == 'Finished') ? 'success' : ''}>{this.props.upload.state}</td>
       </tr>
     );
   }

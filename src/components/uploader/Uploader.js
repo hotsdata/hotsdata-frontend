@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 import _ from 'lodash';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
+
 import UploadStatus from './UploadStatus';
 
 class Uploader extends React.Component {
@@ -10,7 +11,7 @@ class Uploader extends React.Component {
     super(props);
 
     this.state = {
-      uploadFiles: [{filename: "Test.stormReplay", progress: 35, state: 'New'}]
+      uploadFiles: []
     }
 
     this.onDrop = this.onDrop.bind(this);
@@ -33,7 +34,6 @@ class Uploader extends React.Component {
 
       let config = {
         onUploadProgress: (progressEvent) => {
-          console.log(this);
           let percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
           let idx = _.findIndex(this.state.uploadFiles, (f) => f.filename == newFile.filename);
           const uploadFiles = this.state.uploadFiles;
@@ -43,16 +43,15 @@ class Uploader extends React.Component {
       };
 
       axios.post('http://54.202.193.48/upload', data, config)
-      .then(response => {
-        let idx = _.findIndex(this.state.uploadFiles, (f) => f.filename == newFile.filename);
-        const uploadFiles = this.state.uploadFiles;
-        uploadFiles[idx].state = 'Finished';
-        this.setState({uploadFiles: uploadFiles});
-        console.log('done');
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        .then(response => {
+          let idx = _.findIndex(this.state.uploadFiles, (f) => f.filename == newFile.filename);
+          const uploadFiles = this.state.uploadFiles;
+          uploadFiles[idx].state = 'Finished';
+          this.setState({uploadFiles: uploadFiles});
+        })
+        .catch(error => {
+          console.log(error);
+        });
     });
   }
 
@@ -76,6 +75,11 @@ class Uploader extends React.Component {
         </Dropzone>
         <table className="table upload-status-table">
           <thead>
+            <tr>
+              <th>File</th>
+              <th>Percent Complete</th>
+              <th>Status</th>
+            </tr>
           </thead>
           <tbody>
             {uploadStatusRows}
