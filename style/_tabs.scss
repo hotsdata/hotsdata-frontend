@@ -1,0 +1,12 @@
+.ReactTabs__TabList {
+  border-bottom: 1px solid $orange !important;
+}
+
+.react-tabs [role=tab] {
+  color: $purple;
+}
+
+.react-tabs [role=tab][aria-selected=true] {
+  color: $purple;
+  border-color: $orange;
+}
