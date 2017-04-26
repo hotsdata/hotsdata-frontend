@@ -19,6 +19,7 @@ const ReplayItem = ({replay}) => {
     <tr>
       <td data-th="Hero">{replay.heroname}</td>
       <td data-th="Map">{replay.mapname}</td>
+      <td data-th="Game Type">{replay.gametype}</td>
       <td data-th="DateTime">{replay.played_at}</td>
       <td data-th="Duration">{convertSecondsToTime(replay.duration)}</td>
       <td data-th="Result" className={_.toLower(replay.matchresult)}>{replay.matchresult}</td>

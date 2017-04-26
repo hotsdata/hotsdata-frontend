@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+import ProfileDropdown from './ProfileDropdown';
+
 const Header = (props) => {
   return (
     <div className="site-header fixed">
@@ -14,10 +16,7 @@ const Header = (props) => {
         <Link to="/upload">Upload</Link>
       </div>
       <div className='nav-link'>
-        <Link to="/signin">Log In</Link>
-      </div>
-      <div className='nav-link'>
-        <Link to="/register">Register</Link>
+        <ProfileDropdown />
       </div>
     </div>
   );

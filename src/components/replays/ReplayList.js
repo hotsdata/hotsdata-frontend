@@ -33,6 +33,7 @@ class ReplayList extends Component {
           <tr>
             <th>Hero</th>
             <th>Map</th>
+            <th>Match Type</th>
             <th>Date/Time</th>
             <th>Duration</th>
             <th>Result</th>

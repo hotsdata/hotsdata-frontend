@@ -1,12 +1,17 @@
 .site-header {
-  height: 60px;
+  height: 40px;
   position: fixed;
   top: 0px;
   z-index: 100000;
   width: 100%;
-  background-color: $prussianBlue;
+  background: linear-gradient(to bottom, #090099, #450095);
+  border-width: 1px;
+	border-style: solid;
+	border-image: linear-gradient(to bottom, #6C3DD6, #843BCF);
+  box-sizing: border-box;
+  padding-left: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   .nav-link {
@@ -15,8 +20,63 @@
     align-items: center;
 
     a {
-      color: $blueJeans;
+      color: white;
       font-size: 16px;
+    }
+  }
+}
+
+// These next 3 are used by react-simple-dropdown
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown__content {
+  display: none;
+  position: absolute;
+}
+
+.dropdown--active .dropdown__content {
+  display: block;
+  width: 100%;
+}
+
+.profile-dropdown {
+  height: 100%;
+  background: linear-gradient(#ffbf00, #FFA800);
+
+  .dropdown__trigger {
+    height: 100%;
+    padding: 0px 6px;
+    display: flex;
+    align-items: center;
+
+    span {
+
+      i {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .dropdown-trigger-text {
+    color: $purple;
+  }
+
+  .link-list-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      padding: 0px 6px;
+      height: 30px;
+      width: 100%;
+      background-color: #FFA800;
+      color: $purple;
+
+      i { margin-right: 8px;}
     }
   }
 }

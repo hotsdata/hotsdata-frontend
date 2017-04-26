@@ -161,8 +161,10 @@ button {
 	display: inline-block;
 	padding: 8px 12px;
 	color: white;
-	background-color: $red;
-	border: 0;
+	background: linear-gradient(#ffbf00, #FFA800);
+	border-width: 1px;
+	border-style: solid;
+	border-image: linear-gradient(to bottom, #FFA77B, #E5BA80);
 	cursor: pointer;
 	transition: all 300ms ease;
 }

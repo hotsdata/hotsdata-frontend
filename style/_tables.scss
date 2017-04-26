@@ -4,7 +4,7 @@
 
   thead {
     tr {
-      background-color: $azure;
+      background-color: #252d73;
       color: $whiteish;
       height: 38px;
 
@@ -19,15 +19,16 @@
 
     tr {
       height: 32px;
-      color: $whiteish;
+      color: white;
+      font-size: 14px;
     }
 
     tr:nth-child(even) {
-      background-color: $prussianBlue;
+      background-color: #131632;
     }
 
     tr:nth-child(odd) {
-      background-color: $darkBlue;
+      background-color: #111027;
     }
 
     td {
