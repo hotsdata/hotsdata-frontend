@@ -8,6 +8,25 @@ class TalentsTable extends Component {
   }
 
   render() {
+    if(this.props.talents == null) {
+      return (<div>Loading Talents...</div>)
+    }
+
+    let talentRows = this.props.talents.map((playerTalents, i) => {
+      let talentCells = playerTalents.talents.map((talent, j) => {
+        return (
+          <td key={j}>{talent.talent_name}</td>
+        )
+      });
+
+      return (
+        <tr key={i}>
+          <td>Sonya</td>
+          {talentCells}
+        </tr>
+      )
+    });
+
     return (
       <Table>
         <Table.Header>
@@ -22,15 +41,12 @@ class TalentsTable extends Component {
             <Table.HeaderCell>20</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
+        <tbody>
+          {talentRows}
+        </tbody>
       </Table>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    currentReplay: state.replays.currentReplay
-  }
-}
-
-export default connect(mapStateToProps)(TalentsTable);
+export default TalentsTable;

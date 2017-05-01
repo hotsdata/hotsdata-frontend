@@ -10,12 +10,19 @@ class MatchStatsTable extends Component {
   }
 
   render() {
-    if (!this.props.currentReplay || !this.props.currentReplay.replayId) {
+    let replay = this.props.replay;
+    if (replay == null || !replay.replayid) {
       return (<div>Loading Replay Stats..</div>);
     }
 
-    let statRows = this.props.currentReplay.stats.map((playerStats) => {
-      return (<PlayerMatchStatsRow key={playerStats.playerId} playerStats={playerStats} />)
+    let statRows = replay.player_stats.map((playerStats) => {
+      let playerInfo = replay.account_info[playerStats.playerId];
+      return (
+        <PlayerMatchStatsRow
+          key={playerStats.playerId}
+          playerInfo={playerInfo}
+          playerStats={playerStats} />
+      )
     });
 
     return (
@@ -42,10 +49,4 @@ class MatchStatsTable extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    currentReplay: state.replays.currentReplay
-  }
-}
-
-export default connect(mapStateToProps)(MatchStatsTable);
+export default MatchStatsTable;

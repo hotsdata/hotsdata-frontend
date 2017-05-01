@@ -19,9 +19,11 @@ class ReplaysShowPage extends Component {
   }
 
   render() {
-    if (!this.props.currentReplay || !this.props.currentReplay.replayId) {
+    if (this.props.currentReplay == null || !this.props.currentReplay.replayid) {
       return (<div>Loading Replay..</div>);
     }
+
+    let replay = this.props.currentReplay;
 
     return (
       <div>
@@ -36,11 +38,11 @@ class ReplaysShowPage extends Component {
           </TabList>
           <TabPanel className="stats-summary">
             <h3>Match Stats</h3>
-            <MatchStatsTable />
+            <MatchStatsTable replay={replay} />
           </TabPanel>
           <TabPanel className="talents-table">
             <h3>Talents</h3>
-            <TalentsTable />
+            <TalentsTable talents={replay.talents} />
           </TabPanel>
           <TabPanel className="player-performance">
             <h3>Player Performance</h3>
