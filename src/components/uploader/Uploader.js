@@ -73,6 +73,11 @@ class Uploader extends React.Component {
             <button onClick={this.onOpenClick}>Browse Files</button>
           </div>
         </Dropzone>
+        <div>
+          <h2>You can download alpha versions of the uploader below</h2>
+          <h4>Please let us know of any bugs you find or feedback you may have.</h4>
+          <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader.exe">Windows Uploader</a>
+        </div>
         <table className="table upload-status-table">
           <thead>
             <tr>
