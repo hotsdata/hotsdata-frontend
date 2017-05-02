@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'semantic-ui-react';
 
 class TalentsTable extends Component {
   constructor(props) {
@@ -28,23 +27,23 @@ class TalentsTable extends Component {
     });
 
     return (
-      <Table>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Hero</Table.HeaderCell>
-            <Table.HeaderCell>1</Table.HeaderCell>
-            <Table.HeaderCell>4</Table.HeaderCell>
-            <Table.HeaderCell>7</Table.HeaderCell>
-            <Table.HeaderCell>10</Table.HeaderCell>
-            <Table.HeaderCell>13</Table.HeaderCell>
-            <Table.HeaderCell>16</Table.HeaderCell>
-            <Table.HeaderCell>20</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Hero</th>
+            <th>1</th>
+            <th>4</th>
+            <th>7</th>
+            <th>10</th>
+            <th>13</th>
+            <th>16</th>
+            <th>20</th>
+          </tr>
+        </thead>
         <tbody>
           {talentRows}
         </tbody>
-      </Table>
+      </table>
     )
   }
 }

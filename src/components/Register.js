@@ -1,23 +1,21 @@
 import React from 'react';
-import { Grid, Button, Checkbox, Form } from 'semantic-ui-react';
 
 class Register extends React.Component {
 
   render() {
     return (
-      <Grid className="container">
+      <div className="container">
         <h2>Register</h2>
-        <Grid.Row>
-          <Form>
-            <Form.Input label="Email" type="text" labelPosition={"left"} />
-            <Form.Input label="Passwword" type="password" />
-            <Form.Field>
-              <Checkbox label='I agree to the Terms and Conditions' />
-            </Form.Field>
-            <Button primary type='submit' onClick={this.handleRegister}>Register</Button>
-          </Form>
-        </Grid.Row>
-      </Grid>
+        <form>
+          <label>Email</label>
+          <input type="text" />
+          <label>Password</label>
+          <input type="password" />
+          <input type="checkbox"  />
+          <label>I agree to the Terms and Conditions</label>
+          <button className="btn" type='submit' onClick={this.handleRegister}>Register</button>
+        </form>
+      </div>
     );
   }
 

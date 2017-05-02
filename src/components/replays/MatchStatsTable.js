@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'semantic-ui-react';
 
 import PlayerMatchStatsRow from './PlayerMatchStatsRow';
 
@@ -26,25 +25,25 @@ class MatchStatsTable extends Component {
     });
 
     return (
-      <Table>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Player</Table.HeaderCell>
-            <Table.HeaderCell>Hero</Table.HeaderCell>
-            <Table.HeaderCell>Level</Table.HeaderCell>
-            <Table.HeaderCell>Takedowns</Table.HeaderCell>
-            <Table.HeaderCell>Kills</Table.HeaderCell>
-            <Table.HeaderCell>Assists</Table.HeaderCell>
-            <Table.HeaderCell>Deaths</Table.HeaderCell>
-            <Table.HeaderCell>Siege Damage</Table.HeaderCell>
-            <Table.HeaderCell>Hero Damage</Table.HeaderCell>
-            <Table.HeaderCell>XP</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Hero</th>
+            <th>Level</th>
+            <th>Takedowns</th>
+            <th>Kills</th>
+            <th>Assists</th>
+            <th>Deaths</th>
+            <th>Siege Damage</th>
+            <th>Hero Damage</th>
+            <th>XP</th>
+          </tr>
+        </thead>
+        <tbody>
           {statRows}
-        </Table.Body>
-      </Table>
+        </tbody>
+      </table>
     )
   }
 }
