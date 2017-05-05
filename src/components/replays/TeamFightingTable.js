@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import PlayerMatchStatsRow from './PlayerMatchStatsRow';
+import TeamFightingStatsRow from './TeamFightingStatsRow';
 
-class MatchStatsTable extends Component {
+class TeamFightingTable extends Component {
   constructor(props) {
     super(props)
   }
@@ -17,7 +16,7 @@ class MatchStatsTable extends Component {
     let statRows = replay.player_stats.map((playerStats) => {
       let playerInfo = replay.account_info[playerStats.playerId];
       return (
-        <PlayerMatchStatsRow
+        <TeamFightingStatsRow
           key={playerStats.playerId}
           playerInfo={playerInfo}
           playerStats={playerStats} />
@@ -28,18 +27,16 @@ class MatchStatsTable extends Component {
       <table className="table match-table">
         <thead>
           <tr>
-            <th>Award</th>
             <th>Player</th>
             <th>Hero</th>
-            <th>Level</th>
-            <th>Takedowns</th>
-            <th>Kills</th>
-            <th>Assists</th>
-            <th>Deaths</th>
+            <th>Solo Deaths</th>
+            <th>Outnumbered Deaths</th>
             <th>Hero Damage</th>
-            <th>Siege Damage</th>
-            <th>XP</th>
-            <th>Highest Kill Streak</th>
+            <th>Team Fight Hero Damage</th>
+            <th>Damage Taken</th>
+            <th>Team Fight Damage Taken</th>
+            <th>Healing Done</th>
+            <th>Team Fight Healing Done</th>
           </tr>
         </thead>
         <tbody>
@@ -50,4 +47,4 @@ class MatchStatsTable extends Component {
   }
 }
 
-export default MatchStatsTable;
+export default TeamFightingTable;

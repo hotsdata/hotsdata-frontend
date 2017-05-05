@@ -67,7 +67,16 @@ a {
   font-weight: bold;
 }
 
+.victory-row {
+  // background: linear-gradient(to bottom, #009926, #068325);
+  background: linear-gradient(to bottom, #090099, #2110a8);
+}
+
 .defeat, .failed {
   color: $red !important;
   font-weight: bold;
+}
+
+.defeat-row {
+  background: linear-gradient(to bottom, #a32020, #ab2929);
 }

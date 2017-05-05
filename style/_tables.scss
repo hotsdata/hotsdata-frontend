@@ -6,6 +6,7 @@
     tr {
       background-color: #252d73;
       color: $whiteish;
+      font-weight: 100;
       height: 38px;
 
       th {
@@ -35,5 +36,14 @@
       padding: 4px 8px;
     }
 
+  }
+}
+
+.match-table {
+  thead {
+    tr {
+      background-color: black;
+      color: white;
+    }
   }
 }

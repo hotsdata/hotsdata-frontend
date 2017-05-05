@@ -5,6 +5,7 @@ import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 
 import { fetchCurrentReplay } from '../actions/replay_actions';
 import MatchStatsTable from '../components/replays/MatchStatsTable';
+import TeamFightingTable from '../components/replays/TeamFightingTable';
 import TalentsTable from '../components/replays/TalentsTable';
 import MatchPlayerPerformance from '../components/replays/MatchPlayerPerformance';
 
@@ -34,6 +35,7 @@ class ReplaysShowPage extends Component {
           <TabList>
             <Tab>Stats</Tab>
             <Tab>Talents</Tab>
+            <Tab>Team Fighting</Tab>
             <Tab>Performance</Tab>
           </TabList>
           <TabPanel className="stats-summary">
@@ -43,6 +45,10 @@ class ReplaysShowPage extends Component {
           <TabPanel className="talents-table">
             <h3>Talents</h3>
             <TalentsTable talents={replay.talents} />
+          </TabPanel>
+          <TabPanel className="team-fighting">
+            <h3>Team Fighting</h3>
+            <TeamFightingTable replay={replay} />
           </TabPanel>
           <TabPanel className="player-performance">
             <h3>Player Performance</h3>
