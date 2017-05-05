@@ -32,10 +32,10 @@ class ProfileDropdown extends Component {
               <i className="fa fa-user-plus" />
               Register
             </Link>
-            <a href="#" onClick={this.handleLinkClick}>
+            <Link to="/profile">
               <i className="fa fa-user" />
               Profile
-            </a>
+            </Link>
             <a href="#" onClick={this.handleLinkClick}>
               <i className="fa fa-cog" />
               Settings

@@ -8,6 +8,7 @@ import SignIn   from './components/SignIn';
 import Uploader from './components/uploader/Uploader';
 import ReplaysIndexPage  from './containers/ReplaysIndexPage';
 import ReplaysShowPage from './containers/ReplaysShowPage';
+import ProfilePage from './containers/ProfilePage';
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/upload" component={Uploader} />
         <Route path="/replays/:replayId" component={ReplaysShowPage} />
         <Route path="/replays" component={ReplaysIndexPage} />
+        <Route path="/profile" component={ProfilePage} />
       </Route>
     </Router>
   );
