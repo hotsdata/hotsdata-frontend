@@ -27,7 +27,6 @@ class ReplaysPage extends React.Component {
     let newFilter = {
       term: this.refs.term.value
     }
-    console.log(newFilter);
     this.setState({...this.state, filter: newFilter})
   }
 
@@ -43,7 +42,10 @@ class ReplaysPage extends React.Component {
 
     return (
       <div>
-        <h2>Replays</h2>
+        <h2>
+          Replays
+          <span className="muted">({filteredReplays.length})</span>
+        </h2>
         <div className="replay-filters">
           <input
             type="text"
@@ -61,7 +63,7 @@ class ReplaysPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    replays: _.take(state.replays.allReplays, 50)
+    replays: state.replays.allReplays
   }
 }
 

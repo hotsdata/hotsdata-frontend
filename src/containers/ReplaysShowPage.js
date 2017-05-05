@@ -29,7 +29,7 @@ class ReplaysShowPage extends Component {
     return (
       <div>
         <div className="replay-header">
-          <h1>{this.props.currentReplay.mapName}</h1>
+          <h1>{this.props.currentReplay.replay_data.mapName}</h1>
         </div>
         <Tabs>
           <TabList>
