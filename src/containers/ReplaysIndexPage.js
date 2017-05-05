@@ -37,8 +37,8 @@ class ReplaysPage extends React.Component {
 
     let filteredReplays = this.props.replays.filter((replay) => {
       return filter.term === '' ||
-             _.includes(replay.heroname.toLowerCase(), filter.term) ||
-             _.includes(replay.mapname.toLowerCase(), filter.term)
+             _.includes(replay.heroname.toLowerCase(), filter.term.toLowerCase()) ||
+             _.includes(replay.mapname.toLowerCase(), filter.term.toLowerCase())
     })
 
     return (
