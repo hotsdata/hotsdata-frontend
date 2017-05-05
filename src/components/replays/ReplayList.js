@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchReplays } from '../../actions/replay_actions';
+
 import ReplayItem from './ReplayItem';
 
 class ReplayList extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentWillMount() {
-    this.props.fetchReplays();
   }
 
   render() {
@@ -48,14 +42,4 @@ class ReplayList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    replays: _.take(state.replays.allReplays, 50)
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchReplays: fetchReplays }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReplayList);
+export default ReplayList;
