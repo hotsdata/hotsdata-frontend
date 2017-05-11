@@ -32,11 +32,12 @@ class TeamFightingTable extends Component {
             <th>Solo Deaths</th>
             <th>Outnumbered Deaths</th>
             <th>Hero Damage</th>
-            <th>Team Fight Hero Damage</th>
+            <th alt="Teamfighting Hero Damage">TF Hero Damage</th>
             <th>Damage Taken</th>
-            <th>Team Fight Damage Taken</th>
+            <th>TF Damage Taken</th>
+            <th>Net TF Damage</th>
             <th>Healing Done</th>
-            <th>Team Fight Healing Done</th>
+            <th>TF Healing Done</th>
           </tr>
         </thead>
         <tbody>

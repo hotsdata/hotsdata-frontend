@@ -13,6 +13,9 @@ const TeamFightingStatsRow = ({playerInfo, playerStats}) => {
       <td>{playerStats.TeamfightHeroDamage.toLocaleString()}</td>
       <td>{playerStats.DamageTaken.toLocaleString()}</td>
       <td>{playerStats.TeamfightDamageTaken.toLocaleString()}</td>
+      <td>
+        {(playerStats.TeamfightHeroDamage - playerStats.TeamfightDamageTaken).toLocaleString()}
+      </td>
       <td>{playerStats.Healing.toLocaleString()}</td>
       <td>{playerStats.TeamfightHealingDone.toLocaleString()}</td>
     </tr>

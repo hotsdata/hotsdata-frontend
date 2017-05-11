@@ -20,7 +20,7 @@ class TalentsTable extends Component {
 
       return (
         <tr key={i}>
-          <td>Sonya</td>
+          <td>{playerTalents.id}</td>
           {talentCells}
         </tr>
       )
