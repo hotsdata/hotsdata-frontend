@@ -6,18 +6,25 @@
 @import 'uploads';
 
 body {
+  background: url("../assets/stormlogs_bg.jpg");
+  color: white;
   margin: 0 0;
   font-size: 14px;
-  font-family: 'Neutron', serif;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+  letter-spacing: -1px;
 }
 
 section {
   margin-top: 12px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
 a {
   text-decoration: none;
-  color: $blueJeans;
+  color: $mediumBlue;
   cursor: pointer;
 }
 
@@ -41,7 +48,7 @@ a {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: $azure;
+  background-color: $mediumBlue;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;

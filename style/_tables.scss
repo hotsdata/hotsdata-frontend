@@ -1,13 +1,14 @@
 .table {
   width: 100%;
-  border-collapse: collapse;
   font-family: 'Work Sans', sans-serif;
+  border-collapse: separate;
+  border-spacing: 0px;
 
   thead {
+    background-color: rgba($rhino, 0.8);
 
     tr {
-      background-color: $orange;
-      color: black;
+      color: white;
       font-weight: 100;
       height: 38px;
 
@@ -26,16 +27,9 @@
       font-size: 14px;
     }
 
-    tr:nth-child(even) {
-      background-color: #131632;
-    }
-
-    tr:nth-child(odd) {
-      background-color: #111027;
-    }
-
     td {
       padding: 4px 8px;
+      border-bottom: 1px solid $rhino;
     }
 
   }
@@ -51,13 +45,17 @@
 }
 
 .victory-row {
-  td {
-    color: green;
+  background-color: rgba($victory, 0.6);
 
-    &:first-child {
-    }
+  &:hover {
+    background-color: rgba($victory, 1);
   }
 }
 
 .defeat-row {
+  background-color: rgba($defeat, 0.6);
+
+  &:hover {
+    background-color: rgba($defeat, 1);
+  }
 }
