@@ -10,7 +10,7 @@ body {
   color: white;
   margin: 0 0;
   font-size: 14px;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+  font-family: 'PT Sans', sans-serif;
   letter-spacing: -1px;
 }
 
@@ -26,6 +26,10 @@ a {
   text-decoration: none;
   color: $orange;
   cursor: pointer;
+}
+
+input {
+  color: black;
 }
 
 .content {

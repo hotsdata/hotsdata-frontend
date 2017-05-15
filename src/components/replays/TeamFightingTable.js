@@ -24,7 +24,7 @@ class TeamFightingTable extends Component {
     });
 
     return (
-      <table className="table match-table">
+      <table className="table">
         <thead>
           <tr>
             <th>Player</th>

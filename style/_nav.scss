@@ -20,7 +20,7 @@
 
     a {
       color: white;
-      font-size: 16px;
+      font-size: 18px;
       text-transform: uppercase;
     }
   }
@@ -73,8 +73,8 @@
       padding: 0px 6px;
       height: 30px;
       width: 100%;
-      background-color: #FFA800;
-      color: $orange;
+      background: linear-gradient(to bottom, $orangeStart, $orangeEnd);
+      color: white;
 
       i { margin-right: 8px;}
     }
