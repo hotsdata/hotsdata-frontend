@@ -1,13 +1,12 @@
 .site-header {
-  height: 40px;
+  height: 60px;
   position: fixed;
   top: 0px;
   z-index: 100000;
   width: 100%;
-  background: linear-gradient(to bottom, #090099, #450095);
-  border-width: 1px;
-	border-style: solid;
-	border-image: linear-gradient(to bottom, #6C3DD6, #843BCF);
+  background: linear-gradient(to bottom, rgba(#310679, 0.75), rgba(#24077C, 0.75));
+  border-top: 2px solid $purple;
+  border-bottom: 2px solid $purple;
   box-sizing: border-box;
   padding-left: 20px;
   display: flex;
@@ -22,6 +21,7 @@
     a {
       color: white;
       font-size: 16px;
+      text-transform: uppercase;
     }
   }
 }
@@ -45,7 +45,7 @@
 
 .profile-dropdown {
   height: 100%;
-  background: linear-gradient(#ffbf00, #FFA800);
+  background: linear-gradient(to bottom, $orangeStart, $orangeEnd);
 
   .dropdown__trigger {
     height: 100%;
@@ -62,7 +62,7 @@
   }
 
   .dropdown-trigger-text {
-    color: $purple;
+    color: white;
   }
 
   .link-list-wrapper {
@@ -74,7 +74,7 @@
       height: 30px;
       width: 100%;
       background-color: #FFA800;
-      color: $purple;
+      color: $orange;
 
       i { margin-right: 8px;}
     }

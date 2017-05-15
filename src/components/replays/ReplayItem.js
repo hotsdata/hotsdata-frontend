@@ -13,7 +13,6 @@ function convertSecondsToTime(totalSeconds) {
   return finalTime;
 }
 
-
 const ReplayItem = ({replay}) => {
   return (
     <tr className={_.toLower(replay.matchresult) + "-row"}>
