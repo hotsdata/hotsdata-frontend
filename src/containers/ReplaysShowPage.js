@@ -8,6 +8,7 @@ import MatchStatsTable from '../components/replays/MatchStatsTable';
 import TeamFightingTable from '../components/replays/TeamFightingTable';
 import TalentsTable from '../components/replays/TalentsTable';
 import MatchPlayerPerformance from '../components/replays/MatchPlayerPerformance';
+import MapStatsTable from '../components/replays/MapStatsTable';
 
 class ReplaysShowPage extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class ReplaysShowPage extends Component {
     }
 
     let replay = this.props.currentReplay;
+    console.log(replay);
 
     return (
       <div>
@@ -36,6 +38,7 @@ class ReplaysShowPage extends Component {
             <Tab>Stats</Tab>
             <Tab>Talents</Tab>
             <Tab>Team Fighting</Tab>
+            <Tab>Map Stats</Tab>
             <Tab>Performance</Tab>
           </TabList>
           <TabPanel className="stats-summary">
@@ -49,6 +52,10 @@ class ReplaysShowPage extends Component {
           <TabPanel className="team-fighting">
             <h3>Team Fighting</h3>
             <TeamFightingTable replay={replay} />
+          </TabPanel>
+          <TabPanel className="map-stats">
+            <h3>Map Stats</h3>
+            <MapStatsTable replay={replay} />
           </TabPanel>
           <TabPanel className="player-performance">
             <h3>Player Performance</h3>
