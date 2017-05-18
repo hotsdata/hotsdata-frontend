@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 
 import Auth from '../lib/Auth';
@@ -19,10 +19,15 @@ class ProfileDropdown extends Component {
     this.refs.dropdown.hide();
   }
 
-  handleLogout() {
+  handleLogout(e) {
+    e.preventDefault();
     this.handleLinkClick();
     Auth.deauthenticateUser();
-    this.props.router.push({pathname: '/'});
+    browserHistory.push('/');
+  }
+
+  componentWillReceiveProps() {
+    this.forceUpdate();
   }
 
   render() {
@@ -51,7 +56,7 @@ class ProfileDropdown extends Component {
                 </a>
               </div>
             }
-            {Auth.isUserAuthenticated() == false && 
+            {Auth.isUserAuthenticated() == false &&
               <div className="link-list-wrapper">
                 <Link to="/signin" onClick={this.handleLinkClick}>
                   <i className="fa fa-sign-in" />

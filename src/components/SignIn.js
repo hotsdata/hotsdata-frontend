@@ -28,8 +28,8 @@ class SignIn extends React.Component {
     this.setState({credentials});
   }
 
-  onSubmit() {
-    Auth.deauthenticateUser();
+  onSubmit(event) {
+    event.preventDefault();
     this.props.logInUser(this.state.credentials);
   }
 
@@ -43,6 +43,14 @@ class SignIn extends React.Component {
     return (
       <div className="container">
         <h2>Sign In</h2>
+        { this.props.session.errors.length > 0 &&
+          <div className="errors">
+            {this.props.session.errors.map(err => {
+                return(<li key={err.msg}>{err.msg}</li>)
+              })
+            }
+          </div>
+        }
         <div>
           <form onSubmit={this.onSubmit}>
             <label>Username</label>

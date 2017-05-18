@@ -12,7 +12,7 @@ import ProfilePage from './containers/ProfilePage';
 
 const Routes = () => {
   return (
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
       <Route path="/" component={Container}>
         <IndexRoute component={Home} />
         <Route path="/register" component={Register} />
