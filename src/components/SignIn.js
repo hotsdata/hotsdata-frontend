@@ -12,7 +12,7 @@ class SignIn extends React.Component {
 
     this.state = {
       credentials: {
-        user: '',
+        email: '',
         password: ''
       }
     }
@@ -53,11 +53,11 @@ class SignIn extends React.Component {
         }
         <div>
           <form onSubmit={this.onSubmit}>
-            <label>Username</label>
+            <label>Email</label>
             <input type="text"
-              name="user"
+              name="email"
               onChange={this.onChange}
-              value={this.state.credentials.user} />
+              value={this.state.credentials.email} />
             <label>Password</label>
             <input type="password"
               name="password"

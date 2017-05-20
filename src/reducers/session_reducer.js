@@ -18,6 +18,7 @@ export default function(state = defaultState, action) {
         errors.push({msg: data.msg});
         newState = {...state, errors: errors}
       } else {
+        console.log(action.payload.data);
         let token = action.payload.data.token;
         Auth.authenticateUser(token);
         newState = {...state, token: token, errors: []};

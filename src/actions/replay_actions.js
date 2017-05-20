@@ -17,8 +17,10 @@ export function fetchReplays() {
 }
 
 export function fetchCurrentReplay(replayId) {
-  let url = `http://54.202.193.48/replays/${replayId}`
-  let promise = axios.get(url)
+  let url = `http://api.hotsdata.com/replays/${replayId}`
+  let promise = axios.get(url, {
+    headers: { Authorization: "Bearer " + localStorage.getItem('token') }
+  });
 
   return {
     type: FETCH_CURRENT_REPLAY_STATS,

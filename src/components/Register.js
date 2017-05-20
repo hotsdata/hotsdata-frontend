@@ -8,9 +8,9 @@ class Register extends React.Component {
     this.state = {
       errors: [],
       user: {
-        user: '',
         email: '',
-        password: ''
+        password: '',
+        battletag: ''
       }
     }
 
@@ -25,8 +25,9 @@ class Register extends React.Component {
     this.setState({user});
   }
 
-  onSubmit() {
+  onSubmit(event) {
     event.preventDefault();
+    console.log('user', this.state.user);
     axios.post("http://api.hotsdata.com/register", this.state.user)
     .then((response) => {
       console.log('success', response);
@@ -41,11 +42,6 @@ class Register extends React.Component {
       <div className="container">
         <h2>Register</h2>
         <form onSubmit={this.onSubmit}>
-          <label>Username</label>
-          <input type="text"
-            name="user"
-            onChange={this.onChange}
-            value={this.state.user.user} />
           <label>Email</label>
           <input type="text"
             name="email"
@@ -56,6 +52,11 @@ class Register extends React.Component {
             name="password"
             onChange={this.onChange}
             value={this.state.user.pass} />
+          <label>Battletag</label>
+          <input type="text"
+            name="battletag"
+            onChange={this.onChange}
+            value={this.state.user.battletag} />
           <br />
           <button className="btn" type='submit'>Register</button>
         </form>
