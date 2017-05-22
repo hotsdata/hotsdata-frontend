@@ -11,6 +11,7 @@ export default function(state = defaultState, action) {
   switch (action.type) {
     case SESSION_LOGIN:
       let newState = null;
+      console.log(action.payload);
       let data = action.payload.data;
       if (data.msg && data.msg === 'Error - Could not login with the provided credentials') {
         let errors = state.errors;

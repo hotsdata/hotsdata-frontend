@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import MapStatsRow from './MapStatsRow';
+import MapManifest from './maps/MapManifest';
 
 class MapStatsTable extends Component {
   constructor(props) {
@@ -9,34 +9,20 @@ class MapStatsTable extends Component {
 
   render() {
     let replay = this.props.replay;
+
     if (replay == null || !replay.replayid) {
       return (<div>Loading Replay Stats..</div>);
     }
 
-    let statRows = replay.player_stats.map((playerStats) => {
-      let playerInfo = replay.account_info[playerStats.playerId];
-      return (
-        <MapStatsRow
-          key={playerStats.playerId}
-          playerInfo={playerInfo}
-          playerStats={playerStats} />
-      )
-    });
+    let mapName = replay.replay_data.mapName;
+    let MapStatsTable = MapManifest[mapName];
+
+    if (MapStatsTable == null) {
+      return (<div>No data available for {mapName}</div>);
+    }
 
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Hero</th>
-            <th>Tributes Collected</th>
-            <th>Curse Damage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {statRows}
-        </tbody>
-      </table>
+      <MapStatsTable replay={replay} />
     )
   }
 }

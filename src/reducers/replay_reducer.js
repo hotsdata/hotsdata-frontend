@@ -23,10 +23,10 @@ const defaultState = {
 export default function(state = defaultState, action) {
   switch (action.type) {
     case FETCH_REPLAYS:
-      console.log(action.payload.data);
       return {...state, allReplays: action.payload.data.data }
     case FETCH_CURRENT_REPLAY_STATS:
       let replay = action.payload.data[0];
+      console.log(replay);
       return {...state, currentReplay: replay};
     default:
       return state;
