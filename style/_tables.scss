@@ -35,6 +35,33 @@
   }
 }
 
+.vertical-team-table {
+  background-color: rgba($rhino, 0.4);
+
+  th {
+    width: 200px;
+  }
+
+  td {
+  }
+
+  td:first-child {
+    background-color: rgba(blue, 0.4);
+  }
+
+  td:last-child {
+    background-color: rgba(red, 0.4);
+  }
+}
+
+.blue-team {
+  background-color: rgba(blue, 0.4);
+}
+
+.red-team {
+  background-color: rgba(red, 0.4);
+}
+
 .victory-row {
   background-color: rgba($victory, 0.6);
 

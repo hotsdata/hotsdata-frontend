@@ -7,6 +7,7 @@ import { fetchCurrentReplay } from '../actions/replay_actions';
 import MatchStatsTable from '../components/replays/MatchStatsTable';
 import TeamFightingTable from '../components/replays/TeamFightingTable';
 import TalentsTable from '../components/replays/TalentsTable';
+import TeamStats from '../components/replays/TeamStats';
 import MatchPlayerPerformance from '../components/replays/MatchPlayerPerformance';
 import MapStatsTable from '../components/replays/MapStatsTable';
 
@@ -38,6 +39,7 @@ class ReplaysShowPage extends Component {
             <Tab>Stats</Tab>
             <Tab>Talents</Tab>
             <Tab>Team Fighting</Tab>
+            <Tab>Team Stats</Tab>
             <Tab>Map Stats</Tab>
             <Tab>Performance</Tab>
           </TabList>
@@ -52,6 +54,10 @@ class ReplaysShowPage extends Component {
           <TabPanel className="team-fighting">
             <h3>Team Fighting</h3>
             <TeamFightingTable replay={replay} />
+          </TabPanel>
+          <TabPanel className="team-stats">
+            <h3>Team Stats</h3>
+            <TeamStats replay={replay} />
           </TabPanel>
           <TabPanel className="map-stats">
             <h3>Map Stats</h3>
