@@ -5,8 +5,10 @@ const TeamExperienceTable = (props) => {
 
   return (
     <tbody>
-      <tr colSpan="3">
+      <tr>
         <th>Team Experience</th>
+        <th></th>
+        <th></th>
       </tr>
       <tr>
         <th>Total XP</th>

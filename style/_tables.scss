@@ -45,7 +45,7 @@
   td {
   }
 
-  td:first-child {
+  td:nth-child(2n){
     background-color: rgba(blue, 0.4);
   }
 
