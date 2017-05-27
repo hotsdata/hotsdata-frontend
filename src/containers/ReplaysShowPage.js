@@ -10,6 +10,7 @@ import TalentsTable from '../components/replays/TalentsTable';
 import TeamStats from '../components/replays/TeamStats';
 import MatchPlayerPerformance from '../components/replays/MatchPlayerPerformance';
 import MapStatsTable from '../components/replays/MapStatsTable';
+import TeamMapStats from '../components/replays/maps/TeamMapStats';
 
 class ReplaysShowPage extends Component {
   constructor(props) {
@@ -61,7 +62,10 @@ class ReplaysShowPage extends Component {
           </TabPanel>
           <TabPanel className="map-stats">
             <h3>Map Stats</h3>
-            <MapStatsTable replay={replay} />
+            <div className="map-stats-wrapper">
+              <TeamMapStats replay={replay} />
+              <MapStatsTable replay={replay} />
+            </div>
           </TabPanel>
           <TabPanel className="player-performance">
             <h3>Player Performance</h3>

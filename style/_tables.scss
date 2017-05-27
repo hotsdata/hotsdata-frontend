@@ -38,6 +38,11 @@
 .vertical-team-table {
   background-color: rgba($rhino, 0.4);
 
+  caption {
+    background-color: rgba($rhino, 0.4);
+    color: $orange;
+  }
+
   th {
     width: 200px;
   }
