@@ -30,6 +30,17 @@ class ReplaysPage extends React.Component {
     this.setState({...this.state, filter: newFilter})
   }
 
+  winRate(filteredReplays) {
+    let wins = _.filter(filteredReplays, (replay) => replay.matchresult === "Victory").length
+    let losses = _.filter(filteredReplays, (replay) => replay.matchresult === "Defeat").length
+
+    return {
+      wins: wins,
+      losses: losses,
+      winRate: (wins / (wins+losses)) * 100
+    }
+  }
+
   render() {
 
     let filter = this.state.filter;
@@ -38,14 +49,20 @@ class ReplaysPage extends React.Component {
       return filter.term === '' ||
              _.includes(replay.heroname.toLowerCase(), filter.term.toLowerCase()) ||
              _.includes(replay.mapname.toLowerCase(), filter.term.toLowerCase())
-    })
+    });
+
+    let winRates = this.winRate(filteredReplays);
 
     return (
       <div>
         <h2>
+          Showing
+          <span className="muted"> {filteredReplays.length} </span>
           Replays
-          <span className="muted">({filteredReplays.length})</span>
         </h2>
+        <h3 className="win-rate">
+          {winRates.wins}-{winRates.losses} - {winRates.winRate} % Win Rate
+        </h3>
         <div className="replay-filters">
           <input
             type="text"
@@ -54,6 +71,7 @@ class ReplaysPage extends React.Component {
             placeholder="Search by hero or map"
             value={this.state.filter.term}
             onChange={this.filterReplays} />
+          <button className="btn">Clear</button>
         </div>
         <ReplayList replays={filteredReplays} />
       </div>
