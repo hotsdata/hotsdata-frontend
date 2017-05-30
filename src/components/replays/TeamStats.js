@@ -31,7 +31,7 @@ class TeamStats extends Component {
           <TeamExperienceTable team_stats={ts} />
           <tbody>
             <tr>
-              <th>Mercs</th>
+              <th className="orange">Mercs</th>
               <th></th>
               <th></th>
             </tr>
@@ -50,14 +50,18 @@ class TeamStats extends Component {
               <td>{ts[0].mercsTaken}</td>
               <td>{ts[1].mercsTaken}</td>
             </tr>
+            <tr>
+              <th className="orange">Misc.</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>Missed Regen Globes</th>
+              <td>{ts[0].missedRegenGlobes}</td>
+              <td>{ts[1].missedRegenGlobes}</td>
+            </tr>
           </tbody>
         </table>
-        <div>
-          Map Specific
-        </div>
-        <div>
-          Misc
-        </div>
       </div>
     )
   }

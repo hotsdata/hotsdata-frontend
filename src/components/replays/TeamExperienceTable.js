@@ -6,7 +6,7 @@ const TeamExperienceTable = (props) => {
   return (
     <tbody>
       <tr>
-        <th>Team Experience</th>
+        <th className="orange">Team Experience</th>
         <th></th>
         <th></th>
       </tr>
