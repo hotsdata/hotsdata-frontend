@@ -91,3 +91,16 @@ input {
   color: $red !important;
   font-weight: bold;
 }
+
+.blue-team {
+  background-color: rgba(blue, 0.8);
+}
+
+.red-team {
+  background-color: rgba(red, 0.8);
+}
+
+.talent-image {
+  height: 32px;
+  width: 32px;
+}

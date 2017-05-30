@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+
+function talentPath(talent_icon) {
+  return `https://s3-us-west-2.amazonaws.com/openlogs-icons/${talent_icon}.png`
+}
 
 class TalentsTable extends Component {
   constructor(props) {
@@ -11,16 +16,24 @@ class TalentsTable extends Component {
       return (<div>Loading Talents...</div>)
     }
 
-    let talentRows = this.props.talents.map((playerTalents, i) => {
+    let orderedTalents = _.sortBy(this.props.talents, ['team']);
+    console.log(orderedTalents);
+
+    let talentRows = orderedTalents.map((playerTalents, i) => {
       let talentCells = playerTalents.talents.map((talent, j) => {
         return (
-          <td key={j}>{talent.talent_name}</td>
+          <td
+            key={j}
+            alt={talent.talent_name}
+            title={`${talent.talent_name}: ${talent.description}`}>
+            <img className="talent-image" src={talentPath(talent.talent_icon)} />
+          </td>
         )
       });
 
       return (
-        <tr key={i}>
-          <td>{playerTalents.id}</td>
+        <tr key={i} className={playerTalents.team == 0 ? 'blue-team' : 'red-team'}>
+          <td>{playerTalents.hero}</td>
           {talentCells}
         </tr>
       )
