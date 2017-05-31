@@ -17,7 +17,6 @@ class TalentsTable extends Component {
     }
 
     let orderedTalents = _.sortBy(this.props.talents, ['team']);
-    console.log(orderedTalents);
 
     let talentRows = orderedTalents.map((playerTalents, i) => {
       let talents = _.sortBy(playerTalents.talents, ['talent_seconds']);

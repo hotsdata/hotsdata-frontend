@@ -31,7 +31,6 @@ class ReplayList extends Component {
             <th>Date/Time</th>
             <th>Duration</th>
             <th>Result</th>
-            <th>View Details</th>
           </tr>
         </thead>
         <tbody>
