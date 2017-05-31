@@ -17,6 +17,7 @@ class ReplaysPage extends React.Component {
     }
 
     this.filterReplays = this.filterReplays.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
   }
 
   componentWillMount() {
@@ -39,6 +40,10 @@ class ReplaysPage extends React.Component {
       losses: losses,
       winRate: (wins / (wins+losses)) * 100
     }
+  }
+
+  clearSearch() {
+    this.setState({...this.state, filter: {term: ''}});
   }
 
   render() {
@@ -71,7 +76,7 @@ class ReplaysPage extends React.Component {
             placeholder="Search by hero or map"
             value={this.state.filter.term}
             onChange={this.filterReplays} />
-          <button className="btn">Clear</button>
+          <button onClick={this.clearSearch}>Clear</button>
         </div>
         <ReplayList replays={filteredReplays} />
       </div>
