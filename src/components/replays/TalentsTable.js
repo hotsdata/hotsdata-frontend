@@ -20,7 +20,8 @@ class TalentsTable extends Component {
     console.log(orderedTalents);
 
     let talentRows = orderedTalents.map((playerTalents, i) => {
-      let talentCells = playerTalents.talents.map((talent, j) => {
+      let talents = _.sortBy(playerTalents.talents, ['talent_seconds']);
+      let talentCells = talents.map((talent, j) => {
         return (
           <td
             key={j}
@@ -32,7 +33,8 @@ class TalentsTable extends Component {
       });
 
       return (
-        <tr key={i} className={playerTalents.team == 0 ? 'blue-team' : 'red-team'}>
+        <tr key={i} className={playerTalents.matchResult.toLowerCase() + '-row'}>
+          <td>{playerTalents.player}</td>
           <td>{playerTalents.hero}</td>
           {talentCells}
         </tr>
@@ -43,6 +45,7 @@ class TalentsTable extends Component {
       <table className="table">
         <thead>
           <tr>
+            <th>Player</th>
             <th>Hero</th>
             <th>1</th>
             <th>4</th>
