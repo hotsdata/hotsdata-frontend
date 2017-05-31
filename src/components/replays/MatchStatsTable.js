@@ -16,6 +16,8 @@ class MatchStatsTable extends Component {
 
     let statRows = replay.player_stats.map((playerStats) => {
       let playerInfo = replay.account_info[playerStats.playerId];
+      if (playerInfo == null) { console.log(playerStats.playerId, replay.account_info); }
+
       return (
         <PlayerMatchStatsRow
           key={playerStats.playerId}

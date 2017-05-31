@@ -27,18 +27,20 @@ class TombOfTheSpiderQueen extends React.Component {
     });
 
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Hero</th>
-            <th>Gems Turned In</th>
-          </tr>
-        </thead>
-        <tbody>
-          {statRows}
-        </tbody>
-      </table>
+      <div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Hero</th>
+              <th>Gems Turned In</th>
+            </tr>
+          </thead>
+          <tbody>
+            {statRows}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }

@@ -22,7 +22,7 @@ class ReplayList extends Component {
     })
 
     return (
-      <table className="table">
+      <table className="table" style={{width: '100%'}}>
         <thead>
           <tr>
             <th>Hero</th>

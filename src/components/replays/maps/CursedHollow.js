@@ -8,6 +8,8 @@ class CursedHollowMapStats extends React.Component {
   }
 
   createStatsRow(playerInfo, playerStats) {
+    let isWinner = playerInfo.gameResult == 1
+
     return (
       <tr key={playerStats.playerId} className={(isWinner ? 'victory-row' : 'defeat-row')}>
         <td>{playerInfo.name}</td>

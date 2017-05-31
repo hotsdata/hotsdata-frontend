@@ -3,4 +3,8 @@
 .map-stats-wrapper {
   display: flex;
   flex-direction: row;
+
+  div {
+    margin: 20px;
+  }
 }

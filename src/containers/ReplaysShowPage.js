@@ -11,6 +11,7 @@ import TeamStats from '../components/replays/TeamStats';
 import MatchPlayerPerformance from '../components/replays/MatchPlayerPerformance';
 import MapStatsTable from '../components/replays/MapStatsTable';
 import TeamMapStats from '../components/replays/maps/TeamMapStats';
+import './ReplayShowPage.scss';
 
 class ReplaysShowPage extends Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class ReplaysShowPage extends Component {
     }
 
     let replay = this.props.currentReplay;
-    console.log(replay);
 
     return (
       <div>

@@ -7,7 +7,7 @@ const TeamMapStats = (props) => {
   let TeamMapStatsComponent = TeamMapManifest[mapName];
 
   if(TeamMapStatsComponent == null) {
-    return (<div>No data available</div>);
+    return (<div>{mapName} team map stats not implemented yet.  :(</div>);
   }
 
   return (
