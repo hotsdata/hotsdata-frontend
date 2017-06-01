@@ -20,15 +20,20 @@ class TalentsTable extends Component {
 
     let talentRows = orderedTalents.map((playerTalents, i) => {
       let talents = _.sortBy(playerTalents.talents, ['talent_seconds']);
-      let talentCells = talents.map((talent, j) => {
-        return (
-          <td
-            key={j}
-            alt={talent.talent_name}
-            title={`${talent.talent_name}: ${talent.description}`}>
-            <img className="talent-image" src={talentPath(talent.talent_icon)} />
-          </td>
-        )
+      let talentCells = [0,1,2,3,4,5,6].map((j) => {
+        let talent = talents[j];
+        if(talent != null) {
+          return (
+            <td
+              key={j}
+              alt={talent.talent_name}
+              title={`${talent.talent_name}: ${talent.description}`}>
+              <img className="talent-image" src={talentPath(talent.talent_icon)} />
+            </td>
+          )
+        } else {
+          return (<td key={j}></td>);
+        }
       });
 
       return (
@@ -41,24 +46,26 @@ class TalentsTable extends Component {
     });
 
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Hero</th>
-            <th>1</th>
-            <th>4</th>
-            <th>7</th>
-            <th>10</th>
-            <th>13</th>
-            <th>16</th>
-            <th>20</th>
-          </tr>
-        </thead>
-        <tbody>
-          {talentRows}
-        </tbody>
-      </table>
+      <div className="talents">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Hero</th>
+              <th>1</th>
+              <th>4</th>
+              <th>7</th>
+              <th>10</th>
+              <th>13</th>
+              <th>16</th>
+              <th>20</th>
+            </tr>
+          </thead>
+          <tbody>
+            {talentRows}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }
