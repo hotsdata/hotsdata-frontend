@@ -6,6 +6,9 @@ const Home = ({ children }) => {
     <div className="wrapper">
       <Header />
       <div className="container content">
+        <div className="errors">
+          An error has occured
+        </div>
         {children}
       </div>
     </div>
