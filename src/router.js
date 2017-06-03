@@ -2,6 +2,8 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
 import Auth from './lib/Auth';
+import { createError } from './actions/error_actions';
+
 import Container     from './components/Container';
 import Home     from './components/Home';
 import Register from './components/Register';
@@ -13,6 +15,7 @@ import ProfilePage from './containers/ProfilePage';
 
 function requireAuth(nextState, replace) {
   if (Auth.isUserAuthenticated() == false) {
+    // dispatch(createError('You musted be signed in'));
     replace({ pathname: '/signin'});
   }
 }

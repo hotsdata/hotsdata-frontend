@@ -7,7 +7,7 @@ import ErrorReducer from './ErrorReducer';
 
  const rootReducer = combineReducers({
   replays: ReplayReducer,
-  errors: ErrorReducer,
+  error: ErrorReducer,
   session: SessionReducer,
   routing: routing
 });

@@ -6,7 +6,7 @@ import {
 export default (state = '', action) => {
   switch (action.type) {
     case CREATE_ERROR:
-      return 'There was an error inserting this record';
+      return action.payload;
     case CLEAR_ERROR:
       return '';
     default:
