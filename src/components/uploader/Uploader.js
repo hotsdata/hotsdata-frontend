@@ -15,7 +15,6 @@ class Uploader extends React.Component {
     }
 
     this.onDrop = this.onDrop.bind(this);
-    this.onOpenClick = this.onOpenClick.bind(this);
   }
 
   updateUploadStatus(uploadFile) {
@@ -55,10 +54,6 @@ class Uploader extends React.Component {
     });
   }
 
-  onOpenClick() {
-    this.dropzone.open();
-  }
-
   render() {
 
     let uploadStatusRows = this.state.uploadFiles.map((uploadFile, idx) => {
@@ -67,7 +62,7 @@ class Uploader extends React.Component {
 
     return (
       <div>
-        <Dropzone className="dropzone" onClick={this.onOpenClick} ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
+        <Dropzone className="dropzone" ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
           <div>
             <div>Drop files here or </div>
             <button onClick={this.onOpenClick}>Browse Files</button>
