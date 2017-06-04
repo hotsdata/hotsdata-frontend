@@ -38,7 +38,7 @@ class ReplaysPage extends React.Component {
     return {
       wins: wins,
       losses: losses,
-      winRate: (wins / (wins+losses)) * 100
+      winRate: Math.round((wins / (wins+losses)) * 100)
     }
   }
 

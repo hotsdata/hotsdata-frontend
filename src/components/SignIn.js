@@ -35,7 +35,7 @@ class SignIn extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (Auth.isUserAuthenticated()) {
-      this.props.router.push({pathname: '/profile'});
+      this.props.router.push({pathname: '/replays'});
     }
   }
 

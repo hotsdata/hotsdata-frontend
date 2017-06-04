@@ -18,12 +18,14 @@ class MatchPlayerPerformance extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          Player list here
+        <div className="player-list">
         </div>
         <div>
           <div className="match-performance-header">
-            Marod - Kerrigan
+            <h3>Coming Soon!</h3>
+            <p>
+              Here we intend to show each of a players stats compared to the rest of the community.  
+            </p>
           </div>
         </div>
       </div>
