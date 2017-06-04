@@ -8,6 +8,7 @@ import Container     from './components/Container';
 import Home     from './components/Home';
 import Register from './components/Register';
 import SignIn   from './components/SignIn';
+import Logout   from './components/Logout';
 import Uploader from './components/uploader/Uploader';
 import ReplaysIndexPage  from './containers/ReplaysIndexPage';
 import ReplaysShowPage from './containers/ReplaysShowPage';
@@ -27,6 +28,7 @@ const Routes = () => {
         <IndexRoute component={Home} />
         <Route path="/register" component={Register} />
         <Route path="/signin" component={SignIn} />
+        <Route path="/logout" component={Logout} />
         <Route path="/upload" component={Uploader} />
         <Route path="/replays/:replayId" component={ReplaysShowPage} />
         <Route path="/replays" component={ReplaysIndexPage} onEnter={requireAuth} />

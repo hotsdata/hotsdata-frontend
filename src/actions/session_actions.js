@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import Auth from '../lib/Auth';
+
 export const SESSION_LOGIN = 'SESSION_LOGIN';
 export const SESSION_LOGOUT = 'SESSION_LOGOUT';
 
@@ -17,10 +19,10 @@ export function logInUser(credentials) {
   }
 }
 
-export function logOutUser() {
-  let promise = null; //TODO: Fill in with axios promise to rails logout endpoint
+export function logoutUser() {
+  Auth.deauthenticateUser();
   return {
     type: SESSION_LOGOUT,
-    payload: promise
+    payload: null
   }
 }

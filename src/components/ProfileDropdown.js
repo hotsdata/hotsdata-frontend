@@ -12,18 +12,10 @@ class ProfileDropdown extends Component {
     super(props)
 
     this.handleLinkClick = this.handleLinkClick.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLinkClick() {
     this.refs.dropdown.hide();
-  }
-
-  handleLogout(e) {
-    e.preventDefault();
-    this.handleLinkClick();
-    Auth.deauthenticateUser();
-    browserHistory.push('/');
   }
 
   componentWillReceiveProps() {
@@ -50,10 +42,10 @@ class ProfileDropdown extends Component {
                   <i className="fa fa-cog" />
                   Settings
                 </a>
-                <a href="#" onClick={this.handleLogout}>
+                <Link to="/logout" onClick={this.handleLinkClick}>
                   <i className="fa fa-sign-out" />
                   Logout
-                </a>
+                </Link>
               </div>
             }
             {Auth.isUserAuthenticated() == false &&
