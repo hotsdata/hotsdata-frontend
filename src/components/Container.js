@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Header from './Header';
+import Footer from './Footer';
 
 class MainContainer extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class MainContainer extends React.Component {
           </div>
           {this.props.children}
         </div>
+        <Footer />
       </div>
     );
   }
