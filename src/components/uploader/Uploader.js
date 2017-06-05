@@ -70,21 +70,25 @@ class Uploader extends React.Component {
         </Dropzone>
         <div>
           <h2>You can download alpha versions of the uploader below</h2>
-          <h4>Please let us know of any bugs you find or feedback you may have.</h4>
+          <h4>Please let us know of any bugs you find or feedback you may have by clicking the contact link in the footer.</h4>
           <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader.exe">Windows Uploader</a>
+          <br />
+          <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsDataUploader.app.zip">Mac Uploader</a>
         </div>
-        <table className="table upload-status-table">
-          <thead>
-            <tr>
-              <th>File</th>
-              <th>Percent Complete</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {uploadStatusRows}
-          </tbody>
-        </table>
+        { uploadStatusRows.length > 0 &&
+          <table className="table upload-status-table">
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Percent Complete</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {uploadStatusRows}
+            </tbody>
+          </table>
+        }
       </div>
     );
   }
