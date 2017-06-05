@@ -5,7 +5,7 @@ class Auth {
   }
 
   static isUserAuthenticated() {
-    return localStorage.getItem('token') !== null;
+    return localStorage.getItem('token') != null;
   }
 
   static deauthenticateUser() {

@@ -23,6 +23,6 @@ export function logoutUser() {
   Auth.deauthenticateUser();
   return {
     type: SESSION_LOGOUT,
-    payload: null
+    payload: { msg: "Logout Successful" }
   }
 }

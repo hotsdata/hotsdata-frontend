@@ -5,21 +5,23 @@ import { Link, browserHistory } from 'react-router';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 
 import Auth from '../lib/Auth';
-import { logOutUser } from '../actions/session_actions';
+import { logoutUser } from '../actions/session_actions';
 
 class ProfileDropdown extends Component {
   constructor(props) {
     super(props)
 
     this.handleLinkClick = this.handleLinkClick.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLinkClick() {
     this.refs.dropdown.hide();
   }
 
-  componentWillReceiveProps() {
-    this.forceUpdate();
+  handleLogout() {
+    this.props.logoutUser();
+    this.handleLinkClick();
   }
 
   render() {
@@ -42,13 +44,13 @@ class ProfileDropdown extends Component {
                   <i className="fa fa-cog" />
                   Settings
                 </a>
-                <Link to="/logout" onClick={this.handleLinkClick}>
-                  <i className="fa fa-sign-out" />
+                <a href="#" onClick={this.handleLogout}>
+                  <i className="fa fa-cog" />
                   Logout
-                </Link>
+                </a>
               </div>
             }
-            {Auth.isUserAuthenticated() == false &&
+            {!Auth.isUserAuthenticated() &&
               <div className="link-list-wrapper">
                 <Link to="/signin" onClick={this.handleLinkClick}>
                   <i className="fa fa-sign-in" />
@@ -73,7 +75,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({logOutUser}, dispatch);
+  return bindActionCreators({logoutUser}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileDropdown);

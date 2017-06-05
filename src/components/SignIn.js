@@ -45,8 +45,9 @@ class SignIn extends React.Component {
         <h2>Sign In</h2>
         { this.props.session.errors.length > 0 &&
           <div className="errors">
+            <i className="fa fa-exclamation-triangle" aria-hidden="true" />
             {this.props.session.errors.map(err => {
-                return(<li key={err.msg}>{err.msg}</li>)
+                return(<span key={err.msg}>{err.msg}</span>)
               })
             }
           </div>

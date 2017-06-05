@@ -11,24 +11,22 @@ export default function(state = defaultState, action) {
   switch (action.type) {
     case SESSION_LOGIN:
       let newState = null;
-      console.log(action.payload);
+      console.log('payload', action.payload);
       let data = action.payload.data;
-      if (data.msg && data.msg === 'Error - Could not login with the provided credentials') {
-        let errors = state.errors;
-        console.log('errors', errors);
-        errors.push({msg: data.msg});
-        newState = {...state, errors: errors}
-      } else {
-        console.log(action.payload.data);
+      if (data.token) {
         let token = action.payload.data.token;
         Auth.authenticateUser(token);
         newState = {...state, token: token, errors: []};
+      } else {
+        let errors = [];
+        errors.push({msg: data.msg});
+        newState = {...state, errors: errors}
       }
 
       return newState;
     case SESSION_LOGOUT:
       Auth.deauthenticateUser();
-      return {}
+      return defaultState;
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Auth from '../lib/Auth';
 import { logoutUser } from '../actions/session_actions';
 
 class Logout extends React.Component {
@@ -9,7 +10,14 @@ class Logout extends React.Component {
 
   componentWillMount() {
     logoutUser();
-    this.props.router.push({pathname: '/signin'});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (Auth.isUserAuthenticated() == false) {
+      this.props.router.push({pathname: '/signin'});
+    } else {
+      this.props.router.push({pathname: '/replays'});
+    }
   }
 
   render() {
