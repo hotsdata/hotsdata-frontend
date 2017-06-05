@@ -1,12 +1,14 @@
 import React from 'react';
-import axios from 'axios';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { registerUser } from '../actions/user_actions';
 
 class Register extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      errors: [],
       user: {
         email: '',
         password: '',
@@ -27,20 +29,22 @@ class Register extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    console.log('user', this.state.user);
-    axios.post("http://api.hotsdata.com/register", this.state.user)
-    .then((response) => {
-      console.log('success', response);
-    })
-    .catch((error) => {
-      console.log('error', error);
-    })
+    this.props.registerUser(this.state.user);
   }
 
   render() {
     return (
       <div className="container">
         <h2>Register</h2>
+        { this.props.user.errors.length > 0 &&
+          <div className="errors">
+            <i className="fa fa-exclamation-triangle" aria-hidden="true" />
+            {this.props.session.errors.map(err => {
+                return(<span key={err.msg}>{err.msg}</span>)
+              })
+            }
+          </div>
+        }
         <form onSubmit={this.onSubmit}>
           <label>Email</label>
           <input type="text"
@@ -66,4 +70,14 @@ class Register extends React.Component {
 
 }
 
-export default Register;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({registerUser}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

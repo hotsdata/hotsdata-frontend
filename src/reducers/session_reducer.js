@@ -1,6 +1,5 @@
 import { SESSION_LOGIN, SESSION_LOGOUT } from '../actions/session_actions';
 import Auth from '../lib/Auth';
-import { push } from 'react-router-redux';
 
 const defaultState = {
   errors: [],
@@ -11,7 +10,6 @@ export default function(state = defaultState, action) {
   switch (action.type) {
     case SESSION_LOGIN:
       let newState = null;
-      console.log('payload', action.payload);
       let data = action.payload.data;
       if (data.token) {
         let token = action.payload.data.token;
