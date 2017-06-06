@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { fetchReplays } from '../actions/replay_actions';
 import ReplayList from '../components/replays/ReplayList';
+import './ReplayIndexPage.scss';
 
 class ReplaysPage extends React.Component {
   constructor(props) {
@@ -18,10 +19,12 @@ class ReplaysPage extends React.Component {
 
     this.filterReplays = this.filterReplays.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
+    this.changePage = this.changePage.bind(this);
+
+    this.props.fetchReplays();
   }
 
   componentWillMount() {
-    this.props.fetchReplays();
   }
 
   filterReplays(e) {
@@ -46,6 +49,11 @@ class ReplaysPage extends React.Component {
     this.setState({...this.state, filter: {term: ''}});
   }
 
+  changePage(e) {
+    let endpoint = this.props.pages[e.target.id];
+    this.props.fetchReplays(endpoint);
+  }
+
   render() {
 
     let filter = this.state.filter;
@@ -59,26 +67,44 @@ class ReplaysPage extends React.Component {
     let winRates = this.winRate(filteredReplays);
 
     return (
-      <div>
+      <div className="replay-index">
         <h2>
           Showing
           <span className="muted"> {filteredReplays.length} </span>
           Replays
         </h2>
-        <h3 className="win-rate">
-          {winRates.wins}-{winRates.losses} - {winRates.winRate} % Win Rate
-        </h3>
-        <div className="replay-filters">
-          <input
-            type="text"
-            size="50"
-            ref="term"
-            placeholder="Search by hero or map"
-            value={this.state.filter.term}
-            onChange={this.filterReplays} />
-          <button onClick={this.clearSearch}>Clear</button>
+        <div className="replay-wrapper">
+          <div className="filters">
+            <div className="replay-filters">
+              <input
+                type="text"
+                size="50"
+                ref="term"
+                placeholder="Search by hero or map"
+                value={this.state.filter.term}
+                onChange={this.filterReplays} />
+              <button className="btn" onClick={this.clearSearch}>Clear</button>
+            </div>
+          </div>
+          <h3 className="win-rates">
+            {winRates.wins}-{winRates.losses} - {winRates.winRate} % Win Rate
+          </h3>
+        </div>
+        <div className="prev-next-buttons">
+          <button id="prev"
+            onClick={this.changePage}
+            style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
+            >Prev</button>
+          <button id="next" onClick={this.changePage}>Next</button>
         </div>
         <ReplayList replays={filteredReplays} />
+        <div className="prev-next-buttons">
+          <button id="prev"
+            onClick={this.changePage}
+            style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
+            >Prev</button>
+          <button id="next" onClick={this.changePage}>Next</button>
+        </div>
       </div>
     )
   }
@@ -86,7 +112,8 @@ class ReplaysPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    replays: state.replays.allReplays
+    replays: state.replays.allReplays,
+    pages: state.replays.pages
   }
 }
 
