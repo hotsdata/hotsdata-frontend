@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { registerUser } from '../actions/user_actions';
+import Auth from '../lib/Auth';
 
 class Register extends React.Component {
   constructor(props) {
@@ -10,14 +11,20 @@ class Register extends React.Component {
 
     this.state = {
       user: {
-        email: '',
-        password: '',
-        battletag: ''
+        email: 'jaysonw.bailey+1@gmail.com',
+        password: 'm1chigan',
+        battletag: 'Marod#1111'
       }
     }
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (Auth.isUserAuthenticated()) {
+      this.props.router.push({pathname: '/replays'});
+    }
   }
 
   onChange(event) {
@@ -39,8 +46,8 @@ class Register extends React.Component {
         { this.props.user.errors.length > 0 &&
           <div className="errors">
             <i className="fa fa-exclamation-triangle" aria-hidden="true" />
-            {this.props.session.errors.map(err => {
-                return(<span key={err.msg}>{err.msg}</span>)
+            {this.props.user.errors.map((err, i) => {
+                return(<span key={i}>{err}</span>)
               })
             }
           </div>
@@ -55,7 +62,7 @@ class Register extends React.Component {
           <input type="password"
             name="password"
             onChange={this.onChange}
-            value={this.state.user.pass} />
+            value={this.state.user.password} />
           <label>Battletag</label>
           <input type="text"
             name="battletag"
