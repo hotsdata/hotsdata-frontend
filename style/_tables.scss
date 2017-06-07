@@ -89,3 +89,13 @@
     background-color: rgba($grey, 1);
   }
 }
+
+.neutral-row {
+  color: black !important;
+  background-color: rgba($grey, 0.6);
+
+  &:hover {
+    background-color: rgba($grey, 1);
+  }
+
+}

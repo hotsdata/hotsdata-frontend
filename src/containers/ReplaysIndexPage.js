@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { fetchReplays } from '../actions/replay_actions';
 import ReplayList from '../components/replays/ReplayList';
+import RecentWinRates from '../components/replays/RecentWinRates';
 import './ReplayIndexPage.scss';
 
 class ReplaysPage extends React.Component {
@@ -34,17 +35,6 @@ class ReplaysPage extends React.Component {
     this.setState({...this.state, filter: newFilter})
   }
 
-  winRate(filteredReplays) {
-    let wins = _.filter(filteredReplays, (replay) => replay.matchresult === "Victory").length
-    let losses = _.filter(filteredReplays, (replay) => replay.matchresult === "Defeat").length
-
-    return {
-      wins: wins,
-      losses: losses,
-      winRate: Math.round((wins / (wins+losses)) * 100)
-    }
-  }
-
   clearSearch() {
     this.setState({...this.state, filter: {term: ''}});
   }
@@ -60,11 +50,9 @@ class ReplaysPage extends React.Component {
 
     let filteredReplays = this.props.replays.filter((replay) => {
       return filter.term === '' ||
-             _.includes(replay.heroname.toLowerCase(), filter.term.toLowerCase()) ||
-             _.includes(replay.mapname.toLowerCase(), filter.term.toLowerCase())
+             _.startsWith(replay.heroname.toLowerCase(), filter.term.toLowerCase()) ||
+             _.startsWith(replay.mapname.toLowerCase(), filter.term.toLowerCase())
     });
-
-    let winRates = this.winRate(filteredReplays);
 
     return (
       <div className="replay-index">
@@ -73,37 +61,37 @@ class ReplaysPage extends React.Component {
           <span className="muted"> {filteredReplays.length} </span>
           Replays
         </h2>
-        <div className="replay-wrapper">
-          <div className="filters">
-            <div className="replay-filters">
-              <input
-                type="text"
-                size="50"
-                ref="term"
-                placeholder="Search by hero or map"
-                value={this.state.filter.term}
-                onChange={this.filterReplays} />
-              <button className="btn" onClick={this.clearSearch}>Clear</button>
+        <div className="replay-body-wrapper" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
+          <div className="replay-wrapper">
+            <div className="filters">
+              <div className="replay-filters">
+                <input
+                  type="text"
+                  size="50"
+                  ref="term"
+                  placeholder="Search by hero or map"
+                  value={this.state.filter.term}
+                  onChange={this.filterReplays} />
+                <button className="btn" onClick={this.clearSearch}>Clear</button>
+              </div>
             </div>
+            <RecentWinRates replays={filteredReplays} />
           </div>
-          <h3 className="win-rates">
-            {winRates.wins}-{winRates.losses} - {winRates.winRate} % Win Rate
-          </h3>
-        </div>
-        <div className="prev-next-buttons">
-          <button id="prev"
-            onClick={this.changePage}
-            style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
-            >Prev</button>
-          <button id="next" onClick={this.changePage}>Next</button>
-        </div>
-        <ReplayList replays={filteredReplays} />
-        <div className="prev-next-buttons">
-          <button id="prev"
-            onClick={this.changePage}
-            style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
-            >Prev</button>
-          <button id="next" onClick={this.changePage}>Next</button>
+          <div className="prev-next-buttons">
+            <button id="prev"
+              onClick={this.changePage}
+              style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
+              >Prev</button>
+            <button id="next" onClick={this.changePage}>Next</button>
+          </div>
+          <ReplayList replays={filteredReplays} />
+          <div className="prev-next-buttons">
+            <button id="prev"
+              onClick={this.changePage}
+              style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
+              >Prev</button>
+            <button id="next" onClick={this.changePage}>Next</button>
+          </div>
         </div>
       </div>
     )
