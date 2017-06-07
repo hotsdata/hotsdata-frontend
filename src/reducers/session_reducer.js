@@ -16,15 +16,13 @@ const defaultState = {
 export default function(state = defaultState, action) {
   switch (action.type) {
     case REGISTER_USER:
-      console.log('caught REGISTER_USER!', action.payload);
-      if (action.payload.data.result) {
-        return {...state, user: {battletag: "Marod#1111"}};
+      if (action.payload.data.token) {
+        return {...state, user: action.payload.data.user};
       }
       return state;
     case SESSION_LOGIN:
       let newState = null;
       let data = action.payload.data;
-      console.log('data', data);
       if (data.result) {
         Auth.authenticateUser(data.token);
         newState = {...state, token: data.token, errors: []};

@@ -11,11 +11,10 @@ export default function (state = defaultState, action) {
   switch (action.type) {
     case REGISTER_USER:
       let data = action.payload.data;
-      console.log(data);
       // if success
-      if (data.result) {
+      if (data.token) {
         Auth.authenticateUser(data.token);
-        return {...state, currentUser: {battletag: "Marod#1111"}};
+        return {...state, currentUser: data.user};
       } else {
         return {...state, errors: [data.msg]};
       }
