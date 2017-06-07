@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-import PlayerMatchStatsRow from './PlayerMatchStatsRow';
+import MiscStatsTableRow from './MiscStatsTableRow';
 
-class MatchStatsTable extends Component {
+class MiscStatsTable extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -19,7 +18,7 @@ class MatchStatsTable extends Component {
       if (playerInfo == null) { console.log(playerStats.playerId, replay.account_info); }
 
       return (
-        <PlayerMatchStatsRow
+        <MiscStatsTableRow
           key={playerStats.playerId}
           playerInfo={playerInfo}
           playerStats={playerStats} />
@@ -30,21 +29,15 @@ class MatchStatsTable extends Component {
       <table className="table">
         <thead>
           <tr>
-            <th>Award</th>
             <th>Player</th>
             <th>Hero</th>
-            <th>Takedowns</th>
-            <th>Kills</th>
-            <th>Assists</th>
-            <th>Deaths</th>
-            <th>Time Dead</th>
-            <th>Hero Damage</th>
-            <th>Siege Damage</th>
-            <th>Healing</th>
-            <th>Self Healing</th>
-            <th>Damage Taken</th>
-            <th>XP</th>
-            <th>Highest Kill Streak</th>
+            <th>Regen Globes</th>
+            <th>Stun Time</th>
+            <th>Silence Time</th>
+            <th>CC Time</th>
+            <th>Root Time</th>
+            <th>Clutch Heals</th>
+            <th>Time on Fire</th>
           </tr>
         </thead>
         <tbody>
@@ -53,6 +46,7 @@ class MatchStatsTable extends Component {
       </table>
     )
   }
+
 }
 
-export default MatchStatsTable;
+export default MiscStatsTable;
