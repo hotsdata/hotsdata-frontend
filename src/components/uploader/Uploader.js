@@ -41,7 +41,7 @@ class Uploader extends React.Component {
         }
       };
 
-      axios.post('http://54.202.193.48/upload', data, config)
+      axios.post('http://api.hotsdata.com/upload', data, config)
         .then(response => {
           let idx = _.findIndex(this.state.uploadFiles, (f) => f.filename == newFile.filename);
           const uploadFiles = this.state.uploadFiles;
