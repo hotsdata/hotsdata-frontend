@@ -4,7 +4,7 @@ import {
   SESSION_IS_LOGGING_IN,
   SESSION_LOGOUT
  } from '../actions/SessionActions';
-import { REGISTER_USER } from '../actions/UserActions';
+import { REGISTER_SUCCESS } from '../actions/UserActions';
 import Auth from '../lib/Auth';
 
 const defaultState = {
@@ -16,9 +16,12 @@ const defaultState = {
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-    case REGISTER_USER:
-      if (action.payload.data.token) {
-        return {...state, user: action.payload.data.user};
+    case REGISTER_SUCCESS:
+      if (action.session.token) {
+        return {
+          ...state,
+          token: action.session.token
+        };
       }
 
       return state;
