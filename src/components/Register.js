@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { registerUser } from '../actions/user_actions';
 import Auth from '../lib/Auth';
 
+import './SignIn.scss';
+
 class Register extends React.Component {
   constructor(props) {
     super(props)
@@ -27,6 +29,10 @@ class Register extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.mailInput.focus();
+  }
+
   onChange(event) {
     let field = event.target.name;
     let user = this.state.user;
@@ -41,7 +47,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="sign-in-component">
         <h2>Register</h2>
         { this.props.user.errors.length > 0 &&
           <div className="errors">
@@ -56,6 +62,7 @@ class Register extends React.Component {
           <label>Email</label>
           <input type="text"
             name="email"
+            ref={(input) => { this.mailInput = input; }}
             onChange={this.onChange}
             value={this.state.user.email} />
           <label>Password</label>
@@ -69,7 +76,7 @@ class Register extends React.Component {
             onChange={this.onChange}
             value={this.state.user.battletag} />
           <br />
-          <button className="btn" type='submit'>Register</button>
+          <button className="btn login-btn" type='submit'>Register</button>
         </form>
       </div>
     );
