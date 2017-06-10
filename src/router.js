@@ -14,6 +14,7 @@ import ProfilePage from './containers/ProfilePage';
 import AboutPage from './containers/AboutPage';
 import ChangelogPage from './containers/ChangelogPage';
 import ContactPage from './containers/ContactPage';
+import UserSettingsPage from './containers/UserSettingsPage';
 
 function requireAuth(nextState, replace) {
   if (Auth.isUserAuthenticated() == false) {
@@ -35,6 +36,7 @@ const Routes = () => {
         <Route path="/replays/:replayId" component={ReplaysShowPage} />
         <Route path="/replays" component={ReplaysIndexPage} onEnter={requireAuth} />
         <Route path="/profile" component={ProfilePage} />
+        <Route path="/user-settings" component={UserSettingsPage} onEnter={requireAuth} />
       </Route>
     </Router>
   );
