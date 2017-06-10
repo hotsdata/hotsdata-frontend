@@ -151,7 +151,6 @@ input[type=checkbox]:focus:invalid:focus {
 	outline-color: #e9322d;
 }
 
-
 /* Style your form buttons. Follow your heart */
 
 input[type="submit"],
@@ -175,4 +174,9 @@ input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover {
 	background-color: royalblue;
+}
+
+
+.wide-field {
+	width: 300px;
 }
