@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { registerUser } from '../actions/user_actions';
+import { registerUser } from '../actions/UserActions';
 import Auth from '../lib/Auth';
 
 import './SignIn.scss';
