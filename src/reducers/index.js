@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
-import UserReducer from './user_reducer';
-import SessionReducer from './session_reducer';
+import UserReducer from './UserReducer';
+import SessionReducer from './SessionReducer';
 import ReplayReducer from './replay_reducer';
 import ErrorReducer from './ErrorReducer';
 

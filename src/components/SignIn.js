@@ -1,10 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 
 import Auth from '../lib/Auth';
-import { logInUser } from '../actions/session_actions';
+import { loginUser } from '../actions/SessionActions';
+
+import './SignIn.scss';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class SignIn extends React.Component {
         email: '',
         password: ''
       }
-    }
+    };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -30,7 +31,7 @@ class SignIn extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.logInUser(this.state.credentials);
+    this.props.loginUser(this.state.credentials);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,49 +40,65 @@ class SignIn extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.mailInput.focus();
+  }
+
   render() {
     return (
-      <div className="container">
+      <div className="sign-in-component">
         <h2>Sign In</h2>
-        { this.props.session.errors.length > 0 &&
-          <div className="errors">
-            <i className="fa fa-exclamation-triangle" aria-hidden="true" />
-            {this.props.session.errors.map(err => {
-                return(<span key={err.msg}>{err.msg}</span>)
-              })
-            }
-          </div>
-        }
+        { this.renderError() }
         <div>
           <form onSubmit={this.onSubmit}>
             <label>Email</label>
             <input type="text"
               name="email"
+              ref={(input) => { this.mailInput = input; }}
               onChange={this.onChange}
+              disabled={this.props.isLoading}
               value={this.state.credentials.email} />
             <label>Password</label>
             <input type="password"
               name="password"
               onChange={this.onChange}
+              disabled={this.props.isLoading}
               value={this.state.credentials.password} />
             <br />
-            <button className="btn" type='submit'>Sign In</button>
+            <button className="btn login-btn" type='submit'>{ this.props.isLoading ? 'Loading...' : 'Sign In' }</button>
           </form>
+          <p>Don't have a user? <Link to="/register">Register here</Link></p>
         </div>
       </div>
     );
   }
 
+  renderError() {
+    if (this.props.error) {
+      return (
+        <div className="errors">
+          <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
+          <span>{this.props.error}</span>
+        </div>
+      )
+    }
+
+    return null
+  }
 }
 
 function mapStateToProps(state) {
   return {
+    isLoading: state.session.isLoading,
+    error: state.session.error,
     session: state.session
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({logInUser}, dispatch);
+  return {
+    loginUser: (credentials) => dispatch(loginUser(credentials))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

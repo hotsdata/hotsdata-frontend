@@ -5,7 +5,7 @@ import { Link, browserHistory } from 'react-router';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 
 import Auth from '../lib/Auth';
-import { logoutUser } from '../actions/session_actions';
+import { logoutUser } from '../actions/SessionActions';
 
 class ProfileDropdown extends Component {
   constructor(props) {
@@ -40,10 +40,10 @@ class ProfileDropdown extends Component {
                   <i className="fa fa-user" />
                   Profile
                 </Link>
-                <a href="#" onClick={this.handleLinkClick}>
+                <Link to="/user-settings" onClick={this.handleLinkClick}>
                   <i className="fa fa-cog" />
                   Settings
-                </a>
+                </Link>
                 <a href="#" onClick={this.handleLogout}>
                   <i className="fa fa-cog" />
                   Logout

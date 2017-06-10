@@ -1,13 +1,15 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
-import { registerUser } from '../actions/user_actions';
+import { registerUser } from '../actions/UserActions';
 import Auth from '../lib/Auth';
+
+import './SignIn.scss';
 
 class Register extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       user: {
@@ -15,16 +17,21 @@ class Register extends React.Component {
         password: '',
         battletag: ''
       }
-    }
+    };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.renderError = this.renderError.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     if (Auth.isUserAuthenticated()) {
       this.props.router.push({pathname: '/replays'});
     }
+  }
+
+  componentDidMount(){
+    this.mailInput.focus();
   }
 
   onChange(event) {
@@ -41,50 +48,64 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="sign-in-component">
         <h2>Register</h2>
-        { this.props.user.errors.length > 0 &&
-          <div className="errors">
-            <i className="fa fa-exclamation-triangle" aria-hidden="true" />
-            {this.props.user.errors.map((err, i) => {
-                return(<span key={i}>{err}</span>)
-              })
-            }
-          </div>
-        }
+        { this.renderError() }
         <form onSubmit={this.onSubmit}>
           <label>Email</label>
           <input type="text"
             name="email"
+            ref={(input) => { this.mailInput = input; }}
             onChange={this.onChange}
+            disabled={this.props.isLoading}
             value={this.state.user.email} />
           <label>Password</label>
           <input type="password"
             name="password"
             onChange={this.onChange}
+            disabled={this.props.isLoading}
             value={this.state.user.password} />
           <label>Battletag</label>
           <input type="text"
             name="battletag"
             onChange={this.onChange}
+            disabled={this.props.isLoading}
             value={this.state.user.battletag} />
           <br />
-          <button className="btn" type='submit'>Register</button>
+          <button className="btn login-btn" type='submit'>{ this.props.isLoading ? 'Loading...' : 'Register' }</button>
         </form>
+        <p>Already have a user? <Link to="/signin">Login here</Link></p>
       </div>
     );
+  }
+
+  renderError() {
+    if (this.props.error) {
+      return (
+        <div className="errors">
+          <i className="fa fa-exclamation-triangle" aria-hidden="true" />
+          <span>{this.props.error}</span>
+        </div>
+      )
+    }
+
+    return null;
   }
 
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    isLoading: state.user.isLoading,
+    error: state.user.error
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({registerUser}, dispatch);
+  return {
+    registerUser: (credentials) => dispatch(registerUser(credentials))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

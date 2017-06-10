@@ -1,0 +1,31 @@
+@import '../../style/colors';
+
+/* Sign in & register Components */
+.sign-in-component {
+  width: 300px;
+  padding: 20px 40px 40px 40px;
+  margin: 0 auto;
+  border: 2px solid $purple;
+  background: rgba(#310679, 0.5);
+
+  h2 {
+    text-align: center;
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .btn {
+    margin: 0;
+  }
+
+  .login-btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+}

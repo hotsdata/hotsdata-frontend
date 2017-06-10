@@ -1,0 +1,9 @@
+@import '../../style/colors';
+
+.user-settings-component {
+  background: rgba(#310679, 0.5);
+  border: 1px solid $purple;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 10px 30px 30px 30px;
+}
