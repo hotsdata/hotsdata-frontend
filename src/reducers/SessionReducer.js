@@ -4,7 +4,7 @@ import {
   SESSION_IS_LOGGING_IN,
   SESSION_LOGOUT
  } from '../actions/SessionActions';
-import { REGISTER_USER } from '../actions/user_actions';
+import { REGISTER_USER } from '../actions/UserActions';
 import Auth from '../lib/Auth';
 
 const defaultState = {

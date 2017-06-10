@@ -1,4 +1,4 @@
-import { REGISTER_USER } from '../actions/user_actions';
+import { REGISTER_USER } from '../actions/UserActions';
 
 import Auth from '../lib/Auth';
 
