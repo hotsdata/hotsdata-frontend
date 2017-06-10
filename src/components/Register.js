@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { registerUser } from '../actions/user_actions';
 import Auth from '../lib/Auth';
@@ -17,7 +18,7 @@ class Register extends React.Component {
         password: '',
         battletag: ''
       }
-    }
+    };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -78,6 +79,7 @@ class Register extends React.Component {
           <br />
           <button className="btn login-btn" type='submit'>Register</button>
         </form>
+        <p>Already have a user? <Link to="/signin">Login here</Link></p>
       </div>
     );
   }

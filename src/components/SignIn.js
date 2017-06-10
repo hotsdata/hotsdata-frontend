@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import Auth from '../lib/Auth';
 import { loginUser } from '../actions/SessionActions';
@@ -66,6 +67,7 @@ class SignIn extends React.Component {
             <br />
             <button className="btn login-btn" type='submit'>Sign In</button>
           </form>
+          <p>Don't have a user? <Link to="/register">Register here</Link></p>
         </div>
       </div>
     );
