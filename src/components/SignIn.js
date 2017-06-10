@@ -38,6 +38,10 @@ class SignIn extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.mailInput.focus();
+  }
+
   render() {
     return (
       <div className="container">
@@ -49,6 +53,7 @@ class SignIn extends React.Component {
             <label>Email</label>
             <input type="text"
               name="email"
+              ref={(input) => { this.mailInput = input; }}
               onChange={this.onChange}
               value={this.state.credentials.email} />
             <label>Password</label>
