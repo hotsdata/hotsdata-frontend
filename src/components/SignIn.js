@@ -1,10 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Auth from '../lib/Auth';
-import { logInUser } from '../actions/session_actions';
+import { loginUser } from '../actions/SessionActions';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -15,10 +13,11 @@ class SignIn extends React.Component {
         email: '',
         password: ''
       }
-    }
+    };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.renderLoading = this.renderLoading.bind(this);
   }
 
   onChange(event) {
@@ -30,7 +29,7 @@ class SignIn extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.logInUser(this.state.credentials);
+    this.props.loginUser(this.state.credentials);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,15 +42,8 @@ class SignIn extends React.Component {
     return (
       <div className="container">
         <h2>Sign In</h2>
-        { this.props.session.errors.length > 0 &&
-          <div className="errors">
-            <i className="fa fa-exclamation-triangle" aria-hidden="true" />
-            {this.props.session.errors.map(err => {
-                return(<span key={err.msg}>{err.msg}</span>)
-              })
-            }
-          </div>
-        }
+        { this.renderLoading() }
+        { this.renderError() }
         <div>
           <form onSubmit={this.onSubmit}>
             <label>Email</label>
@@ -72,16 +64,42 @@ class SignIn extends React.Component {
     );
   }
 
+  renderLoading() {
+    if (this.props.isLoading) {
+      return (
+        <span>LOGGING IN</span>
+      )
+    }
+
+    return null;
+  }
+
+  renderError() {
+    if (this.props.error) {
+      return (
+        <div className="errors">
+          <i className="fa fa-exclamation-triangle" aria-hidden="true"/>
+          <span>{this.props.error}</span>
+        </div>
+      )
+    }
+
+    return null
+  }
 }
 
 function mapStateToProps(state) {
   return {
+    isLoading: state.session.isLoading,
+    error: state.session.error,
     session: state.session
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({logInUser}, dispatch);
+  return {
+    loginUser: (credentials) => dispatch(loginUser(credentials))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

@@ -5,7 +5,7 @@ import { Link, browserHistory } from 'react-router';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 
 import Auth from '../lib/Auth';
-import { logoutUser } from '../actions/session_actions';
+import { logoutUser } from '../actions/SessionActions';
 
 class ProfileDropdown extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Auth from '../lib/Auth';
-import { logoutUser } from '../actions/session_actions';
+import { logoutUser } from '../actions/SessionActions';
 
 class Logout extends React.Component {
   constructor(props) {

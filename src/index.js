@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import promise from 'redux-promise';
+import thunk from 'redux-thunk';
+
 import reducers from './reducers';
 import Routes from './router';
 
@@ -11,7 +13,8 @@ import '../style/style.scss'
 
 const App = () => {
   const createStoreWithMiddleware = applyMiddleware(
-    promise
+    promise,
+    thunk
   )(createStore);
 
   let store = createStoreWithMiddleware(
