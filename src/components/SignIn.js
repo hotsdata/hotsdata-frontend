@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Auth from '../lib/Auth';
 import { loginUser } from '../actions/SessionActions';
 
+import './SignIn.scss';
+
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +46,7 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="sign-in-component">
         <h2>Sign In</h2>
         { this.renderLoading() }
         { this.renderError() }
@@ -62,7 +64,7 @@ class SignIn extends React.Component {
               onChange={this.onChange}
               value={this.state.credentials.password} />
             <br />
-            <button className="btn" type='submit'>Sign In</button>
+            <button className="btn login-btn" type='submit'>Sign In</button>
           </form>
         </div>
       </div>
