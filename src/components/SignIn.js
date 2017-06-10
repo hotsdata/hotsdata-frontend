@@ -20,7 +20,6 @@ class SignIn extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.renderLoading = this.renderLoading.bind(this);
   }
 
   onChange(event) {
@@ -49,7 +48,6 @@ class SignIn extends React.Component {
     return (
       <div className="sign-in-component">
         <h2>Sign In</h2>
-        { this.renderLoading() }
         { this.renderError() }
         <div>
           <form onSubmit={this.onSubmit}>
@@ -58,29 +56,21 @@ class SignIn extends React.Component {
               name="email"
               ref={(input) => { this.mailInput = input; }}
               onChange={this.onChange}
+              disabled={this.props.isLoading}
               value={this.state.credentials.email} />
             <label>Password</label>
             <input type="password"
               name="password"
               onChange={this.onChange}
+              disabled={this.props.isLoading}
               value={this.state.credentials.password} />
             <br />
-            <button className="btn login-btn" type='submit'>Sign In</button>
+            <button className="btn login-btn" type='submit'>{ this.props.isLoading ? 'Loading...' : 'Sign In' }</button>
           </form>
           <p>Don't have a user? <Link to="/register">Register here</Link></p>
         </div>
       </div>
     );
-  }
-
-  renderLoading() {
-    if (this.props.isLoading) {
-      return (
-        <span>LOGGING IN</span>
-      )
-    }
-
-    return null;
   }
 
   renderError() {
