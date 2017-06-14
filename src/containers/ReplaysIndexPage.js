@@ -14,13 +14,16 @@ class ReplaysPage extends React.Component {
 
     this.state = {
       filter: {
-        term: ''
+        term: '',
+        matchType: 'All'
       }
     }
 
-    this.filterReplays = this.filterReplays.bind(this);
+    this.changeSearchTerm = this.changeSearchTerm.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.changeMatchType = this.changeMatchType.bind(this);
+    this.filterReplays = this.filterReplays.bind(this);
 
     this.props.fetchReplays();
   }
@@ -28,11 +31,9 @@ class ReplaysPage extends React.Component {
   componentWillMount() {
   }
 
-  filterReplays(e) {
-    let newFilter = {
-      term: this.refs.term.value
-    }
-    this.setState({...this.state, filter: newFilter})
+  changeSearchTerm(e) {
+    let newFilter = {...this.state.filter, term: this.refs.term.value};
+    this.setState({...this.state, filter: newFilter});
   }
 
   clearSearch() {
@@ -44,8 +45,12 @@ class ReplaysPage extends React.Component {
     this.props.fetchReplays(endpoint);
   }
 
-  render() {
+  changeMatchType(e) {
+    let newFilter = {...this.state.filter, matchType: e.target.value};
+    this.setState({...this.state, filter: newFilter});
+  }
 
+  filterReplays() {
     let filter = this.state.filter;
 
     let filteredReplays = this.props.replays.filter((replay) => {
@@ -53,6 +58,18 @@ class ReplaysPage extends React.Component {
              _.startsWith(replay.heroname.toLowerCase(), filter.term.toLowerCase()) ||
              _.startsWith(replay.mapname.toLowerCase(), filter.term.toLowerCase())
     });
+
+    if (filter.matchType != 'All') {
+      filteredReplays = filteredReplays.filter(replay => {
+        return replay.gametype == filter.matchType;
+      });
+    }
+
+    return filteredReplays;
+  }
+
+  render() {
+    let filteredReplays = this.filterReplays();
 
     return (
       <div className="replay-index">
@@ -63,30 +80,37 @@ class ReplaysPage extends React.Component {
         </h2>
         <div className="replay-body-wrapper">
           <div className="replay-wrapper">
-            <div className="filters">
-              <div className="replay-filters">
-                <input
-                  type="text"
-                  size="50"
-                  ref="term"
-                  placeholder="Search by hero or map"
-                  value={this.state.filter.term}
-                  onChange={this.filterReplays} />
-                <button className="btn" onClick={this.clearSearch}>Clear</button>
+            <div className="replay-filters">
+              <input
+                type="text"
+                size="50"
+                ref="term"
+                placeholder="Search by hero or map"
+                value={this.state.filter.term}
+                onChange={this.changeSearchTerm} />
+              <button className="btn" onClick={this.clearSearch}>Clear</button>
+              <br />
+              <div className="form-group">
+                <label>Match Type</label>
+                <select className="hd-select" onChange={this.changeMatchType} defaultValue="All">
+                  <option value="All">All</option>
+                  <option value="QuickMatch">Quick Match</option>
+                  <option value="Unranked">Unranked</option>
+                  <option value="Hero League">Hero League</option>
+                  <option value="Team League">Team league</option>
+                </select>
+              </div>
+              <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inline' : 'none')}}>
+                <button id="prev"
+                  onClick={this.changePage}
+                  style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
+                  >Prev</button>
+                <button id="next" onClick={this.changePage}>Next</button>
               </div>
             </div>
             <RecentWinRates replays={filteredReplays} />
           </div>
-          <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inline' : 'none')}}>
-            <button id="prev"
-              onClick={this.changePage}
-              style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
-              >Prev</button>
-            <button id="next" onClick={this.changePage}>Next</button>
-          </div>
-          <div className="replay-list" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
-            <ReplayList replays={filteredReplays} />
-          </div>
+          <ReplayList replays={filteredReplays} />
           <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inline' : 'none')}}>
             <button id="prev"
               onClick={this.changePage}

@@ -50,6 +50,7 @@ textarea { line-height: 1.25em; }
 select {
 	border: 1px solid #ccc;
 	background-color: #fff;
+	color: black;
 }
 
 input[type=checkbox],
@@ -175,4 +176,9 @@ input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover {
 	background-color: royalblue;
+}
+
+.form-group {
+	display: flex;
+	label { margin-right: 8px; }
 }
