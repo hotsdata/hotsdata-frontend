@@ -15,9 +15,11 @@ export function loginInProgress(bool) {
 }
 
 export function loginSuccess(userResponse) {
+  console.log(userResponse);
   return {
     type: SESSION_LOGIN_SUCCESS,
-    session: userResponse
+    session: {token: userResponse.token},
+    user: userResponse.user
   }
 }
 
