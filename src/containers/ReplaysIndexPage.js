@@ -61,7 +61,7 @@ class ReplaysPage extends React.Component {
           <span className="muted"> {filteredReplays.length} </span>
           Replays
         </h2>
-        <div className="replay-body-wrapper" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
+        <div className="replay-body-wrapper">
           <div className="replay-wrapper">
             <div className="filters">
               <div className="replay-filters">
@@ -77,15 +77,17 @@ class ReplaysPage extends React.Component {
             </div>
             <RecentWinRates replays={filteredReplays} />
           </div>
-          <div className="prev-next-buttons">
+          <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
             <button id="prev"
               onClick={this.changePage}
               style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
               >Prev</button>
             <button id="next" onClick={this.changePage}>Next</button>
           </div>
-          <ReplayList replays={filteredReplays} />
-          <div className="prev-next-buttons">
+          <div className="replay-list" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
+            <ReplayList replays={filteredReplays} />
+          </div>
+          <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
             <button id="prev"
               onClick={this.changePage}
               style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
