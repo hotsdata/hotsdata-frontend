@@ -77,7 +77,7 @@ class ReplaysPage extends React.Component {
             </div>
             <RecentWinRates replays={filteredReplays} />
           </div>
-          <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
+          <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inline' : 'none')}}>
             <button id="prev"
               onClick={this.changePage}
               style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
@@ -87,7 +87,7 @@ class ReplaysPage extends React.Component {
           <div className="replay-list" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
             <ReplayList replays={filteredReplays} />
           </div>
-          <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inherit' : 'none')}}>
+          <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inline' : 'none')}}>
             <button id="prev"
               onClick={this.changePage}
               style={{display: (this.props.pages.prev ? 'inherit' : 'none')}}
