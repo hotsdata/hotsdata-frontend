@@ -32,7 +32,7 @@ class BraxisHoldout extends React.Component {
           <tr>
             <th>Player</th>
             <th>Hero</th>
-            <th>Damage Done to Zerg Damage</th>
+            <th>Damage Done to Zerg</th>
           </tr>
         </thead>
         <tbody>
