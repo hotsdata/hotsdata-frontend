@@ -152,7 +152,6 @@ input[type=checkbox]:focus:invalid:focus {
 	outline-color: #e9322d;
 }
 
-
 /* Style your form buttons. Follow your heart */
 
 input[type="submit"],
@@ -181,4 +180,19 @@ button:hover {
 .form-group {
 	display: flex;
 	label { margin-right: 8px; }
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.wide-field {
+	width: 300px;
+}
+
+.error {
+	color: red;
 }

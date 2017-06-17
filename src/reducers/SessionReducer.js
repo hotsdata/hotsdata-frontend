@@ -8,7 +8,6 @@ import { REGISTER_SUCCESS } from '../actions/UserActions';
 import Auth from '../lib/Auth';
 
 const defaultState = {
-  user: {},
   token: null,
   error: null,
   isLoading: false
@@ -34,8 +33,7 @@ export default function(state = defaultState, action) {
 
     case SESSION_LOGIN_SUCCESS:
       let session = action.session;
-
-      if (session.result) {
+      if (session.token) {
         Auth.authenticateUser(session.token);
 
         return {
