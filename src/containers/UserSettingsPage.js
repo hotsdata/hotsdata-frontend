@@ -19,7 +19,13 @@ class UserSettingsPage extends React.Component {
         newPassword: '',
         repeatNewPassword: ''
       },
-      message: this.props.message
+      message: this.props.message,
+      validationErrors: {
+        email: null,
+        battletag: null,
+        password: null,
+        repeatNewPassword: null
+      }
     }
 
     this.onSettingsChange = this.onSettingsChange.bind(this);
@@ -92,14 +98,21 @@ class UserSettingsPage extends React.Component {
               <input type="password" name="newPassword"
                 onChange={this.onPasswordChange}
                 value={this.state.changePassword.currentPassword} />
+              <div className="error">
+                {this.state.validationErrors.newPassword}
+              </div>
 
               <label>Repeat New Password</label>
               <input type="password" name="repeatNewPassword"
                 onChange={this.onPasswordChange}
                 value={this.state.changePassword.currentPassword} />
-
+              <div className="error">
+                {this.state.validationErrors.repeatNewPassword}
+              </div>
               <p>
-                <button className="btn">Save new password</button>
+                <button className="btn">
+                  Save new password
+                </button>
               </p>
             </form>
           </div>
@@ -127,6 +140,7 @@ class UserSettingsPage extends React.Component {
     let changePassword = this.state.changePassword;
     changePassword[field] = value;
     this.setState({changePassword});
+    this.validateChangePassword();
   }
 
   onPasswordSubmit(e) {
@@ -134,8 +148,18 @@ class UserSettingsPage extends React.Component {
     this.props.changePassword(null, this.state.changePassword.newPassword);
   }
 
-  validateConfirmPassword(e) {
-    
+  validateChangePassword(e) {
+    let changePassword = this.state.changePassword;
+    if (changePassword.newPassword != changePassword.repeatNewPassword) {
+      let newValidationErrors = {...this.state.validationErrors,
+        repeatNewPassword: "Passwords do not match"};
+      this.setState({validationErrors: newValidationErrors});
+    } else {
+      let newValidationErrors = {...this.state.validationErrors,
+        repeatNewPassword: null};
+      this.setState({validationErrors: newValidationErrors});
+    }
+
   }
 }
 
