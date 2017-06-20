@@ -101,3 +101,23 @@
   }
 
 }
+
+.striped {
+  thead {
+    background-color: rgba($rhino, 0.8);
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: rgba(11, 42, 177, 0.8); 
+    }
+
+    tr:nth-child(odd) {
+      background-color: rgba(blue, 0.8);
+    }
+  }
+}
+
+.sortable {
+  th { cursor: pointer; }
+}
