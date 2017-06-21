@@ -1,52 +1,55 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Table, Thead, Tbody, Th, Tr, Td} from 'reactable';
+import _ from 'lodash';
+
+import { fetchPlayerHeroStats } from '../actions/PlayerActions';
+
+function findStat(stat_array, stat) {
+  return _.find(stat_array, (s) => s.metric == stat)
+}
 
 class ProfilePage extends Component {
   constructor(props) {
     super(props)
   }
 
-  render() {
-    let data = [
-      {hero: "Valla", winRate: 52.1},
-      {hero: "Arthas", winRate: 48.7},
-      {hero: "Kerrigan", winRate: 55.3},
-      {hero: "Tyrande", winRate: 52.7}
-    ];
+  componentWillMount() {
+    this.props.fetchPlayerHeroStats();
+  }
 
-    let tableRows = data.map((d) => {
+  render() {
+    console.log(this.props.heroStats);
+    if (!this.props.heroStats) { return (<div>Loading...</div>); }
+
+    let tableRows = this.props.heroStats.stats.map((row) => {
+      let games = row.hero_stats[0].games;
+      let wins = findStat(row.hero_stats, "match_won").value;
+      let losses = findStat(row.hero_stats, "match_lost").value;
+      let winRate = _.round(wins / games * 100, 1);
+
       return (
-        <Tr key={d.hero}>
-          <Td column="hero">{d.hero}</Td>
-          <Td column="winRate">{d.winRate}</Td>
+        <Tr key={row.hero}>
+          <Td column="hero">{row.hero}</Td>
+          <Td column="games">{games}</Td>
+          <Td column="winRate">{winRate}</Td>
+          <Td column="takedowns">{_.round(findStat(row.hero_stats, "takedowns").value / games, 1)}</Td>
         </Tr>
       )
     });
-
-    let sortable = [
-      {
-        column: 'hero',
-        sortFunction: (a, b) => {
-          return a[0].localeCompare(b[0]);
-        }
-      },
-      {
-        column: 'winRate',
-        sortFunction: (a, b) => {
-          return a < b;
-        }
-      }
-    ]
 
     return (
       <div className="profile-page">
         <div className="filters">
         </div>
         <div className="heroes-table">
-          <Table className="table sortable striped" sortable={sortable}>
+          <Table className="table sortable striped" sortable={true}>
             <Thead>
               <Th column="hero">Hero</Th>
+              <Th column="games">Games</Th>
               <Th column="winRate">Win Rate</Th>
+              <Th column="takedowns">Takedowns</Th>
             </Thead>
             {tableRows}
           </Table>
@@ -54,7 +57,18 @@ class ProfilePage extends Component {
       </div>
     )
   }
-
 }
 
-export default ProfilePage;
+function mapStateToProps(state) {
+  return {
+    heroStats: state.player.heroStats,
+    error: state.player.error,
+    isLoading: state.player.isLoading
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchPlayerHeroStats: fetchPlayerHeroStats }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
