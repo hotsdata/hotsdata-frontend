@@ -31,6 +31,7 @@ class ReplaysShowPage extends Component {
     }
 
     let replay = this.props.currentReplay;
+    console.log(replay);
 
     return (
       <div>
