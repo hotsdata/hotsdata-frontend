@@ -14,7 +14,7 @@ const awards = {
   },
   EndOfMatchAwardGivenToNonwinner: { },
   EndOfMatchAwardHatTrick: {
-    name: "Hat Trick" imgUrl: "HatTrick.png"
+    name: "Hat Trick", imgUrl: "HatTrick.png"
   },
   EndOfMatchAwardHighestKillStreak: {
     name: "Dominator", imgUrl: "Dominator.png"
