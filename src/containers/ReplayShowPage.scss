@@ -1,5 +1,70 @@
 @import '../../style/colors';
 
+.replay-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  max-width: 1200px;
+  background-color: rgba(black, 0.2);
+  padding: 12px;
+  border-radius: 4px;
+
+  .replay-team {
+    display: flex;
+
+    .team-info {
+      display: flex;
+      flex-direction: column;
+
+      h2,h3 {
+        margin: 4px;
+      }
+
+      &.left {
+        text-align: right;
+        margin-right: 12px;
+      }
+
+      &.right {
+        text-align: left;
+        margin-left: 12px;
+      }
+    }
+
+    .kills {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        font-size: 48px;
+      }
+
+      img {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+
+  .replay-header-center {
+    display: flex;
+    flex-direction: column;
+
+    h1 { color: $orange; }
+
+    .summary-data {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 .map-stats-wrapper {
   display: flex;
   flex-direction: row;

@@ -12,7 +12,6 @@ function findAward(playerStats) {
   });
 
   newMap = _.compact(newMap);
-  // console.log('newMap', newMap);
 
   return _.find(newMap, ['won', 1]);
 }
@@ -20,7 +19,6 @@ function findAward(playerStats) {
 const PlayerMatchStatsRow = ({playerInfo, playerStats}) => {
   let isWinner = playerInfo.gameResult == 1;
   let award = findAward(playerStats);
-  console.log(playerInfo.name, award);
 
   return (
     <tr className={(isWinner ? 'victory-row' : 'defeat-row')}>
