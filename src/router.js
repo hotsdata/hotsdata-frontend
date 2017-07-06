@@ -11,6 +11,8 @@ import Uploader from './components/uploader/Uploader';
 import ReplaysIndexPage from './containers/ReplaysIndexPage';
 import ReplaysShowPage from './containers/ReplaysShowPage';
 import ProfilePage from './containers/ProfilePage';
+import ProfileHeroesIndexPage from './containers/ProfileHeroesIndexPage';
+import ProfileHeroesShowPage from './containers/ProfileHeroesShowPage';
 import AboutPage from './containers/AboutPage';
 import ChangelogPage from './containers/ChangelogPage';
 import ContactPage from './containers/ContactPage';
@@ -35,6 +37,8 @@ const Routes = () => {
         <Route path="/upload" component={Uploader} />
         <Route path="/replays/:replayId" component={ReplaysShowPage} />
         <Route path="/replays" component={ReplaysIndexPage} onEnter={requireAuth} />
+        <Route path="/profile/heroes/:hero" component={ProfileHeroesShowPage} />
+        <Route path="/profile/heroes" component={ProfileHeroesIndexPage} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/user-settings" component={UserSettingsPage} onEnter={requireAuth} />
       </Route>

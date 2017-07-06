@@ -40,6 +40,10 @@ class ProfileDropdown extends Component {
                   <i className="fa fa-user" />
                   Profile
                 </Link>
+                <Link to="/profile/heroes" onClick={this.handleLinkClick}>
+                  <i className="fa fa-users" />
+                  Your Heroes
+                </Link>
                 <Link to="/user-settings" onClick={this.handleLinkClick}>
                   <i className="fa fa-cog" />
                   Settings

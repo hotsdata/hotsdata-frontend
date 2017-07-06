@@ -1,11 +1,26 @@
 @import '../../style/colors';
 
 .profile-page {
-  .filters {
 
-  }
+  .hot-cold-container {
+    display: flex;
 
-  .heroes-table {
-    
+    .hot-cold {
+      margin-right: 12px;
+
+      table {
+
+        tbody {
+          tr {
+            background-color: rbga(white, 0.8);
+          }
+        }
+
+        img {
+          height: 32px;
+          width: 32px;
+        }
+      }
+    }
   }
 }
