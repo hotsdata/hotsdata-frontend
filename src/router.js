@@ -13,6 +13,7 @@ import ReplaysShowPage from './containers/ReplaysShowPage';
 import ProfilePage from './containers/ProfilePage';
 import ProfileHeroesIndexPage from './containers/ProfileHeroesIndexPage';
 import ProfileHeroesShowPage from './containers/ProfileHeroesShowPage';
+import PlayerComparePage from './containers/PlayerComparePage';
 import AboutPage from './containers/AboutPage';
 import ChangelogPage from './containers/ChangelogPage';
 import ContactPage from './containers/ContactPage';
@@ -40,6 +41,7 @@ const Routes = () => {
         <Route path="/profile/heroes/:hero" component={ProfileHeroesShowPage} />
         <Route path="/profile/heroes" component={ProfileHeroesIndexPage} />
         <Route path="/profile" component={ProfilePage} />
+        <Route path="/players/compare" component={PlayerComparePage} />
         <Route path="/user-settings" component={UserSettingsPage} onEnter={requireAuth} />
       </Route>
     </Router>
