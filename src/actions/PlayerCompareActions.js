@@ -8,7 +8,7 @@ export function addPlayerCompareInProgress(playerId, bool) {
   return {
     type: ADD_PLAYER_COMPARE_IN_PROGRESS,
     playerId: playerId,
-    isLoading: true
+    isLoading: bool
   }
 }
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import ToggleDisplay from 'react-toggle-display';
+import Spinner from 'react-spinkit';
 
 import { addPlayerCompare } from '../actions/PlayerCompareActions';
 import StandardFilter from '../components/filters/StandardFilter';
@@ -14,11 +16,19 @@ class PlayerComparePage extends React.Component {
     super(props);
 
     this.state = {
-      playerId: '6755'
+      playerId: '6755',
+      filter: {
+        selectedHero: "Greymane"
+      }
     }
 
     this.onPlayerIdChanged = this.onPlayerIdChanged.bind(this);
     this.addPlayer = this.addPlayer.bind(this);
+    this.filterChanged = this.filterChanged.bind(this);
+  }
+
+  componentWillUpdate() {
+    console.log('props', this.props);
   }
 
   onPlayerIdChanged(e) {
@@ -27,6 +37,10 @@ class PlayerComparePage extends React.Component {
 
   addPlayer() {
     this.props.addPlayerCompare(this.state.playerId);
+  }
+
+  filterChanged(filter) {
+    this.setState({filter: filter});
   }
 
   render() {
@@ -38,10 +52,13 @@ class PlayerComparePage extends React.Component {
             <img src={imgUrl} />
           </div>
           <div className="controls">
-            <StandardFilter />
+            <StandardFilter onChange={this.filterChanged} />
             <div className="add-player">
               <input type="text" name="addPlayer" value={this.state.playerId} onChange={this.onPlayerIdChanged} />
               <button onClick={this.addPlayer}>+ Player</button>
+              <ToggleDisplay show={this.props.isLoading}>
+                <Spinner name="three-bounce" color="orange" />
+              </ToggleDisplay>
             </div>
           </div>
         </div>
@@ -49,12 +66,19 @@ class PlayerComparePage extends React.Component {
           Tabs
         </div>
         <div>
-          <PlayerCompareTable players={this.props.players} />
+          <PlayerCompareTable players={this.props.players} hero={this.state.filter.selectedHero} />
           <pre>{this.props.playerIds.toString()}</pre>
         </div>
         <pre>
           Marod = 6755
+          <br/>
           MasterFish = 6796
+          <br/>
+          zombiechris = 12384
+          <br/>
+          Arik = 543
+          <br/>
+          teh24thson = 10732
         </pre>
       </div>
     )

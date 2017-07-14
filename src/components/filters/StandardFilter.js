@@ -24,8 +24,7 @@ class StandardFilter extends React.Component {
   }
 
   onHeroSelected(val) {
-    console.log('onHeroSelected', val);
-    this.setState({selectedHero: val})
+    this.setState({selectedHero: val.label}, () => this.props.onChange(this.state));
   }
 
   onTimeFrameSelected(val) {
