@@ -30,12 +30,9 @@ class ProfilePage extends Component {
   render() {
     return (
       <div>
-        <form>
-          <label htmlFor="account">Account (Ex. 1-Hero-1-775282)</label>
-          <input type="text" name="account"
-             value={this.state.accountId} onChange={this.handleChange} />
-          <button className="btn" onClick={this.setAccount}>Set</button>
-        </form>
+        <h3>
+          Profile page is coming soon!  We plan on it being a dashboard with your hot and cold heroes, metric tracking, and various other trends.
+        </h3>
       </div>
     )
   }
