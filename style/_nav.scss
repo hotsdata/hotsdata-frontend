@@ -6,11 +6,11 @@
   flex: none;
   width: 100%;
   background: linear-gradient(to bottom, rgba(#310679, 0.75), rgba(#24077C, 0.75));
-  border-top: 2px solid $purple;
   border-bottom: 2px solid $purple;
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  padding: 0 10rem;
 
   .nav-link {
     height: 100%;

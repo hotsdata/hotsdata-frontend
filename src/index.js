@@ -9,7 +9,7 @@ import reducers from './reducers';
 import Routes from './router';
 
 import 'normalize.css';
-import '../style/style.scss'
+import '../style/style.scss';
 
 const App = () => {
   const createStoreWithMiddleware = applyMiddleware(
