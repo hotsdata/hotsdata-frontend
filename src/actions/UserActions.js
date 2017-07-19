@@ -1,10 +1,17 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 import Auth from '../lib/Auth';
 
 export const REGISTER_IN_PROGRESS = 'REGISTER_IN_PROGRESS';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILED = 'REGISTER_FAILED';
+
+export const UPDATE_USER_IN_PROGRESS = 'UPDATE_USER_IN_PROGRESS';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
+
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 
 export function createInProgress(bool) {
   return {
@@ -61,5 +68,58 @@ export function registerUser(user) {
         dispatch(createInProgress(false));
         dispatch(creationFailed(responseData.msg));
       });
+  }
+}
+
+
+export function updateUserInProgress(bool) {
+  return { type: UPDATE_USER_IN_PROGRESS, isLoading: bool }
+}
+
+export function userUpdateSuccess(user) {
+  return {
+    type: UPDATE_USER_SUCCESS,
+    user: user
+  }
+}
+
+export function userUpdateFailure(data) {
+  return {
+    type: UPDATE_USER_FAILURE,
+    data: data
+  }
+}
+
+export function updateUser(user) {
+  const endpoint = "http://api.hotsdata.com/user";
+
+  return (dispatch) => {
+    dispatch(updateUserInProgress(true));
+
+    axios.put(endpoint, user , {
+        headers: { Authorization: "Bearer " + localStorage.getItem('token') } })
+      .then(response => {
+        let responseData = response.data;
+
+        dispatch(updateUserInProgress(false));
+        if(responseData.result == true) {
+          dispatch(userUpdateSuccess(responseData.user));
+        } else {
+          dispatch(updateUserFailed(responseData));
+        }
+      })
+  }
+}
+
+export function changePassword(user, newPassword) {
+  // let data = _.merge(user, {password: newPassword});
+  let data = { password: newPassword };
+  const endpoint = "http://api.hotsdata.com/user";
+  let promise = axios.put(endpoint, data , {
+    headers: { Authorization: "Bearer " + localStorage.getItem('token') }
+  });
+  return {
+    type: UPDATE_PASSWORD,
+    payload: promise
   }
 }

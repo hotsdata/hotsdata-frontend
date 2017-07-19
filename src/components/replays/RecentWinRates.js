@@ -7,6 +7,7 @@ function winRate(replays) {
   return {
     wins: wins,
     losses: losses,
+    games: wins+losses,
     winRate: Math.round((wins / (wins+losses)) * 100)
   }
 }
@@ -22,7 +23,7 @@ const RecentWinRates = ({replays}) => {
     let winRates = winRate(slicedReplays);
     return (
       <tr key={num} className="neutral-row">
-        <td>{num}</td>
+        <td>{winRates.games}</td>
         <td>{winRates.wins}-{winRates.losses}</td>
         <td>{winRates.winRate}</td>
       </tr>

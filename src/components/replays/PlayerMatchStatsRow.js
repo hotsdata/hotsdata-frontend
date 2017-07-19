@@ -1,13 +1,28 @@
 import React from 'react';
+import _ from 'lodash';
 
 import { secondsToTimeString } from '../../lib/TimeUtils';
+import AwardImage from './AwardImage';
+
+function findAward(playerStats) {
+  let newMap = _.map(_.keys(playerStats), (key) => {
+    if(_.includes(key, 'EndOfMatchAward')) {
+      return { award: _.replace(key, "Boolean", ""), won: playerStats[key] };
+    }
+  });
+
+  newMap = _.compact(newMap);
+
+  return _.find(newMap, ['won', 1]);
+}
 
 const PlayerMatchStatsRow = ({playerInfo, playerStats}) => {
   let isWinner = playerInfo.gameResult == 1;
+  let award = findAward(playerStats);
 
   return (
     <tr className={(isWinner ? 'victory-row' : 'defeat-row')}>
-      <td></td>
+      <td><AwardImage award={award} /></td>
       <td>{playerInfo.name}</td>
       <td>{playerStats.heroName}</td>
       <td>{playerStats.Takedowns}</td>

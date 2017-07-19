@@ -35,6 +35,7 @@ class SignIn extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(localStorage.getItem('token'));
     if (Auth.isUserAuthenticated()) {
       this.props.router.push({pathname: '/replays'});
     }

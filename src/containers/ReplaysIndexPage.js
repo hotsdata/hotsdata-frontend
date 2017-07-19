@@ -73,6 +73,9 @@ class ReplaysPage extends React.Component {
 
     return (
       <div className="replay-index">
+        <h2 className="error" style={{backgroundColor: 'white', borderRadius: '4px', padding: '8px'}}>
+          Due to extremely high volume, replays are taking extra time to process.  Thanks for being patient while we catch up on the backlog.
+        </h2>
         <h2>
           Showing
           <span className="muted"> {filteredReplays.length} </span>
