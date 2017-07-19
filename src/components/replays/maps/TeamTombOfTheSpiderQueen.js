@@ -16,8 +16,8 @@ class TeamTombOfTheSpiderQueen extends Component {
           <thead>
             <tr>
               <th></th>
-              <th>Blue Team</th>
-              <th>Red Team</th>
+              <th>Blue Team ({ts[0].summonedSpiderBosses/3} summons)</th>
+              <th>Red Team ({ts[1].summonedSpiderBosses/3} summons)</th>
             </tr>
           </thead>
           <tbody>
