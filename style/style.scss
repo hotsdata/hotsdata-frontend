@@ -47,9 +47,11 @@ input {
 
 .content {
   position: relative;
-  margin: 80px 20px;
+  margin: 80px auto;
+  padding-top: 3rem;
   flex: 1;
-  padding: 0 10rem;
+  max-width: 1045px;
+  min-width: 1045px;
 }
 
 .dropbtn {
