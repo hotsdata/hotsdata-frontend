@@ -24,7 +24,7 @@ class ReplaysShowPage extends Component {
 
   componentWillMount() {
     let replayId = this.props.routeParams.replayId;
-    this.props.fetchCurrentReplay(replayId)
+    this.props.fetchCurrentReplay(replayId);
   }
 
   render() {

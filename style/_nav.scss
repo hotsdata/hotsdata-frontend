@@ -1,27 +1,62 @@
 .site-header {
-  height: 50px;
   position: fixed;
   top: 0px;
   z-index: 100000;
-  flex: none;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   background: linear-gradient(to bottom, rgba(#310679, 0.75), rgba(#24077C, 0.75));
-  border-top: 2px solid $purple;
   border-bottom: 2px solid $purple;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
 
-  .nav-link {
-    height: 100%;
+  .nav-bar {
     display: flex;
+    flex: none;
     align-items: center;
-    margin-right: 40px;
+    height: 50px;
+    position: relative;
+    padding: 0 10rem;
 
-    a {
-      color: white;
-      font-size: 18px;
-      text-transform: uppercase;
+    .nav-link {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-right: 40px;
+
+      a {
+        color: white;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .site-notification {
+    background-color: $orange;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid $darkBlue;
+
+    .message {
+      width: auto;
+      margin: 5px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .close-button {
+      position: fixed;
+      display: inline-block;
+      right: 10px;
+      top: 0;
+      background: none;
+      border-image: none;
+      border: none;
+      padding: 0;
+      color: $whiteish;
     }
   }
 }
