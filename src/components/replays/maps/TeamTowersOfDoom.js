@@ -11,7 +11,38 @@ class TeamTowersOfDoom extends Component {
 
     return (
       <div>
-        Coming Soon!
+        <table className="table vertical-team-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Blue Team</th>
+              <th>Red Team</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <th>Altars Captured</th>
+              <td>{ts[0].totalAltarsCaptured}</td>
+              <td>{ts[1].totalAltarsCaptured}</td>
+            </tr>
+            <tr>
+              <th>Keeps Captured</th>
+              <td>{ts[0].totalTowersCaptured}</td>
+              <td>{ts[1].totalTowersCaptured}</td>
+            </tr>
+            <tr>
+              <th>Bosses Captured</th>
+              <td>{ts[0].bossTaken}</td>
+              <td>{ts[1].bossTaken}</td>
+            </tr>
+            <tr>
+              <th>Shots fired with altars</th>
+              <td>{ts[0].towersCapturedAtFire.reduce(function(sum, value) {return sum + value;}, 0)}</td>
+              <td>{ts[1].towersCapturedAtFire.reduce(function(sum, value) {return sum + value;}, 0)}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }

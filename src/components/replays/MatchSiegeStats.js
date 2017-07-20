@@ -30,14 +30,14 @@ class MatchSiegeStats extends Component {
       <table className="table">
         <thead>
           <tr>
-            <th>Player></th>
+            <th>Player</th>
             <th>Hero</th>
             <th>Creep Damage</th>
             <th>Minion Damage</th>
             <th>Forts Destroyed</th>
             <th>Structure Damage</th>
             <th>Minions Killed</th>
-            <th>Buildings Killed</th>
+            <th>Buildings Destroyed</th>
           </tr>
         </thead>
         <tbody>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BraxisHoldout extends React.Component {
+class TowersOfDoom extends React.Component {
   constructor(props) {
     super(props)
 
@@ -14,7 +14,7 @@ class BraxisHoldout extends React.Component {
       <tr key={playerStats.playerId} className={(isWinner ? 'victory-row' : 'defeat-row')}>
         <td>{playerInfo.name}</td>
         <td>{playerStats.heroName}</td>
-        <td>{playerStats.DamageDoneToZerg}</td>
+        <td>{playerStats.AltarDamageDone}</td>
       </tr>
     )
   }
@@ -32,7 +32,7 @@ class BraxisHoldout extends React.Component {
           <tr>
             <th>Player</th>
             <th>Hero</th>
-            <th>Damage Done to Zerg</th>
+            <th>Shots fired to altar</th>
           </tr>
         </thead>
         <tbody>
@@ -43,4 +43,4 @@ class BraxisHoldout extends React.Component {
   }
 }
 
-export default BraxisHoldout;
+export default TowersOfDoom;

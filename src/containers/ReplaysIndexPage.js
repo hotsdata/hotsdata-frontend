@@ -104,6 +104,7 @@ class ReplaysPage extends React.Component {
                   <option value="Unranked">Unranked</option>
                   <option value="Hero League">Hero League</option>
                   <option value="Team League">Team league</option>
+                  <option value="Custom Game">Custom Game</option>
                 </select>
               </div>
               <div className="prev-next-buttons" style={{display: (filteredReplays.length > 0 ? 'inline' : 'none')}}>

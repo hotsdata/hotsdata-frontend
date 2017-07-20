@@ -7,6 +7,7 @@ import BattlefieldOfEternity from './BattlefieldOfEternity';
 import HauntedMines from './HauntedMines';
 import Hanamura from './Hanamura';
 import SkyTemple from './SkyTemple';
+import TowersOfDoom from './TowersOfDoom';
 
 const MapManifest = {
   "Cursed Hollow": CursedHollow,
@@ -17,7 +18,8 @@ const MapManifest = {
   "Battlefield of Eternity": BattlefieldOfEternity,
   "Haunted Mines": HauntedMines,
   "Hanamura": Hanamura,
-  "Sky Temple": SkyTemple
+  "Sky Temple": SkyTemple,
+  "Towers of Doom": TowersOfDoom
 }
 
 export default MapManifest;
