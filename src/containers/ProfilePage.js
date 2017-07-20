@@ -5,28 +5,14 @@ import {Table, Thead, Tbody, Th, Tr, Td} from 'reactable';
 import _ from 'lodash';
 
 import { fetchPlayerHeroStats } from '../actions/PlayerActions';
+import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
+import { hotHeroes, coldHeroes } from '../lib/HeroStatsHelpers';
 import HotColdTable from '../components/HotColdTable';
 import './ProfilePage.scss';
 
 function findStat(stat_array, stat) {
   return _.find(stat_array, (s) => s.metric == stat)
 }
-
-const testDataHot = [
-  { hero: "Tyrande", winRate: 70.3, games: 37 },
-  { hero: "Tassadar", winRate: 66.7, games: 36 },
-  { hero: "Genji", winRate: 60.0, games: 20 },
-  { hero: "Malthael", winRate: 61.1, games: 18 },
-  { hero: "Li-Ming", winRate: 60.0, games: 10 }
-]
-
-const testDataCold = [
-  { hero: "Zul'jin", winRate: 40.0, games: 20 },
-  { hero: "Cassia", winRate: 41.2, games: 17 },
-  { hero: "Falstad", winRate: 35.7, games: 14 },
-  { hero: "Dehaka", winRate: 30.0, games: 10 },
-  { hero: "Anub'arak", winRate: 25.0, games: 8 }
-]
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -38,16 +24,21 @@ class ProfilePage extends Component {
   }
 
   render() {
+    if (!this.props.heroStats || this.props.isLoading) { return (<div>Loading...</div>); }
+    let heroStats = transformAllPlayerHerosData(this.props.heroStats);
+    let hotHeroesData = hotHeroes(heroStats.heroes);
+    let coldHeroesData = coldHeroes(heroStats.heroes);
 
     return (
       <div className="profile-page">
-        <h1>Placeholder Design For Profile Page</h1>
+        <h1>{heroStats.player}</h1>
         <div className="hot-cold-container">
-          <HotColdTable title="Hot Heroes" data={testDataHot} />
-          <HotColdTable title="Cold Heroes" data={testDataCold} />
+          <HotColdTable title="Hot Heroes" data={hotHeroesData} />
+          <HotColdTable title="Cold Heroes" data={coldHeroesData} />
         </div>
         <div>
           <h2>Goals Tracking</h2>
+          <h4>Coming Soon!</h4>
         </div>
       </div>
     )

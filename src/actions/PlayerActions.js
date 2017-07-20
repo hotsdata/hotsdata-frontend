@@ -32,7 +32,7 @@ export function fetchPlayerHeroStats() {
   return (dispatch) => {
     dispatch(fetchPlayerHeroStatsInProgress(true));
 
-    axios.get("http://api.hotsdata.com/player/heroes/", {
+    axios.get("http://api.hotsdata.com/player/heroes/6755?start_data=2014-1-1", {
       headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
       .then(response => {
         let responseData = response.data

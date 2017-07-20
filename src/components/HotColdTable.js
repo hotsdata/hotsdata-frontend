@@ -17,7 +17,7 @@ const HotColdTable = (props) => {
   return (
     <div className="hot-cold">
       <h2>{props.title}</h2>
-      <table className="table">
+      <table className="table striped">
         <thead>
           <tr>
             <th></th>

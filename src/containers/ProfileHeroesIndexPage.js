@@ -6,6 +6,7 @@ import {Table, Thead, Tbody, Th, Tr, Td} from 'reactable';
 import _ from 'lodash';
 
 import { fetchPlayerHeroStats } from '../actions/PlayerActions';
+import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
 
 function findStat(stat_array, stat) {
   return _.find(stat_array, (s) => s.metric == stat)
@@ -21,23 +22,28 @@ class ProfileHeroesIndexPage extends Component {
   }
 
   render() {
-    console.log(this.props.heroStats);
-    if (!this.props.heroStats) { return (<div>Loading...</div>); }
+    if (!this.props.heroStats || this.props.isLoading) { return (<div>Loading...</div>); }
+    let heroStats = transformAllPlayerHerosData(this.props.heroStats);
 
-    let tableRows = this.props.heroStats.stats.map((row, i) => {
-      let games = row.hero_stats[0].games;
-      let wins = findStat(row.hero_stats, "match_won").value;
-      let losses = findStat(row.hero_stats, "match_lost").value;
-      let winRate = _.round(wins / games * 100, 1);
-
+    let tableRows = heroStats.heroes.map((hero, i) => {
       return (
-        <Tr key={row.hero}>
+        <Tr key={hero.hero}>
           <Td column="hero">
-            <Link to={`/profile/heroes/${row.hero}`}>{row.hero}</Link>
+            <Link to={`/profile/heroes/${hero.hero}`}>{hero.hero}</Link>
           </Td>
-          <Td column="games">{games}</Td>
-          <Td column="winRate">{winRate}</Td>
-          <Td column="takedowns">{_.round(findStat(row.hero_stats, "takedowns").value / games, 1)}</Td>
+          <Td column="games">{hero.games}</Td>
+          <Td column="winRate">{hero.winRate}</Td>
+          <Td column="kda">{hero.kda}</Td>
+          <Td column="takedowns">{hero.takedowns}</Td>
+          <Td column="kills">{hero.kills}</Td>
+          <Td column="deaths">{hero.deaths}</Td>
+          <Td column="timeDead">{hero.timeDead}</Td>
+          <Td column="heroDamage">{hero.heroDamage}</Td>
+          <Td column="siegeDamage">{hero.siegeDamage}</Td>
+          <Td column="healing">{hero.healing}</Td>
+          <Td column="selfHealing">{hero.selfHealing}</Td>
+          <Td column="damageTaken">{hero.damageTaken}</Td>
+          <Td column="xp">{hero.xp}</Td>
         </Tr>
       )
     });
@@ -52,7 +58,17 @@ class ProfileHeroesIndexPage extends Component {
               <Th column="hero">Hero</Th>
               <Th column="games">Games</Th>
               <Th column="winRate">Win Rate</Th>
+              <Th column="kda">T/D</Th>
               <Th column="takedowns">Takedowns</Th>
+              <Th column="kills">Kills</Th>
+              <Th column="deaths">Deaths</Th>
+              <Th column="timeDead">Time Dead</Th>
+              <Th column="heroDamage">Hero Damage</Th>
+              <Th column="siegeDamage">Siege Damage</Th>
+              <Th column="healing">Healing</Th>
+              <Th column="selfHealing">Self Healing</Th>
+              <Th column="damageTaken">Damage Taken</Th>
+              <Th column="xp">XP</Th>
             </Thead>
             {tableRows}
           </Table>

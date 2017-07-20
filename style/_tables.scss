@@ -1,5 +1,5 @@
 .table {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'PT Mono', monospace;
   font-size: 16px;
   border-collapse: separate;
   border-spacing: 0px;
@@ -22,7 +22,6 @@
   }
 
   tbody {
-    background-color: rgba($purple, 0.8);
 
     tr {
       height: 32px;

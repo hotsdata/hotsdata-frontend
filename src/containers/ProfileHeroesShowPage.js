@@ -9,8 +9,10 @@ class ProfileHeroesShowPage extends React.Component {
   render() {
     return (
       <div className="">
-        <h1>Place holder design</h1>
-        <div className="hero-image">Hero Image Here</div>
+        <h1>Coming Soon!</h1>
+        <p>
+          This page will contain detailed stats about a hero including how you compare to everyone else.
+        </p>
       </div>
     )
   }
