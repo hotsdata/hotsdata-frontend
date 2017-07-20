@@ -28,7 +28,10 @@ class ReplaysPage extends React.Component {
     this.props.fetchReplays();
   }
 
-  componentWillMount() {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.state === 'refresh') {
+      this.props.fetchReplays();
+    }
   }
 
   changeSearchTerm(e) {
