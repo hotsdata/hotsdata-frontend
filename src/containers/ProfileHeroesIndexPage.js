@@ -28,22 +28,22 @@ class ProfileHeroesIndexPage extends Component {
     let tableRows = heroStats.heroes.map((hero, i) => {
       return (
         <Tr key={hero.hero}>
-          <Td column="hero">
+          <Td column="hero" value={hero.hero}>
             <Link to={`/profile/heroes/${hero.hero}`}>{hero.hero}</Link>
           </Td>
           <Td column="games">{hero.games}</Td>
-          <Td column="winRate">{hero.winRate}</Td>
-          <Td column="kda">{hero.kda}</Td>
-          <Td column="takedowns">{hero.takedowns}</Td>
-          <Td column="kills">{hero.kills}</Td>
-          <Td column="deaths">{hero.deaths}</Td>
+          <Td column="winRate">{hero.winRate.toFixed(1)}</Td>
+          <Td column="kda" value={hero.kda}>{hero.kda.toFixed(1)}</Td>
+          <Td column="takedowns" value={hero.takedowns}>{hero.takedowns.toFixed(1)}</Td>
+          <Td column="kills" value={hero.kills}>{hero.kills.toFixed(1)}</Td>
+          <Td column="deaths" value={hero.deaths}>{hero.deaths.toFixed(1)}</Td>
           <Td column="timeDead">{hero.timeDead}</Td>
-          <Td column="heroDamage">{hero.heroDamage}</Td>
-          <Td column="siegeDamage">{hero.siegeDamage}</Td>
-          <Td column="healing">{hero.healing}</Td>
-          <Td column="selfHealing">{hero.selfHealing}</Td>
-          <Td column="damageTaken">{hero.damageTaken}</Td>
-          <Td column="xp">{hero.xp}</Td>
+          <Td column="heroDamage" value={hero.heroDamage}>{hero.heroDamage.toLocaleString()}</Td>
+          <Td column="siegeDamage" value={hero.siegeDamage}>{hero.siegeDamage.toLocaleString()}</Td>
+          <Td column="healing" value={hero.healing}>{hero.healing.toLocaleString()}</Td>
+          <Td column="selfHealing" value={hero.selfHealing}>{hero.selfHealing.toLocaleString()}</Td>
+          <Td column="damageTaken" value={hero.damageTaken}>{hero.damageTaken.toLocaleString()}</Td>
+          <Td column="xp" value={hero.xp}>{hero.xp.toLocaleString()}</Td>
         </Tr>
       )
     });

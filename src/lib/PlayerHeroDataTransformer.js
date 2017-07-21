@@ -26,7 +26,7 @@ export function transformAllPlayerHerosData(data) {
 export function transformPlayerHeroData(data) {
   let tdata = {};
   tdata.hero = data.hero;
-  tdata.games = data.hero_stats[0].games; // probably want to find highest
+  tdata.games = _.max(_.map(data.hero_stats,s => s.games));
   tdata.wins = findStat(data.hero_stats, "match_won").value;
   tdata.losses = findStat(data.hero_stats, "match_lost").value;
   tdata.winRate = _.round(tdata.wins / tdata.games * 100, 1);
