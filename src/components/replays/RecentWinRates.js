@@ -25,7 +25,7 @@ const RecentWinRates = ({replays}) => {
       <tr key={num} className="neutral-row">
         <td>{winRates.games}</td>
         <td>{winRates.wins}-{winRates.losses}</td>
-        <td>{winRates.winRate}</td>
+        <td>{winRates.winRate} %</td>
       </tr>
     )
   });

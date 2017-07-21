@@ -18,7 +18,7 @@ const Header = (props) => {
           <Link to="/">About</Link>
         </div>
         <div className='nav-link'>
-          <Link to={{pathname: "/replays", state: 'refresh'}}>Replays</Link>
+          <Link to="/replays">Replays</Link>
         </div>
         <div className='nav-link'>
           <Link to="/upload">Upload</Link>
