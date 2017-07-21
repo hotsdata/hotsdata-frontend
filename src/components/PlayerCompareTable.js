@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Thead, Th, Tr, Td } from 'reactable';
 
-import { transformPlayerHeroStats } from '../lib/PlayerHeroStatsDataTransformer';
+import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
 import { secondsToTimeString } from '../lib/TimeUtils';
 
 class PlayerCompareTable extends React.Component {
@@ -13,11 +13,12 @@ class PlayerCompareTable extends React.Component {
 
   render() {
     return (
-      <Table className="table" sortable={true} noDataText="Add Players to Compare">
+      <Table className="table sortable striped" sortable={true} noDataText="Add Players to Compare">
         <Thead>
           <Th column="player">Player</Th>
           <Th column="games">Games</Th>
           <Th column="winrate">Win Rate</Th>
+          <Th column="kda">T/D</Th>
           <Th column="takedowns">Takedowns</Th>
           <Th column="kills">Kills</Th>
           <Th column="assists">Assists</Th>
@@ -32,24 +33,22 @@ class PlayerCompareTable extends React.Component {
   }
 
   renderRow(player) {
-    let {hero, hero_stats} = _.find(player.stats, (s) => s.hero == this.props.hero);
+    let hero = _.find(player.heroes, (h) => h.hero == this.props.hero);
     if (!hero) { return "No games found" }
-    let games = hero_stats[0].games;
-    let stats = transformPlayerHeroStats(hero_stats);
-    console.log(stats);
 
     return (
       <Tr key={player.player_id}>
-        <Td column="player">{player.player_name}</Td>
-        <Td column="games">{games}</Td>
-        <Td column="winrate">N/A</Td>
-        <Td column="takedowns">{stats.takedowns}</Td>
-        <Td column="kills">{stats.killcount}</Td>
-        <Td column="assists">{stats.assists}</Td>
-        <Td column="deaths">{stats.deaths}</Td>
-        <Td column="timeDead">{secondsToTimeString(stats.timespentdead)}</Td>
-        <Td column="heroDamage">{stats.herodamage.toLocaleString()}</Td>
-        <Td column="siegeDamage">{stats.siegedamage.toLocaleString()}</Td>
+        <Td column="player">{player.player}</Td>
+        <Td column="games">{hero.games}</Td>
+        <Td column="winrate">{hero.winRate.toFixed(1)}</Td>
+        <Td column="kda">{hero.kda.toFixed(1)}</Td>
+        <Td column="takedowns">{hero.takedowns}</Td>
+        <Td column="kills">{hero.kills}</Td>
+        <Td column="assists">{hero.assists}</Td>
+        <Td column="deaths">{hero.deaths}</Td>
+        <Td column="timeDead">{hero.timeDead}</Td>
+        <Td column="heroDamage">{hero.heroDamage.toLocaleString()}</Td>
+        <Td column="siegeDamage">{hero.siegeDamage.toLocaleString()}</Td>
       </Tr>
     )
   }

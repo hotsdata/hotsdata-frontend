@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
+
 export const ADD_PLAYER_COMPARE_IN_PROGRESS = 'ADD_PLAYER_COMPARE_IN_PROGRESS';
 export const ADD_PLAYER_COMPARE_SUCCESS = 'ADD_PLAYER_COMPARE_SUCCESS';
 export const ADD_PLAYER_COMPARE_FAILURE = 'ADD_PLAYER_COMPARE_FAILURE';
@@ -19,17 +21,18 @@ export function addPlayerCompareFailed(response) {
   }
 }
 
-export function addPlayerCompareSuccess(response) {
+export function addPlayerCompareSuccess(heroData) {
   return {
     type: ADD_PLAYER_COMPARE_SUCCESS,
-    player: response[0]
+    player: heroData
   }
 }
 
 export function addPlayerCompare(playerId) {
   return (dispatch) => {
     dispatch(addPlayerCompareInProgress(playerId, true));
-    let endpoint = `http://api.hotsdata.com/player/heroes/${playerId}`
+    let fields = "takedowns,solokill,deaths,timespentdead,herodamage,siegedamage,healing,selfhealing,damagetaken,experiencecontribution,match_won,match_lost"
+    let endpoint = `http://api.hotsdata.com/player/heroes/${playerId}?metric=${fields}`
 
     axios.get(endpoint, { headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
       .then(response => {
@@ -39,12 +42,15 @@ export function addPlayerCompare(playerId) {
         if (responseData.hasOwnProperty('msg')) {
           dispatch(addPlayerCompareFailed(responseData.msg));
         } else {
-          dispatch(addPlayerCompareSuccess(responseData));
+          let heroData = transformAllPlayerHerosData(responseData[0]);
+          console.log(heroData);
+          dispatch(addPlayerCompareSuccess(heroData));
         }
 
         return Promise.resolve();
       })
       .catch(err => {
+        console.log('err', err);
         // Handle coding errors
         if (err.hasOwnProperty('response') === false) {
           dispatch(addPlayerCompareInProgress(playerId, false));

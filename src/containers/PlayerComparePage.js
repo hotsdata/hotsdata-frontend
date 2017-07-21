@@ -16,7 +16,7 @@ class PlayerComparePage extends React.Component {
     super(props);
 
     this.state = {
-      playerId: '6755',
+      playerId: '',
       filter: {
         selectedHero: "Greymane"
       }
@@ -25,10 +25,16 @@ class PlayerComparePage extends React.Component {
     this.onPlayerIdChanged = this.onPlayerIdChanged.bind(this);
     this.addPlayer = this.addPlayer.bind(this);
     this.filterChanged = this.filterChanged.bind(this);
+
+    this.props.addPlayerCompare(6755);
+    this.props.addPlayerCompare(6796);
+    this.props.addPlayerCompare(12384);
+    this.props.addPlayerCompare(543);
+    this.props.addPlayerCompare(10732);
   }
 
   componentWillUpdate() {
-    console.log('props', this.props);
+    // console.log('props', this.props);
   }
 
   onPlayerIdChanged(e) {

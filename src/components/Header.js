@@ -16,6 +16,9 @@ const Header = (props) => {
         <div className='nav-link'>
           <Link to="/replays">Replays</Link>
         </div>
+        <div className="nav-link">
+          <Link to="/players/compare">Compare</Link>
+        </div>
         <div className='nav-link'>
           <Link to="/upload">Upload</Link>
         </div>

@@ -6,6 +6,7 @@ function findStat(stat_array, metric) {
 
 function averageStat(stat_array, metric, roundPlaces = 1) {
   let stat = findStat(stat_array, metric);
+  if (!stat) { return 0; }
   return _.round(stat.value / stat.games, roundPlaces);
 }
 
@@ -32,6 +33,7 @@ export function transformPlayerHeroData(data) {
   tdata.winRate = _.round(tdata.wins / tdata.games * 100, 1);
   tdata.takedowns = averageStat(data.hero_stats, "takedowns");
   tdata.kills = averageStat(data.hero_stats, "solokill");
+  tdata.assists = averageStat(data.hero_stats, "assists");
   tdata.deaths = averageStat(data.hero_stats, "deaths");
   tdata.kda = _.round(tdata.takedowns / tdata.deaths, 1);
   tdata.timeDead = secondsToTimeString(averageStat(data.hero_stats, "timespentdead"));
