@@ -6,10 +6,10 @@ const HotColdTable = (props) => {
   let rows = props.data.map((row) => {
     return (
       <tr key={row.hero}>
-        <td><HeroPortrait hero={row.hero} /></td>
+        {/*<td><HeroPortrait hero={row.hero} /></td> */}
         <td>{row.hero}</td>
         <td>{row.games}</td>
-        <td>{row.winRate}</td>
+        <td>{row.winRate.toFixed(1)} %</td>
       </tr>
     )
   })
@@ -20,7 +20,7 @@ const HotColdTable = (props) => {
       <table className="table striped">
         <thead>
           <tr>
-            <th></th>
+            {/*<th></th>*/}
             <th>Hero</th>
             <th>Games</th>
             <th>Win Rate</th>

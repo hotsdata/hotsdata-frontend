@@ -42,7 +42,7 @@ class ProfileDropdown extends Component {
                 </Link>
                 <Link to="/profile/heroes" onClick={this.handleLinkClick}>
                   <i className="fa fa-users" />
-                  Your Heroes
+                  Heroes
                 </Link>
                 <Link to="/user-settings" onClick={this.handleLinkClick}>
                   <i className="fa fa-cog" />
