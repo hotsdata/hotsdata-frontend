@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Table, Thead, Th, Tr, Td } from 'reactable';
 
-import SiegeStatsRow from './SiegeStatsRow';
+import { descSort } from '../../lib/TableSortFunctions';
 
 class MatchSiegeStats extends Component {
   constructor(props) {
@@ -16,34 +17,54 @@ class MatchSiegeStats extends Component {
 
     let statRows = replay.player_stats.map((playerStats) => {
       let playerInfo = replay.account_info[playerStats.playerId];
-      if (playerInfo == null) { console.log(playerStats.playerId, replay.account_info); }
+      let isWinner = playerInfo.gameResult == 1;
 
       return (
-        <SiegeStatsRow
-          key={playerStats.playerId}
-          playerInfo={playerInfo}
-          playerStats={playerStats} />
+        <Tr key={playerInfo.name} className={(isWinner ? 'victory-row' : 'defeat-row')}>
+          <Td column="player">{playerInfo.name}</Td>
+          <Td column="hero">{playerStats.heroName}</Td>
+          <Td column="creepDamage" value={playerStats.CreepDamage}>
+            {playerStats.CreepDamage.toLocaleString()}
+          </Td>
+          <Td column="minionDamage" value={playerStats.MinionDamage}>
+            {playerStats.MinionDamage.toLocaleString()}
+          </Td>
+          <Td column="structureDamage" value={playerStats.StructureDamage}>
+            {playerStats.StructureDamage}
+          </Td>
+          <Td column="killCountMinions" value={playerStats.killCountMinions}>
+            {playerStats.killCountMinions}
+          </Td>
+          <Td column="killCountBuildings" value={playerStats.killCountBuildings}>
+            {playerStats.killCountBuildings}
+          </Td>
+        </Tr>
       )
     });
 
+    let sort = [
+      'player',
+      'hero',
+      { column: 'creepDamage', sortFunction: descSort },
+      { column: 'minionDamage', sortFunction: descSort },
+      { column: 'structureDamage', sortFunction: descSort },
+      { column: 'killCountMinions', sortFunction: descSort },
+      { column: 'killCountBuildings', sortFunction: descSort }
+    ];
+
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Hero</th>
-            <th>Creep Damage</th>
-            <th>Minion Damage</th>
-            <th>Forts Destroyed</th>
-            <th>Structure Damage</th>
-            <th>Minions Killed</th>
-            <th>Buildings Destroyed</th>
-          </tr>
-        </thead>
-        <tbody>
-          {statRows}
-        </tbody>
-      </table>
+      <Table className="table sortable" sortable={sort}>
+        <Thead>
+          <Th column="player">Player</Th>
+          <Th column="hero">Hero</Th>
+          <Th column="creepDamage">Creep Damage</Th>
+          <Th column="minionDamage">Minion Damage</Th>
+          <Th column="structureDamage">Structure Damage</Th>
+          <Th column="killCountMinions">Minions Killed</Th>
+          <Th column="killCountBuildings">Buildings Destroyed</Th>
+        </Thead>
+        {statRows}
+      </Table>
     )
   }
 }
