@@ -8,6 +8,7 @@ import { fetchPlayerHeroStats } from '../actions/PlayerActions';
 import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
 import { hotHeroes, coldHeroes } from '../lib/HeroStatsHelpers';
 import HotColdTable from '../components/HotColdTable';
+import LargeLoader from '../components/LargeLoader';
 import './ProfilePage.scss';
 
 function findStat(stat_array, stat) {
@@ -24,7 +25,7 @@ class ProfilePage extends Component {
   }
 
   render() {
-    if (!this.props.heroStats || this.props.isLoading) { return (<div>Loading...</div>); }
+    if (!this.props.heroStats || this.props.isLoading) { return (<LargeLoader />); }
     let heroStats = transformAllPlayerHerosData(this.props.heroStats);
     let hotHeroesData = hotHeroes(heroStats.heroes);
     let coldHeroesData = coldHeroes(heroStats.heroes);

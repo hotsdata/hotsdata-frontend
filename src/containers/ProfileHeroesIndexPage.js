@@ -7,6 +7,7 @@ import _ from 'lodash';
 
 import { fetchPlayerHeroStats } from '../actions/PlayerActions';
 import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
+import LargeLoader from '../components/LargeLoader';
 
 function findStat(stat_array, stat) {
   return _.find(stat_array, (s) => s.metric == stat)
@@ -22,7 +23,10 @@ class ProfileHeroesIndexPage extends Component {
   }
 
   render() {
-    if (!this.props.heroStats || this.props.isLoading) { return (<div>Loading...</div>); }
+    if (!this.props.heroStats || this.props.isLoading) {
+      return (<LargeLoader />);
+    }
+
     let heroStats = transformAllPlayerHerosData(this.props.heroStats);
 
     let tableRows = heroStats.heroes.map((hero, i) => {
