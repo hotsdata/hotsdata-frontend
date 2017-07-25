@@ -29,13 +29,15 @@ export function fetchPlayerHeroStatsFailure(errorMsg) {
 }
 
 export function fetchPlayerHeroStats() {
+  let fields = "takedowns,solokill,deaths,timespentdead,herodamage,siegedamage,healing,selfhealing,damagetaken,experiencecontribution,match_won,match_lost"
+  let endpoint = `http://api.hotsdata.com/player/heroes/?metric=${fields}`
   return (dispatch) => {
     dispatch(fetchPlayerHeroStatsInProgress(true));
 
-    axios.get("http://api.hotsdata.com/player/heroes/", {
-      headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
+    axios.get(endpoint, { headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
       .then(response => {
-        let responseData = response.data
+        let responseData = response.data;
+        console.log(responseData);
 
         dispatch(fetchPlayerHeroStatsInProgress(false));
         if(responseData.hasOwnProperty('msg')) {
