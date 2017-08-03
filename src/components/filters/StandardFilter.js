@@ -47,6 +47,7 @@ class StandardFilter extends React.Component {
           <div className="control-group">
             <label>Hero: </label>
             <HeroSelector
+              heroes={this.props.heroes}
               onHeroSelected={this.onHeroSelected}
               selected={this.state.selectedHero} />
           </div>

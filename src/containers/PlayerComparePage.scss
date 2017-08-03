@@ -1,5 +1,7 @@
 .player-compare-page {
-  .top {
+  margin-left: 20px;
+
+  .row {
     display: flex;
 
     img {
@@ -10,4 +12,10 @@
       margin-right: 20px;
     }
   }
+}
+
+.btn-remove {
+  margin-top: -2px;
+  padding: 4px 8px;
+  color: black;
 }

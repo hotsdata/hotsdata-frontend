@@ -4,45 +4,56 @@ import { connect } from 'react-redux';
 import ToggleDisplay from 'react-toggle-display';
 import Spinner from 'react-spinkit';
 
+import { fetchHeroes } from '../actions/HeroActions';
 import { addPlayerCompare } from '../actions/PlayerCompareActions';
+import PlayerSearch from '../components/PlayerSearch';
 import StandardFilter from '../components/filters/StandardFilter';
 import PlayerCompareTable from '../components/PlayerCompareTable';
 import './PlayerComparePage.scss';
 
-const imgUrl = "http://media.blizzard.com/heroes/malthael/bust.jpg";
+const testData = {
+  marod: "1-Hero-1-775282",
+  masterfish: "1-Hero-1-1950034",
+  zombiechris: "1-Hero-1-951239",
+  sheep: "1-Hero-1-1371988",
+  arik: "1-Hero-1-1516794"
+}
 
 class PlayerComparePage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      playerId: '',
+      selectedPlayer: '',
       filter: {
         selectedHero: "Greymane"
       }
     }
 
-    this.onPlayerIdChanged = this.onPlayerIdChanged.bind(this);
+    this.onPlayerSelected = this.onPlayerSelected.bind(this);
     this.addPlayer = this.addPlayer.bind(this);
     this.filterChanged = this.filterChanged.bind(this);
 
-    this.props.addPlayerCompare(6755);
-    this.props.addPlayerCompare(6796);
-    this.props.addPlayerCompare(12384);
-    this.props.addPlayerCompare(543);
-    this.props.addPlayerCompare(10732);
+    this.props.fetchHeroes();
+
+    // this.props.addPlayerCompare(testData.marod);
+    // this.props.addPlayerCompare(testData.masterfish);
+    // this.props.addPlayerCompare(testData.zombiechris);
+    // this.props.addPlayerCompare(testData.arik);
+    // this.props.addPlayerCompare(testData.sheep);
   }
 
   componentWillUpdate() {
     // console.log('props', this.props);
   }
 
-  onPlayerIdChanged(e) {
-    this.setState({playerId: e.target.value});
+  onPlayerSelected(player) {
+    console.log('player selected', player);
+    this.props.addPlayerCompare(player);
   }
 
   addPlayer() {
-    this.props.addPlayerCompare(this.state.playerId);
+    this.props.addPlayerCompare(this.state.toonhandle);
   }
 
   filterChanged(filter) {
@@ -50,22 +61,23 @@ class PlayerComparePage extends React.Component {
   }
 
   render() {
+    let imgUrl = `http://media.blizzard.com/heroes/${this.state.filter.selectedHero}/bust.jpg`;
+
     return (
       <div className="player-compare-page">
-        <div className="top">
+        <div className="row add-player">
+          <PlayerSearch selectedPlayer={this.state.selectedPlayer} onPlayerSelected={this.onPlayerSelected} />
+          <ToggleDisplay show={this.props.isLoading}>
+            <Spinner name="three-bounce" color="orange" />
+          </ToggleDisplay>
+        </div>
+        <div className="row">
           <div className="hero">
-            <h2>Malthael</h2>
+            <h2>{this.state.filter.selectedHero}</h2>
             <img src={imgUrl} />
           </div>
           <div className="controls">
-            <StandardFilter onChange={this.filterChanged} />
-            <div className="add-player">
-              <input type="text" name="addPlayer" value={this.state.playerId} onChange={this.onPlayerIdChanged} />
-              <button onClick={this.addPlayer}>+ Player</button>
-              <ToggleDisplay show={this.props.isLoading}>
-                <Spinner name="three-bounce" color="orange" />
-              </ToggleDisplay>
-            </div>
+            <StandardFilter onChange={this.filterChanged} heroes={this.props.heroes} />
           </div>
         </div>
         <div className="tabs">
@@ -73,19 +85,7 @@ class PlayerComparePage extends React.Component {
         </div>
         <div>
           <PlayerCompareTable players={this.props.players} hero={this.state.filter.selectedHero} />
-          <pre>{this.props.playerIds.toString()}</pre>
         </div>
-        <pre>
-          Marod = 6755
-          <br/>
-          MasterFish = 6796
-          <br/>
-          zombiechris = 12384
-          <br/>
-          Arik = 543
-          <br/>
-          teh24thson = 10732
-        </pre>
       </div>
     )
   }
@@ -93,15 +93,16 @@ class PlayerComparePage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    playerIds: state.playerCompare.playerIds,
+    toonhandles: state.playerCompare.toonhandles,
     players: state.playerCompare.players,
     error: state.playerCompare.error,
-    isLoading: state.playerCompare.isLoading
+    isLoading: state.playerCompare.isLoading,
+    heroes: state.heroes
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({addPlayerCompare}, dispatch);
+  return bindActionCreators({addPlayerCompare, fetchHeroes}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerComparePage);

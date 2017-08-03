@@ -6,10 +6,10 @@ export const ADD_PLAYER_COMPARE_IN_PROGRESS = 'ADD_PLAYER_COMPARE_IN_PROGRESS';
 export const ADD_PLAYER_COMPARE_SUCCESS = 'ADD_PLAYER_COMPARE_SUCCESS';
 export const ADD_PLAYER_COMPARE_FAILURE = 'ADD_PLAYER_COMPARE_FAILURE';
 
-export function addPlayerCompareInProgress(playerId, bool) {
+export function addPlayerCompareInProgress(toonhandle, bool) {
   return {
     type: ADD_PLAYER_COMPARE_IN_PROGRESS,
-    playerId: playerId,
+    playerId: toonhandle,
     isLoading: bool
   }
 }
@@ -28,22 +28,24 @@ export function addPlayerCompareSuccess(heroData) {
   }
 }
 
-export function addPlayerCompare(playerId) {
+export function addPlayerCompare(player) {
   return (dispatch) => {
-    dispatch(addPlayerCompareInProgress(playerId, true));
+    dispatch(addPlayerCompareInProgress(player.toonhandle, true));
     let fields = "takedowns,solokill,deaths,timespentdead,herodamage,siegedamage,healing,selfhealing,damagetaken,experiencecontribution,match_won,match_lost"
-    let endpoint = `http://api.hotsdata.com/player/heroes/${playerId}?metric=${fields}`
+    let endpoint = `http://api.hotsdata.com/player/heroes/?toonhandle=${player.toonhandle}`
 
     axios.get(endpoint, { headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
       .then(response => {
         let responseData = response.data;
 
-        dispatch(addPlayerCompareInProgress(playerId, false));
+        dispatch(addPlayerCompareInProgress(player.toonhandle, false));
         if (responseData.hasOwnProperty('msg')) {
           dispatch(addPlayerCompareFailed(responseData.msg));
+        } else if (responseData.length == 0) {
+          dispatch(addPlayerCompareFailed('No Data'));
         } else {
-          let heroData = transformAllPlayerHerosData(responseData[0]);
-          console.log(heroData);
+          let heroData = transformAllPlayerHerosData(player, responseData[0]);
+          console.log('heroData', heroData);
           dispatch(addPlayerCompareSuccess(heroData));
         }
 
@@ -53,7 +55,7 @@ export function addPlayerCompare(playerId) {
         console.log('err', err);
         // Handle coding errors
         if (err.hasOwnProperty('response') === false) {
-          dispatch(addPlayerCompareInProgress(playerId, false));
+          dispatch(addPlayerCompareInProgress(player.toonhandle, false));
           dispatch(addPlayerCompareFailed('Unknown error'));
 
           return;
@@ -61,7 +63,7 @@ export function addPlayerCompare(playerId) {
 
         let responseData = err.response.data;
 
-        dispatch(addPlayerCompareInProgress(playerId, false));
+        dispatch(addPlayerCompareInProgress(player.toonshandle, false));
         dispatch(addPlayerCompareFailed(responseData.msg));
       });
   }

@@ -10,11 +10,12 @@ function averageStat(stat_array, metric, roundPlaces = 1) {
   return _.round(stat.value / stat.games, roundPlaces);
 }
 
-export function transformAllPlayerHerosData(data) {
+export function transformAllPlayerHerosData(player, data) {
   if(!data) { return null; }
   let pdata = {
-    player: data.player_name,
-    player_id: data.player_id,
+    player: player ? player.name : null,
+    player_id: player ? player.player_id : null,
+    toonhandle: player ?  player.toonhandle : null
   };
 
   pdata.heroes = data.stats.map(hero => {
@@ -28,8 +29,10 @@ export function transformPlayerHeroData(data) {
   let tdata = {};
   tdata.hero = data.hero;
   tdata.games = _.max(_.map(data.hero_stats,s => s.games));
-  tdata.wins = findStat(data.hero_stats, "match_won").value;
-  tdata.losses = findStat(data.hero_stats, "match_lost").value;
+  let winStat = findStat(data.hero_stats, "match_won");
+  tdata.wins = winStat ? winStat.value : 0;
+  let lossStat = findStat(data.hero_stats, "match_lost");
+  tdata.losses = lossStat ? lossStat.value : 0;
   tdata.winRate = _.round(tdata.wins / tdata.games * 100, 1);
   tdata.takedowns = averageStat(data.hero_stats, "takedowns");
   tdata.kills = averageStat(data.hero_stats, "solokill");
