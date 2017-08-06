@@ -71,9 +71,39 @@ class Uploader extends React.Component {
         <div>
           <h2>You can download alpha versions of the uploader below</h2>
           <h4>Please let us know of any bugs you find or feedback you may have by clicking the contact link in the footer.</h4>
-          <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader.exe">Windows Uploader</a>
-          <br />
-          <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader.dmg">Mac Uploader</a>
+          <table className="table striped">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Last Updated</th>
+                <th>Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader+Setup+2.0.0.exe">Windows</a>
+                </td>
+                <td>Aug 6, 2017</td>
+                <td>
+                  <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader+Setup+2.0.0.exe">
+                    <i className="fa fa-download" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader-2.0.0.dmg">Mac Uploader</a>
+                </td>
+                <td>Aug 6, 2017</td>
+                <td>
+                  <a href="https://s3-us-west-2.amazonaws.com/hotsdata-assets/uploader/HotsData+Uploader-2.0.0.dmg">
+                    <i className="fa fa-download" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         { uploadStatusRows.length > 0 &&
           <table className="table upload-status-table">
