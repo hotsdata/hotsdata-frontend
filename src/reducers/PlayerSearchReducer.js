@@ -1,7 +1,8 @@
 import {
   PLAYER_SEARCH_IN_PROGRESS,
   PLAYER_SEARCH_SUCCESS,
-  PLAYER_SEARCH_FAILURE
+  PLAYER_SEARCH_FAILURE,
+  PLAYER_SEARCH_CLEAR_RESULTS
 } from '../actions/PlayerSearchActions';
 
 const defaultState = {
@@ -18,6 +19,8 @@ export default function(state = defaultState, action) {
       return {...state, results: action.results};
     case PLAYER_SEARCH_FAILURE:
       return {...state, error: action.error};
+    case PLAYER_SEARCH_CLEAR_RESULTS:
+      return {...state, results: []};
     default:
       return state;
   }

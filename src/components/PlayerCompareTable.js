@@ -62,7 +62,8 @@ class PlayerCompareTable extends React.Component {
           <Td column="player">{player.player}</Td>
           <Td column="games">0</Td>
           <Td column="remove">
-            <button className="btn-remove">
+            <button className="btn-remove"
+              onClick={() => this.props.onRemovePlayer(player.player_id)}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </Td>
@@ -101,7 +102,8 @@ class PlayerCompareTable extends React.Component {
           {hero.xp.toLocaleString()}
         </Td>
         <Td column="remove">
-          <button className="btn-remove">
+          <button className="btn-remove"
+            onClick={() => this.props.onRemovePlayer(player.player_id)}>
             <i className="fa fa-times" aria-hidden="true"></i>
           </button>
         </Td>

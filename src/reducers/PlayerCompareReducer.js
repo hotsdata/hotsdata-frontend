@@ -1,7 +1,8 @@
 import {
   ADD_PLAYER_COMPARE_IN_PROGRESS,
   ADD_PLAYER_COMPARE_SUCCESS,
-  ADD_PLAYER_COMPARE_FAILURE
+  ADD_PLAYER_COMPARE_FAILURE,
+  REMOVE_PLAYER_COMPARE
 } from '../actions/PlayerCompareActions';
 
 const defaultState = {
@@ -23,6 +24,11 @@ export default function(state = defaultState, action) {
       return {...state, players: [...state.players, action.player]};
     case ADD_PLAYER_COMPARE_FAILURE:
       return {...state, error: action.error};
+    case REMOVE_PLAYER_COMPARE:
+      let updatedPlayers = _.clone(state.players);
+       _.remove(updatedPlayers, p => p.player_id == action.player_id);
+      console.log('updatedPlayers', updatedPlayers);
+      return {...state, players: updatedPlayers};
     default:
       return state;
   }

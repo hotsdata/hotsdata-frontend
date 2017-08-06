@@ -5,6 +5,7 @@ import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
 export const ADD_PLAYER_COMPARE_IN_PROGRESS = 'ADD_PLAYER_COMPARE_IN_PROGRESS';
 export const ADD_PLAYER_COMPARE_SUCCESS = 'ADD_PLAYER_COMPARE_SUCCESS';
 export const ADD_PLAYER_COMPARE_FAILURE = 'ADD_PLAYER_COMPARE_FAILURE';
+export const REMOVE_PLAYER_COMPARE = 'REMOVE_PLAYER_COMPARE';
 
 export function addPlayerCompareInProgress(toonhandle, bool) {
   return {
@@ -66,5 +67,12 @@ export function addPlayerCompare(player) {
         dispatch(addPlayerCompareInProgress(player.toonshandle, false));
         dispatch(addPlayerCompareFailed(responseData.msg));
       });
+  }
+}
+
+export function removePlayerCompare(player_id) {
+  return {
+    type: REMOVE_PLAYER_COMPARE,
+    player_id: player_id
   }
 }

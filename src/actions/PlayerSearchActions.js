@@ -3,6 +3,7 @@ import axios from 'axios';
 export const PLAYER_SEARCH_IN_PROGRESS = 'PLAYER_SEARCH_IN_PROGRESS';
 export const PLAYER_SEARCH_SUCCESS = 'PLAYER_SEARCH_SUCCESS';
 export const PLAYER_SEARCH_FAILURE = 'PLAYER_SEARCH_FAILURE';
+export const PLAYER_SEARCH_CLEAR_RESULTS = 'PLAYER_SEARCH_CLEAR_RESULTS';
 
 export function playerSearchInProgress(bool) {
   return {
@@ -22,6 +23,12 @@ export function playerSearchFailure(error) {
   return {
     type: PLAYER_SEARCH_FAILURE,
     error: error
+  }
+}
+
+export function playerSearchClearResults() {
+  return {
+    type: PLAYER_SEARCH_CLEAR_RESULTS
   }
 }
 

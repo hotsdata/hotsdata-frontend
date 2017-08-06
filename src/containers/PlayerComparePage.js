@@ -5,8 +5,10 @@ import ToggleDisplay from 'react-toggle-display';
 import Spinner from 'react-spinkit';
 
 import { fetchHeroes } from '../actions/HeroActions';
-import { addPlayerCompare } from '../actions/PlayerCompareActions';
+import { addPlayerCompare, removePlayerCompare } from '../actions/PlayerCompareActions';
+import { playerSearchClearResults } from '../actions/PlayerSearchActions';
 import PlayerSearch from '../components/PlayerSearch';
+import HeroSelector from '../components/filters/HeroSelector';
 import StandardFilter from '../components/filters/StandardFilter';
 import PlayerCompareTable from '../components/PlayerCompareTable';
 import './PlayerComparePage.scss';
@@ -31,6 +33,7 @@ class PlayerComparePage extends React.Component {
     }
 
     this.onPlayerSelected = this.onPlayerSelected.bind(this);
+    this.onHeroSelected = this.onHeroSelected.bind(this);
     this.addPlayer = this.addPlayer.bind(this);
     this.filterChanged = this.filterChanged.bind(this);
 
@@ -50,6 +53,11 @@ class PlayerComparePage extends React.Component {
   onPlayerSelected(player) {
     console.log('player selected', player);
     this.props.addPlayerCompare(player);
+    this.props.playerSearchClearResults();
+  }
+
+  onHeroSelected(val) {
+    this.setState({filter: {selectedHero: val.label}});
   }
 
   addPlayer() {
@@ -65,26 +73,34 @@ class PlayerComparePage extends React.Component {
 
     return (
       <div className="player-compare-page">
-        <div className="row add-player">
-          <PlayerSearch selectedPlayer={this.state.selectedPlayer} onPlayerSelected={this.onPlayerSelected} />
-          <ToggleDisplay show={this.props.isLoading}>
-            <Spinner name="three-bounce" color="orange" />
-          </ToggleDisplay>
-        </div>
         <div className="row">
           <div className="hero">
-            <h2>{this.state.filter.selectedHero}</h2>
             <img src={imgUrl} />
+            <h2>{this.state.filter.selectedHero}</h2>
           </div>
-          <div className="controls">
-            <StandardFilter onChange={this.filterChanged} heroes={this.props.heroes} />
+          <div>
+            <div>
+              <HeroSelector
+                heroes={this.props.heroes}
+                onHeroSelected={this.onHeroSelected}
+                selected={this.state.filter.selectedHero} />
+            </div>
+            <div className="add-player">
+              <PlayerSearch selectedPlayer={this.state.selectedPlayer} onPlayerSelected={this.onPlayerSelected} />
+              <ToggleDisplay show={this.props.isLoading}>
+                <Spinner name="three-bounce" color="orange" />
+              </ToggleDisplay>
+            </div>
           </div>
         </div>
         <div className="tabs">
           Tabs
         </div>
         <div>
-          <PlayerCompareTable players={this.props.players} hero={this.state.filter.selectedHero} />
+          <PlayerCompareTable
+            players={this.props.players}
+            hero={this.state.filter.selectedHero}
+            onRemovePlayer={this.props.removePlayerCompare} />
         </div>
       </div>
     )
@@ -102,7 +118,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({addPlayerCompare, fetchHeroes}, dispatch);
+  return bindActionCreators(
+    { addPlayerCompare, removePlayerCompare,
+      fetchHeroes, playerSearchClearResults },
+    dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerComparePage);

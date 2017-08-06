@@ -38,8 +38,8 @@ class PlayerSearch extends Component {
         <ToggleDisplay show={this.props.playerSearch.isLoading}>
           <Spinner name="circle" color="orange" />
         </ToggleDisplay>
-        <div>{this.props.playerSearch.results.length} players found</div>
         <ToggleDisplay show={this.state.term.length > 2}>
+          <div>{this.props.playerSearch.results.length} players found</div>
           <ul className="search-results wide-field">
             {options}
           </ul>

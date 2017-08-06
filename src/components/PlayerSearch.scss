@@ -7,7 +7,7 @@ ul.search-results {
   padding: 0;
   margin: 0;
   list-style: none;
-  height: 500px;
+  max-height: 500px;
   overflow-y: scroll;
 
   li {
