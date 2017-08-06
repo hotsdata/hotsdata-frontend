@@ -38,16 +38,6 @@ class PlayerComparePage extends React.Component {
     this.filterChanged = this.filterChanged.bind(this);
 
     this.props.fetchHeroes();
-
-    // this.props.addPlayerCompare(testData.marod);
-    // this.props.addPlayerCompare(testData.masterfish);
-    // this.props.addPlayerCompare(testData.zombiechris);
-    // this.props.addPlayerCompare(testData.arik);
-    // this.props.addPlayerCompare(testData.sheep);
-  }
-
-  componentWillUpdate() {
-    // console.log('props', this.props);
   }
 
   onPlayerSelected(player) {

@@ -28,7 +28,6 @@ class StandardFilter extends React.Component {
   }
 
   onTimeFrameSelected(val) {
-    console.log('onTimeFrameSelected', val);
     this.setState({selectedTimeFrame: val});
   }
 

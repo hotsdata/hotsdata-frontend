@@ -46,14 +46,12 @@ export function addPlayerCompare(player) {
           dispatch(addPlayerCompareFailed('No Data'));
         } else {
           let heroData = transformAllPlayerHerosData(player, responseData[0]);
-          console.log('heroData', heroData);
           dispatch(addPlayerCompareSuccess(heroData));
         }
 
         return Promise.resolve();
       })
       .catch(err => {
-        console.log('err', err);
         // Handle coding errors
         if (err.hasOwnProperty('response') === false) {
           dispatch(addPlayerCompareInProgress(player.toonhandle, false));

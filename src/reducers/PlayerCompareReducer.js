@@ -27,7 +27,6 @@ export default function(state = defaultState, action) {
     case REMOVE_PLAYER_COMPARE:
       let updatedPlayers = _.clone(state.players);
        _.remove(updatedPlayers, p => p.player_id == action.player_id);
-      console.log('updatedPlayers', updatedPlayers);
       return {...state, players: updatedPlayers};
     default:
       return state;
