@@ -6,9 +6,10 @@
     display: flex;
 
     .hot-cold {
-      margin-right: 12px;
+      min-width: 300px;
 
       table {
+        width: 96%;
 
         tbody {
           tr {
@@ -21,6 +22,20 @@
           width: 32px;
         }
       }
+    }
+  }
+
+  .stats-tables {
+    display: flex;
+
+    .stat-table {
+      min-width: 300px;
+    }
+
+    h2 { display: block; }
+
+    table {
+      width: 96%;
     }
   }
 }

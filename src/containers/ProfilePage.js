@@ -6,8 +6,9 @@ import _ from 'lodash';
 
 import { fetchPlayerHeroStats } from '../actions/PlayerActions';
 import { transformAllPlayerHerosData } from '../lib/PlayerHeroDataTransformer';
-import { hotHeroes, coldHeroes } from '../lib/HeroStatsHelpers';
+import { hotHeroes, coldHeroes, topFive } from '../lib/HeroStatsHelpers';
 import HotColdTable from '../components/HotColdTable';
+import TopFiveStatTable from '../components/TopFiveStatTable';
 import LargeLoader from '../components/LargeLoader';
 import './ProfilePage.scss';
 
@@ -29,6 +30,12 @@ class ProfilePage extends Component {
     let heroStats = transformAllPlayerHerosData(this.props.heroStats);
     let hotHeroesData = hotHeroes(heroStats.heroes);
     let coldHeroesData = coldHeroes(heroStats.heroes);
+    let topFiveKDA = topFive(heroStats.heroes, 'kda');
+    let topFiveXP = topFive(heroStats.heroes, 'xp');
+    let topFiveHeroDmg = topFive(heroStats.heroes, 'heroDamage');
+    let topFiveSiegeDmg = topFive(heroStats.heroes, 'siegeDamage');
+    let topFiveDamageTaken = topFive(heroStats.heroes, 'damageTaken');
+    let topFiveHealing = topFive(heroStats.heroes, 'healing');
 
     return (
       <div className="profile-page">
@@ -36,6 +43,18 @@ class ProfilePage extends Component {
         <div className="hot-cold-container">
           <HotColdTable title="Hot Heroes" data={hotHeroesData} />
           <HotColdTable title="Cold Heroes" data={coldHeroesData} />
+        </div>
+        <div className="stats-tables">
+          <TopFiveStatTable stats={topFiveKDA} stat="kda" label="T/D" />
+          <TopFiveStatTable stats={topFiveXP} stat="xp" label="XP" />
+        </div>
+        <div className="stats-tables">
+          <TopFiveStatTable stats={topFiveHeroDmg} stat="heroDamage" label="Hero Damage" />
+          <TopFiveStatTable stats={topFiveSiegeDmg} stat="siegeDamage" label="Siege Damage" />
+        </div>
+        <div className="stats-tables">
+          <TopFiveStatTable stats={topFiveDamageTaken} stat="damageTaken" label="Damage Taken" />
+          <TopFiveStatTable stats={topFiveHealing} stat="healing" label="Healing" />
         </div>
         <div>
           <h2>Goals Tracking</h2>
