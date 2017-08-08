@@ -38,9 +38,9 @@ const Routes = () => {
         <Route path="/upload" component={Uploader} />
         <Route path="/replays/:replayId" component={ReplaysShowPage} />
         <Route path="/replays" component={ReplaysIndexPage} onEnter={requireAuth} />
-        <Route path="/profile/heroes/:hero" component={ProfileHeroesShowPage} />
-        <Route path="/profile/heroes" component={ProfileHeroesIndexPage} />
-        <Route path="/profile" component={ProfilePage} />
+        <Route path="/profile/heroes/:hero" component={ProfileHeroesShowPage} onEnter={requireAuth} />
+        <Route path="/profile/heroes" component={ProfileHeroesIndexPage} onEnter={requireAuth} />
+        <Route path="/profile" component={ProfilePage} onEnter={requireAuth} />
         <Route path="/players/compare" component={PlayerComparePage} />
         <Route path="/user-settings" component={UserSettingsPage} onEnter={requireAuth} />
       </Route>

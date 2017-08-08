@@ -32,7 +32,6 @@ export function addPlayerCompareSuccess(heroData) {
 export function addPlayerCompare(player) {
   return (dispatch) => {
     dispatch(addPlayerCompareInProgress(player.toonhandle, true));
-    let fields = "takedowns,solokill,deaths,timespentdead,herodamage,siegedamage,healing,selfhealing,damagetaken,experiencecontribution,match_won,match_lost"
     let endpoint = `http://api.hotsdata.com/player/heroes/?toonhandle=${player.toonhandle}`
 
     axios.get(endpoint, { headers: { Authorization: "Bearer " + localStorage.getItem('token') }})

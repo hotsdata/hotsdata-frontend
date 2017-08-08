@@ -9,6 +9,7 @@ import PlayerCompareReducer from './PlayerCompareReducer';
 import PlayerSearchReducer from './PlayerSearchReducer';
 import ErrorReducer from './ErrorReducer';
 import HeroReducer from './HeroReducer';
+import FriendReducer from './FriendReducer';
 
  const rootReducer = combineReducers({
   user: UserReducer,
@@ -17,6 +18,7 @@ import HeroReducer from './HeroReducer';
   playerCompare: PlayerCompareReducer,
   playerSearch: PlayerSearchReducer,
   heroes: HeroReducer,
+  friends: FriendReducer,
   error: ErrorReducer,
   session: SessionReducer,
   routing: routing
