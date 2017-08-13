@@ -36,11 +36,11 @@ export function searchPlayers(searchString) {
   return (dispatch) => {
     dispatch(playerSearchInProgress(true));
 
-    let endpoint = `http://localhost:8080/player/search/${searchString.toLowerCase()}`;
+    let endpoint = `http://localhost:8080/player/search/${searchString}`;
+
     axios.get(endpoint)
       .then(response => {
         let responseData = response.data;
-        console.log('search results', responseData);
 
         dispatch(playerSearchInProgress(false));
         dispatch(playerSearchSuccess(responseData));
