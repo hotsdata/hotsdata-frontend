@@ -37,7 +37,6 @@ export function fetchPlayerHeroStats() {
     axios.get(endpoint, { headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
       .then(response => {
         let responseData = response.data;
-        console.log(responseData);
 
         dispatch(fetchPlayerHeroStatsInProgress(false));
         if(responseData.hasOwnProperty('msg')) {
