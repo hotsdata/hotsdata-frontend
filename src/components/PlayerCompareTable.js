@@ -58,12 +58,12 @@ class PlayerCompareTable extends React.Component {
     let hero = _.find(player.heroes, (h) => h.hero == this.props.hero);
     if (!hero) {
       return (
-        <Tr key={player.player_id}>
+        <Tr key={player.toonhandle}>
           <Td column="player">{player.player}</Td>
           <Td column="games">0</Td>
           <Td column="remove">
             <button className="btn-remove"
-              onClick={() => this.props.onRemovePlayer(player.player_id)}>
+              onClick={() => this.props.onRemovePlayer(player.toonhandle)}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </Td>
@@ -72,7 +72,7 @@ class PlayerCompareTable extends React.Component {
     }
 
     return (
-      <Tr key={player.player_id}>
+      <Tr key={player.toonhandle}>
         <Td column="player">{player.player}</Td>
         <Td column="games">{hero.games}</Td>
         <Td column="winrate" value={hero.winRate}>
@@ -103,7 +103,7 @@ class PlayerCompareTable extends React.Component {
         </Td>
         <Td column="remove">
           <button className="btn-remove"
-            onClick={() => this.props.onRemovePlayer(player.player_id)}>
+            onClick={() => this.props.onRemovePlayer(player.toonhandle)}>
             <i className="fa fa-times" aria-hidden="true"></i>
           </button>
         </Td>

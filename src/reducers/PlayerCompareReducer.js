@@ -17,7 +17,7 @@ export default function(state = defaultState, action) {
     case ADD_PLAYER_COMPARE_IN_PROGRESS:
       let toonhandles = state.toonhandles;
       if (action.isLoading) {
-        toonhandles.push(action.playerId);
+        toonhandles.push(action.toonhandle);
       }
       return {...state, isLoading: action.isLoading, toonhandles: toonhandles};
     case ADD_PLAYER_COMPARE_SUCCESS:
@@ -26,7 +26,7 @@ export default function(state = defaultState, action) {
       return {...state, error: action.error};
     case REMOVE_PLAYER_COMPARE:
       let updatedPlayers = _.clone(state.players);
-       _.remove(updatedPlayers, p => p.player_id == action.player_id);
+       _.remove(updatedPlayers, p => p.toonhandle == action.toonhandle);
       return {...state, players: updatedPlayers};
     default:
       return state;

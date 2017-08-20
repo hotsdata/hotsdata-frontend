@@ -10,7 +10,7 @@ export const REMOVE_PLAYER_COMPARE = 'REMOVE_PLAYER_COMPARE';
 export function addPlayerCompareInProgress(toonhandle, bool) {
   return {
     type: ADD_PLAYER_COMPARE_IN_PROGRESS,
-    playerId: toonhandle,
+    toonhandle: toonhandle,
     isLoading: bool
   }
 }
@@ -67,9 +67,9 @@ export function addPlayerCompare(player) {
   }
 }
 
-export function removePlayerCompare(player_id) {
+export function removePlayerCompare(toonhandle) {
   return {
     type: REMOVE_PLAYER_COMPARE,
-    player_id: player_id
+    toonhandle: toonhandle
   }
 }

@@ -7,7 +7,7 @@ import {
 let defaultState = {
   isLoading: false,
   error: null,
-  friends: []
+  allFriends: []
 }
 
 export default function(state = defaultState, action) {
@@ -15,7 +15,7 @@ export default function(state = defaultState, action) {
     case FETCH_FRIENDS_IN_PROGRESS:
       return {...state, isLoading: action.isLoading};
     case FETCH_FRIENDS_SUCCESS:
-      return {...state, friends: action.friends};
+      return {...state, allFriends: action.friends};
     case FETCH_FRIENDS_FAILURE:
       return {...state, error: action.error};
     default:

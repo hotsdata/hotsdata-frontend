@@ -3,10 +3,10 @@ import Select from 'react-select-plus';
 
 const FriendSelector = (props) => {
   let options;
-  if (props.friends.lengh > 0) {
-    options = props.friends.map(friend => {
+  if (props.friends.allFriends.length > 0) {
+    options = props.friends.allFriends.map(friend => {
       return {
-        label: `${friend.teammate} (${})`,
+        label: `${friend.name} (${friend.games})`,
         value: friend.toonhandle
       }
     })
@@ -16,9 +16,11 @@ const FriendSelector = (props) => {
     <Select
       className="wide-field"
       name="friend"
+      searchPromptText="Friends"
       value={props.selected}
       options={options}
-      onChange={props.onFriendSelected} />
+      onChange={props.onFriendSelected}
+      isLoading={props.friends.isLoading} />
   )
 }
 

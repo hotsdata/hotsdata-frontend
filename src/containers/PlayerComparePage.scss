@@ -11,11 +11,29 @@
       height: auto;
       margin-right: 20px;
     }
+
+    .controls {
+      display: flex;
+
+      div {
+        margin-right: 12px;
+      }
+
+      .player-search {
+        display: flex;
+      }
+    }
   }
+
 }
 
 .btn-remove {
   margin-top: -2px;
   padding: 4px 8px;
   color: black;
+}
+
+.column-control {
+  display: flex;
+  flex-direction: column;
 }

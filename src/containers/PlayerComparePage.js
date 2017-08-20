@@ -7,8 +7,10 @@ import Spinner from 'react-spinkit';
 import { fetchHeroes } from '../actions/HeroActions';
 import { addPlayerCompare, removePlayerCompare } from '../actions/PlayerCompareActions';
 import { playerSearchClearResults } from '../actions/PlayerSearchActions';
+import { fetchFriends } from '../actions/FriendActions';
 import PlayerSearch from '../components/PlayerSearch';
 import HeroSelector from '../components/filters/HeroSelector';
+import FriendSelector from '../components/FriendSelector';
 import StandardFilter from '../components/filters/StandardFilter';
 import PlayerCompareTable from '../components/PlayerCompareTable';
 import './PlayerComparePage.scss';
@@ -33,17 +35,23 @@ class PlayerComparePage extends React.Component {
     }
 
     this.onPlayerSelected = this.onPlayerSelected.bind(this);
+    this.onFriendSelected = this.onFriendSelected.bind(this);
     this.onHeroSelected = this.onHeroSelected.bind(this);
     this.addPlayer = this.addPlayer.bind(this);
     this.filterChanged = this.filterChanged.bind(this);
 
     this.props.fetchHeroes();
+    this.props.fetchFriends();
   }
 
   onPlayerSelected(player) {
-    console.log('player selected', player);
     this.props.addPlayerCompare(player);
     this.props.playerSearchClearResults();
+  }
+
+  onFriendSelected(friend) {
+    let selectedFriend = _.find(this.props.friends.allFriends, (f) => f.toonhandle == friend.value)
+    this.props.addPlayerCompare(selectedFriend);
   }
 
   onHeroSelected(val) {
@@ -68,18 +76,24 @@ class PlayerComparePage extends React.Component {
             <img src={imgUrl} />
             <h2>{this.state.filter.selectedHero}</h2>
           </div>
-          <div>
-            <div>
-              <HeroSelector
-                heroes={this.props.heroes}
-                onHeroSelected={this.onHeroSelected}
-                selected={this.state.filter.selectedHero} />
+          <div className="controls">
+            <div className="control-column">
+              <div className="player-search">
+                <PlayerSearch selectedPlayer={this.state.selectedPlayer} onPlayerSelected={this.onPlayerSelected} />
+                <ToggleDisplay show={this.props.isLoading}>
+                  <Spinner name="three-bounce" color="orange" />
+                </ToggleDisplay>
+              </div>
+              <FriendSelector
+                friends={this.props.friends}
+                onFriendSelected={this.onFriendSelected} />
             </div>
-            <div className="add-player">
-              <PlayerSearch selectedPlayer={this.state.selectedPlayer} onPlayerSelected={this.onPlayerSelected} />
-              <ToggleDisplay show={this.props.isLoading}>
-                <Spinner name="three-bounce" color="orange" />
-              </ToggleDisplay>
+            <div className="control-column">
+              <HeroSelector
+                heroes={this.props.heroes.allHeroes}
+                onHeroSelected={this.onHeroSelected}
+                selected={this.state.filter.selectedHero}
+                isLoading={this.props.heroes.isLoading} />
             </div>
           </div>
         </div>
@@ -103,14 +117,15 @@ function mapStateToProps(state) {
     players: state.playerCompare.players,
     error: state.playerCompare.error,
     isLoading: state.playerCompare.isLoading,
-    heroes: state.heroes
+    heroes: state.heroes,
+    friends: state.friends
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     { addPlayerCompare, removePlayerCompare,
-      fetchHeroes, playerSearchClearResults },
+      fetchHeroes, playerSearchClearResults, fetchFriends },
     dispatch);
 }
 

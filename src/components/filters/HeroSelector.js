@@ -4,9 +4,9 @@ import Select from 'react-select-plus';
 
 const HeroSelector = (props) => {
   let options;
-  if (props.heroes.allHeroes) {
-    options =  props.heroes.allHeroes.map(hero => {
-      return { label: hero.hero_info.hero_name, value: hero.hero_info.hero_name }
+  if (props.heroes) {
+    options =  props.heroes.map(hero => {
+      return { label: hero.name, value: hero.name }
     });
   }
 
@@ -17,6 +17,7 @@ const HeroSelector = (props) => {
       value={props.selected}
       options={options}
       onChange={props.onHeroSelected}
+      isLoading={props.isLoading}
     />
   )
 }
