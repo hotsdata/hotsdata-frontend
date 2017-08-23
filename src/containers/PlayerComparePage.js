@@ -37,7 +37,7 @@ class PlayerComparePage extends React.Component {
     this.onPlayerSelected = this.onPlayerSelected.bind(this);
     this.onFriendSelected = this.onFriendSelected.bind(this);
     this.onHeroSelected = this.onHeroSelected.bind(this);
-    this.addPlayer = this.addPlayer.bind(this);
+    this.addSelf = this.addSelf.bind(this);
     this.filterChanged = this.filterChanged.bind(this);
 
     this.props.fetchHeroes();
@@ -58,8 +58,8 @@ class PlayerComparePage extends React.Component {
     this.setState({filter: {selectedHero: val.label}});
   }
 
-  addPlayer() {
-    this.props.addPlayerCompare(this.state.toonhandle);
+  addSelf() {
+    this.props.addPlayerCompare(this.props.user);
   }
 
   filterChanged(filter) {
@@ -87,6 +87,7 @@ class PlayerComparePage extends React.Component {
               <FriendSelector
                 friends={this.props.friends}
                 onFriendSelected={this.onFriendSelected} />
+              <button onClick={this.addSelf}>Add Yourself</button>
             </div>
             <div className="control-column">
               <HeroSelector
@@ -118,7 +119,8 @@ function mapStateToProps(state) {
     error: state.playerCompare.error,
     isLoading: state.playerCompare.isLoading,
     heroes: state.heroes,
-    friends: state.friends
+    friends: state.friends,
+    user: state.session.user
   }
 }
 

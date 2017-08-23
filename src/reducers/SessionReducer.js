@@ -1,4 +1,5 @@
 import {
+  SESSION_GET_USER_INFO,
   SESSION_LOGIN_SUCCESS,
   SESSION_LOGIN_FAILED,
   SESSION_IS_LOGGING_IN,
@@ -10,11 +11,16 @@ import Auth from '../lib/Auth';
 const defaultState = {
   token: null,
   error: null,
-  isLoading: false
+  isLoading: false,
+  user: null
 };
 
 export default function(state = defaultState, action) {
   switch (action.type) {
+    case SESSION_GET_USER_INFO:
+      let user = action.payload.data;
+      user.name = user.battletag.split('#')[0];
+      return {...state, user: user};
     case REGISTER_SUCCESS:
       if (action.session.token) {
         return {
