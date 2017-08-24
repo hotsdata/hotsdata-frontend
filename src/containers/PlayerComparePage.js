@@ -8,20 +8,13 @@ import { fetchHeroes } from '../actions/HeroActions';
 import { addPlayerCompare, removePlayerCompare } from '../actions/PlayerCompareActions';
 import { playerSearchClearResults } from '../actions/PlayerSearchActions';
 import { fetchFriends } from '../actions/FriendActions';
+import { urlName } from '../lib/HeroHelpers';
 import PlayerSearch from '../components/PlayerSearch';
 import HeroSelector from '../components/filters/HeroSelector';
 import FriendSelector from '../components/FriendSelector';
 import StandardFilter from '../components/filters/StandardFilter';
 import PlayerCompareTable from '../components/PlayerCompareTable';
 import './PlayerComparePage.scss';
-
-const testData = {
-  marod: "1-Hero-1-775282",
-  masterfish: "1-Hero-1-1950034",
-  zombiechris: "1-Hero-1-951239",
-  sheep: "1-Hero-1-1371988",
-  arik: "1-Hero-1-1516794"
-}
 
 class PlayerComparePage extends React.Component {
   constructor(props) {
@@ -30,7 +23,7 @@ class PlayerComparePage extends React.Component {
     this.state = {
       selectedPlayer: '',
       filter: {
-        selectedHero: "Greymane"
+        selectedHero: 'Greymane'
       }
     }
 
@@ -67,7 +60,8 @@ class PlayerComparePage extends React.Component {
   }
 
   render() {
-    let imgUrl = `http://media.blizzard.com/heroes/${this.state.filter.selectedHero}/bust.jpg`;
+    let imgName = urlName(this.state.filter.selectedHero);
+    let imgUrl = `https://s3-us-west-2.amazonaws.com/hotsdata-assets/images/heroes/${imgName}_bust.jpg`
 
     return (
       <div className="player-compare-page">
@@ -80,14 +74,13 @@ class PlayerComparePage extends React.Component {
             <div className="control-column">
               <div className="player-search">
                 <PlayerSearch selectedPlayer={this.state.selectedPlayer} onPlayerSelected={this.onPlayerSelected} />
-                <ToggleDisplay show={this.props.isLoading}>
-                  <Spinner name="three-bounce" color="orange" />
-                </ToggleDisplay>
               </div>
               <FriendSelector
                 friends={this.props.friends}
                 onFriendSelected={this.onFriendSelected} />
-              <button onClick={this.addSelf}>Add Yourself</button>
+              <button onClick={this.addSelf} style={{marginLeft: '-1px'}}>
+                Add Yourself
+              </button>
             </div>
             <div className="control-column">
               <HeroSelector
@@ -98,9 +91,9 @@ class PlayerComparePage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="tabs">
-          Tabs
-        </div>
+        <ToggleDisplay show={this.props.isLoading}>
+          <Spinner name="line-scale" color="orange" />
+        </ToggleDisplay>
         <div>
           <PlayerCompareTable
             players={this.props.players}

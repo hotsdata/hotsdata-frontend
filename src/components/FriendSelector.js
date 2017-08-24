@@ -16,7 +16,7 @@ const FriendSelector = (props) => {
     <Select
       className="wide-field"
       name="friend"
-      searchPromptText="Friends"
+      placeholder="Select a friend"
       value={props.selected}
       options={options}
       onChange={props.onFriendSelected}

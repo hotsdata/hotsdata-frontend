@@ -46,6 +46,7 @@ export function transformPlayerHeroData(data) {
   tdata.selfHealing = averageStat(data.hero_stats, "selfhealing", 0);
   tdata.damageTaken = averageStat(data.hero_stats, "damagetaken", 0);
   tdata.xp = averageStat(data.hero_stats, "experiencecontribution", 0);
+  tdata.highestKillStreak = averageStat(data.hero_stats, "highestkillstreak", 0);
 
   return tdata;
 }
