@@ -9,7 +9,8 @@ import reducers from './reducers';
 import Routes from './router';
 
 import 'normalize.css';
-import '../style/style.scss';
+import 'react-select-plus/dist/react-select-plus.css';
+import '../style/style.scss'
 
 const App = () => {
   const createStoreWithMiddleware = applyMiddleware(

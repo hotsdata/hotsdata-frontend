@@ -33,6 +33,7 @@ class ReplaysShowPage extends Component {
     }
 
     let replay = this.props.currentReplay;
+    console.log(replay);
     let team1 = replay.teams_stats[0];
     let team2 = replay.teams_stats[1];
     let team1Result = team1.isWinner ? "victory" : "defeat";

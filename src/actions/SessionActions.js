@@ -2,10 +2,21 @@ import axios from 'axios';
 
 import Auth from '../lib/Auth';
 
+export const SESSION_GET_USER_INFO = 'SESSION_GET_USER_INFO';
 export const SESSION_IS_LOGGING_IN = 'SESSION_IS_LOGGING_IN';
 export const SESSION_LOGIN_SUCCESS = 'SESSION_LOGIN_SUCCESS';
 export const SESSION_LOGIN_FAILED = 'SESSION_LOGIN_FAILED';
 export const SESSION_LOGOUT = 'SESSION_LOGOUT';
+
+export function getUserInfo() {
+  let endpoint = "http://localhost:8080/user";
+  let promise = axios.get(endpoint, { headers: { Authorization: "Bearer " +
+     localStorage.getItem('token') }})
+  return {
+    type: SESSION_GET_USER_INFO,
+    payload: promise
+  }
+}
 
 export function loginInProgress(bool) {
   return {

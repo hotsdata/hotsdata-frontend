@@ -1,0 +1,43 @@
+@import '../../style/colors';
+
+.player-compare-page {
+  margin-left: 20px;
+
+  .row {
+    display: flex;
+
+    img {
+      max-width: 192px;
+      max-height: 192px;
+      width: auto;
+      height: auto;
+      margin-right: 20px;
+      border: 2px solid $purple;
+      border-radius: 4px;
+    }
+
+    .controls {
+      display: flex;
+
+      div {
+        margin-right: 12px;
+      }
+
+      .player-search {
+        display: flex;
+      }
+    }
+  }
+
+}
+
+.btn-remove {
+  margin-top: -2px;
+  padding: 4px 8px;
+  color: black;
+}
+
+.column-control {
+  display: flex;
+  flex-direction: column;
+}

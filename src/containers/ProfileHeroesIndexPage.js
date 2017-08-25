@@ -27,7 +27,7 @@ class ProfileHeroesIndexPage extends Component {
       return (<LargeLoader />);
     }
 
-    let heroStats = transformAllPlayerHerosData(this.props.heroStats);
+    let heroStats = transformAllPlayerHerosData(null, this.props.heroStats);
 
     let tableRows = heroStats.heroes.map((hero, i) => {
       return (

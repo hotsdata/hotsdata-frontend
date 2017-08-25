@@ -5,7 +5,7 @@ import { Link, browserHistory } from 'react-router';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
 
 import Auth from '../lib/Auth';
-import { logoutUser } from '../actions/SessionActions';
+import { getUserInfo, logoutUser } from '../actions/SessionActions';
 
 class ProfileDropdown extends Component {
   constructor(props) {
@@ -13,6 +13,13 @@ class ProfileDropdown extends Component {
 
     this.handleLinkClick = this.handleLinkClick.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+
+  }
+
+  componentWillMount() {
+    if (Auth.isUserAuthenticated() && this.props.session.user == null) {
+      this.props.getUserInfo();
+    }
   }
 
   handleLinkClick() {
@@ -79,7 +86,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({logoutUser}, dispatch);
+  return bindActionCreators({getUserInfo, logoutUser}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileDropdown);
