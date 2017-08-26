@@ -23,11 +23,27 @@
       align-items: center;
       margin-right: 40px;
 
+      &:last-of-type {
+        margin-left: auto;
+      }
+
       a {
         color: white;
         font-size: 18px;
         text-transform: uppercase;
       }
+
+      a.brand {
+        height: 100%;
+        width: 120px;
+
+        .logo {
+          height: 100%;
+          width: 100%;
+          fill: white;
+        }
+      }
+
     }
   }
 

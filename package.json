@@ -52,6 +52,7 @@
     "reactable": "^0.14.1",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "svg-react-loader": "^0.4.4"
   }
 }

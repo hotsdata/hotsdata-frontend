@@ -40,6 +40,10 @@ module.exports = {
         test: /\.(ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/
       },
       {
+        test: /\.svg$/,
+        loader: 'babel-loader?presets[]=es2015,presets[]=react!svg-react-loader',
+      },
+      {
         loader: 'url-loader',
         test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
         options: {

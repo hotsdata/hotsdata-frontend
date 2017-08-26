@@ -1,0 +1,6 @@
+@import 'colors';
+
+.blue-shadow {
+  -webkit-filter: drop-shadow( 2px 2px 2px $slightlyDarkerBlue);
+  filter: drop-shadow( 2px 2px 2px $slightlyDarkerBlue);
+}
