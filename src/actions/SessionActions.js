@@ -9,7 +9,7 @@ export const SESSION_LOGIN_FAILED = 'SESSION_LOGIN_FAILED';
 export const SESSION_LOGOUT = 'SESSION_LOGOUT';
 
 export function getUserInfo() {
-  let endpoint = "http://localhost:8080/user";
+  let endpoint = "http://api.hotsdata.com/user";
   let promise = axios.get(endpoint, { headers: { Authorization: "Bearer " +
      localStorage.getItem('token') }})
   return {

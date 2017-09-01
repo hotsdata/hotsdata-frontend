@@ -29,7 +29,7 @@ export function fetchFriends() {
   return (dispatch) => {
     dispatch(fetchFriendsInProgress(true));
 
-    let endpoint = 'http://localhost:8080/player/teammates';
+    let endpoint = 'http://api.hotsdata.com/player/teammates';
 
     axios.get(endpoint, { headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
       .then(response => {
