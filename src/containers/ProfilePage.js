@@ -27,7 +27,9 @@ class ProfilePage extends Component {
 
   render() {
     if (!this.props.heroStats || this.props.isLoading) { return (<LargeLoader />); }
-    let heroStats = transformAllPlayerHerosData(this.props.heroStats);
+
+    let heroStats = transformAllPlayerHerosData(this.props.user, this.props.heroStats);
+
     let hotHeroesData = hotHeroes(heroStats.heroes);
     let coldHeroesData = coldHeroes(heroStats.heroes);
     let topFiveKDA = topFive(heroStats.heroes, 'kda');
@@ -69,7 +71,8 @@ function mapStateToProps(state) {
   return {
     heroStats: state.player.heroStats,
     error: state.player.error,
-    isLoading: state.player.isLoading
+    isLoading: state.player.isLoading,
+    user: state.session.user
   }
 }
 

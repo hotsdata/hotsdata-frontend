@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var Dotenv = require('dotenv-webpack');
 
 const VENDOR_LIBS = [
   'react', 'redux', 'react-redux', 'react-dom'
@@ -55,6 +56,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),

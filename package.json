@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "dotenv-webpack": "^1.5.4",
     "express": "^4.15.2",
     "immutability-helper": "^2.1.2",
     "moment": "^2.18.1",
