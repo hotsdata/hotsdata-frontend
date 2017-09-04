@@ -25,7 +25,8 @@ class ProfilePage extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchPlayerHeroStats();
+    let toonhandle = this.props.routeParams.toonhandle || null;
+    this.props.fetchPlayerHeroStats(toonhandle);
   }
 
   render() {

@@ -28,9 +28,9 @@ export function fetchPlayerHeroStatsFailure(errorMsg) {
   }
 }
 
-export function fetchPlayerHeroStats() {
+export function fetchPlayerHeroStats(toonhandle = null) {
   let fields = "takedowns,solokill,deaths,timespentdead,herodamage,siegedamage,healing,selfhealing,damagetaken,experiencecontribution,match_won,match_lost"
-  let endpoint = `http://api.hotsdata.com/player/heroes/?metric=${fields}`
+  let endpoint = `http://api.hotsdata.com/player/heroes/?toonhandle?metric=${fields}`
   return (dispatch) => {
     dispatch(fetchPlayerHeroStatsInProgress(true));
 

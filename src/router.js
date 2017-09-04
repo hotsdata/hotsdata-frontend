@@ -50,6 +50,7 @@ const Routes = () => {
         <Route path="/profile/heroes/:hero" component={ProfileHeroesShowPage} onEnter={requireAuth} />
         <Route path="/profile/heroes" component={ProfileHeroesIndexPage} onEnter={requireAuth} />
         <Route path="/profile" component={ProfilePage} onEnter={requireAuth} />
+        <Route path="/profile/:toonhandle" component={ProfilePage} />
         <Route path="/players/compare" component={PlayerComparePage} />
         <Route path="/user-settings" component={UserSettingsPage} onEnter={requireAuth} />
       </Route>

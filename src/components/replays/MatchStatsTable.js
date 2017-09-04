@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table, Thead, Th, Tr, Td } from 'reactable';
+import { Link } from 'react-router';
 
 import AwardImage from './AwardImage';
 import { secondsToTimeString } from '../../lib/TimeUtils';
@@ -40,7 +41,11 @@ class MatchStatsTable extends Component {
           <Td column="award" value={award}>
             <AwardImage award={award} />
           </Td>
-          <Td column="player">{playerInfo.name}</Td>
+          <Td column="player" value={playerInfo.name}>
+            <Link to={`/profile/${playerInfo.toonHandle}`}>
+                {playerInfo.name}
+            </Link>
+          </Td>
           <Td column="hero">{playerStats.heroName}</Td>
           <Td column="takedowns">{playerStats.Takedowns}</Td>
           <Td column="kills">{playerStats.SoloKill}</Td>
