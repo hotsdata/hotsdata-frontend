@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import ReactGA from 'react-ga';
 
 import Auth from './lib/Auth';
 
@@ -19,15 +20,24 @@ import ChangelogPage from './containers/ChangelogPage';
 import ContactPage from './containers/ContactPage';
 import UserSettingsPage from './containers/UserSettingsPage';
 
+ReactGA.initialize('UA-106159623-1');
+
 function requireAuth(nextState, replace) {
   if (Auth.isUserAuthenticated() == false) {
     replace({ pathname: '/signin'});
   }
 }
 
+function logPageView() {
+  let loc = window.location.hash.replace("#","");
+  console.log('sending GA data', loc);
+  ReactGA.set({ page: loc});
+  ReactGA.pageview(loc);
+}
+
 const Routes = () => {
   return (
-    <Router history={hashHistory}>
+    <Router history={hashHistory} onUpdate={logPageView}>
       <Route path="/" component={Container}>
         <IndexRoute component={Home} />
         <Route path="/register" component={Register} />
