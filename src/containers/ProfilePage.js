@@ -19,6 +19,9 @@ function findStat(stat_array, stat) {
 class ProfilePage extends Component {
   constructor(props) {
     super(props)
+
+    console.log(process.env);
+    console.log(process.env.API_HOST);
   }
 
   componentWillMount() {

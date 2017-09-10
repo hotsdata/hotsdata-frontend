@@ -58,7 +58,6 @@ module.exports = {
   plugins: [
     new Dotenv({
       path: './.env',
-      safe: true,
       systemvars: true,
     }),
     new webpack.optimize.CommonsChunkPlugin({

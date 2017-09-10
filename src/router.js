@@ -30,7 +30,6 @@ function requireAuth(nextState, replace) {
 
 function logPageView() {
   let loc = window.location.hash.replace("#","");
-  console.log('sending GA data', loc);
   ReactGA.set({ page: loc});
   ReactGA.pageview(loc);
 }
