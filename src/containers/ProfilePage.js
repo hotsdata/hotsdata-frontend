@@ -19,20 +19,17 @@ function findStat(stat_array, stat) {
 class ProfilePage extends Component {
   constructor(props) {
     super(props)
-
-    console.log(process.env);
-    console.log(process.env.API_HOST);
   }
 
   componentWillMount() {
-    let toonhandle = this.props.routeParams.toonhandle || null;
+    let toonhandle = this.props.routeParams.toonhandle || '';
     this.props.fetchPlayerHeroStats(toonhandle);
   }
 
   render() {
-    if (!this.props.heroStats || this.props.isLoading) { return (<LargeLoader />); }
+    if (!this.props.player.heroStats || this.props.isLoading) { return (<LargeLoader />); }
 
-    let heroStats = transformAllPlayerHerosData(this.props.user, this.props.heroStats);
+    let heroStats = transformAllPlayerHerosData(this.props.player, this.props.player.heroStats);
 
     let hotHeroesData = hotHeroes(heroStats.heroes);
     let coldHeroesData = coldHeroes(heroStats.heroes);
@@ -73,7 +70,7 @@ class ProfilePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    heroStats: state.player.heroStats,
+    player: state.player,
     error: state.player.error,
     isLoading: state.player.isLoading,
     user: state.session.user

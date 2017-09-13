@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
+import PlayerProfileLink from '../players/PlayerProfileLink';
+
 function talentPath(talent_icon) {
   return `https://s3-us-west-2.amazonaws.com/openlogs-icons/${talent_icon}.png`
 }

@@ -139,3 +139,11 @@ input {
     margin-left: 12px;
   }
 }
+
+.player-profile-link {
+  color: inherit;
+  &:hover {
+    color: $mediumBlue;
+    text-decoration: underline;
+  }
+}

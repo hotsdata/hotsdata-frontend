@@ -12,8 +12,10 @@ function averageStat(stat_array, metric, roundPlaces = 1) {
 
 export function transformAllPlayerHerosData(player, data) {
   if(!data) { return null; }
+
+  let name = (player ? player.name : null) || data.name || null;
   let pdata = {
-    player: player ? player.name : null,
+    player: name,
     player_id: player ? player.player_id : null,
     toonhandle: player ?  player.toonhandle : null
   };
