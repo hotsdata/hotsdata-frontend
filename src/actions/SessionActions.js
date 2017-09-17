@@ -9,7 +9,7 @@ export const SESSION_LOGIN_FAILED = 'SESSION_LOGIN_FAILED';
 export const SESSION_LOGOUT = 'SESSION_LOGOUT';
 
 export function getUserInfo() {
-  let endpoint = "http://api.hotsdata.com/user";
+  let endpoint = `${process.env.API_HOST}/user`;
   let promise = axios.get(endpoint, { headers: { Authorization: "Bearer " +
      localStorage.getItem('token') }})
   return {
@@ -54,7 +54,7 @@ export function loginUser(credentials) {
   return (dispatch) => {
     dispatch(loginInProgress(true));
 
-    axios.post("http://api.hotsdata.com/login", credentials)
+    axios.post(`${process.env.API_HOST}/login`, credentials)
       .then(response => {
         let responseData = response.data;
 

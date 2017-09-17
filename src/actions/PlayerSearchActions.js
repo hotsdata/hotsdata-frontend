@@ -36,7 +36,7 @@ export function searchPlayers(searchString) {
   return (dispatch) => {
     dispatch(playerSearchInProgress(true));
 
-    let endpoint = `http://api.hotsdata.com/player/search/${searchString.toLowerCase()}`;
+    let endpoint = `${process.env.API_HOST}/player/search/${searchString.toLowerCase()}`;
 
     axios.get(endpoint)
       .then(response => {

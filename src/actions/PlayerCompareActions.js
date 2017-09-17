@@ -32,7 +32,7 @@ export function addPlayerCompareSuccess(heroData) {
 export function addPlayerCompare(player) {
   return (dispatch) => {
     dispatch(addPlayerCompareInProgress(player.toonhandle, true));
-    let endpoint = `http://api.hotsdata.com/player/heroes/?toonhandle=${player.toonhandle}`
+    let endpoint = `${process.env.API_HOST}/player/heroes/?toonhandle=${player.toonhandle}`
 
     axios.get(endpoint, { headers: { Authorization: "Bearer " + localStorage.getItem('token') }})
       .then(response => {

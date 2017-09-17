@@ -29,7 +29,7 @@ export function fetchHeroes() {
   return (dispatch) => {
     dispatch(fetchHeroesInProgress(true));
 
-    axios.get("http://api.hotsdata.com/hero_info", { headers: { Authorization: "Bearer " + localStorage.getItem('token')}})
+    axios.get(`${process.env.API_HOST}/hero_info`, { headers: { Authorization: "Bearer " + localStorage.getItem('token')}})
       .then(response => {
         let responseData = response.data;
 

@@ -41,7 +41,7 @@ export function registerUser(user) {
   return (dispatch) => {
     dispatch(createInProgress(true));
 
-    axios.post("http://api.hotsdata.com/register", user)
+    axios.post(`${process.env.API_HOST}/register`, user)
       .then(response => {
         let responseData = response.data;
 
@@ -91,7 +91,7 @@ export function userUpdateFailure(data) {
 }
 
 export function updateUser(user) {
-  const endpoint = "http://api.hotsdata.com/user";
+  const endpoint = `${process.env.API_HOST}/user`;
 
   return (dispatch) => {
     dispatch(updateUserInProgress(true));
@@ -114,7 +114,7 @@ export function updateUser(user) {
 export function changePassword(user, newPassword) {
   // let data = _.merge(user, {password: newPassword});
   let data = { password: newPassword };
-  const endpoint = "http://api.hotsdata.com/user";
+  const endpoint = `${process.env.API_HOST}/user`;
   let promise = axios.put(endpoint, data , {
     headers: { Authorization: "Bearer " + localStorage.getItem('token') }
   });

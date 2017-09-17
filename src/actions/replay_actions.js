@@ -6,7 +6,7 @@ export const FETCH_REPLAYS = 'FETCH_REPLAYS';
 export const FETCH_CURRENT_REPLAY_STATS = 'FETCH_CURRENT_REPLAY_STATS';
 
 export function fetchReplays(endpoint = null) {
-  if (endpoint == null) { endpoint = `http://api.hotsdata.com/list`; }
+  if (endpoint == null) { endpoint = `${process.env.API_HOST}/list`; }
   let promise = axios.get(endpoint, {
     headers: { Authorization: "Bearer " + localStorage.getItem('token') }});
 
@@ -17,7 +17,7 @@ export function fetchReplays(endpoint = null) {
 }
 
 export function fetchCurrentReplay(replayId) {
-  let url = `http://api.hotsdata.com/replays/${replayId}`
+  let url = `${process.env.API_HOST}/replays/${replayId}`
   let promise = axios.get(url, {
     headers: { Authorization: "Bearer " + localStorage.getItem('token') }
   });
