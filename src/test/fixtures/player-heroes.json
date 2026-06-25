@@ -1,0 +1,32 @@
+{
+  "name": "Demo Analyst",
+  "stats": [
+    {
+      "hero": "Valla",
+      "hero_stats": [
+        { "metric": "match_won", "value": 18, "games": 30 },
+        { "metric": "match_lost", "value": 12, "games": 30 },
+        { "metric": "takedowns", "value": 570, "games": 30 },
+        { "metric": "deaths", "value": 72, "games": 30 }
+      ]
+    },
+    {
+      "hero": "Rehgar",
+      "hero_stats": [
+        { "metric": "match_won", "value": 14, "games": 22 },
+        { "metric": "match_lost", "value": 8, "games": 22 },
+        { "metric": "takedowns", "value": 385, "games": 22 },
+        { "metric": "deaths", "value": 42, "games": 22 }
+      ]
+    },
+    {
+      "hero": "Johanna",
+      "hero_stats": [
+        { "metric": "match_won", "value": 9, "games": 20 },
+        { "metric": "match_lost", "value": 11, "games": 20 },
+        { "metric": "takedowns", "value": 310, "games": 20 },
+        { "metric": "deaths", "value": 60, "games": 20 }
+      ]
+    }
+  ]
+}

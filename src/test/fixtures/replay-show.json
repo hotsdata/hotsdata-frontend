@@ -1,0 +1,168 @@
+{
+  "replayid": "RPL-1001",
+  "replay_data": {
+    "mapName": "Towers of Doom",
+    "gameType": "QuickMatch",
+    "gameLoops": 19680
+  },
+  "teams_stats": [
+    {
+      "level": 21,
+      "isWinner": true,
+      "totalEnemyHeroesTakenDown": 29
+    },
+    {
+      "level": 19,
+      "isWinner": false,
+      "totalEnemyHeroesTakenDown": 18
+    }
+  ],
+  "account_info": [
+    {
+      "playerId": 0,
+      "name": "Demo",
+      "toonHandle": "1-Hero-1122",
+      "hero": "Valla",
+      "heroLevel": 18,
+      "team": 0,
+      "gameResult": 1
+    },
+    {
+      "playerId": 1,
+      "name": "RaynorMain",
+      "toonHandle": "1-Hero-7788",
+      "hero": "Raynor",
+      "heroLevel": 12,
+      "team": 0,
+      "gameResult": 1
+    },
+    {
+      "playerId": 2,
+      "name": "Healer",
+      "toonHandle": "1-Hero-4455",
+      "hero": "Rehgar",
+      "heroLevel": 9,
+      "team": 0,
+      "gameResult": 1
+    },
+    {
+      "playerId": 3,
+      "name": "Tankline",
+      "toonHandle": "1-Hero-3344",
+      "hero": "Johanna",
+      "heroLevel": 16,
+      "team": 1,
+      "gameResult": 0
+    },
+    {
+      "playerId": 4,
+      "name": "Greymane",
+      "toonHandle": "1-Hero-9988",
+      "hero": "Greymane",
+      "heroLevel": 10,
+      "team": 1,
+      "gameResult": 0
+    }
+  ],
+  "player_stats": [
+    {
+      "playerId": 0,
+      "heroName": "Valla",
+      "Takedowns": 24,
+      "SoloKill": 3,
+      "Assists": 21,
+      "Deaths": 2,
+      "secondsDead": 52,
+      "HeroDamage": 84210,
+      "SiegeDamage": 61200,
+      "Healing": 0,
+      "SelfHealing": 5200,
+      "DamageTaken": 42150,
+      "ExperienceContribution": 16240,
+      "HighestKillStreak": 12
+    },
+    {
+      "playerId": 1,
+      "heroName": "Raynor",
+      "Takedowns": 22,
+      "SoloKill": 1,
+      "Assists": 21,
+      "Deaths": 3,
+      "secondsDead": 88,
+      "HeroDamage": 73144,
+      "SiegeDamage": 55204,
+      "Healing": 0,
+      "SelfHealing": 4600,
+      "DamageTaken": 50111,
+      "ExperienceContribution": 14980,
+      "HighestKillStreak": 8
+    },
+    {
+      "playerId": 2,
+      "heroName": "Rehgar",
+      "Takedowns": 21,
+      "SoloKill": 0,
+      "Assists": 21,
+      "Deaths": 1,
+      "secondsDead": 20,
+      "HeroDamage": 28110,
+      "SiegeDamage": 31330,
+      "Healing": 93120,
+      "SelfHealing": 21100,
+      "DamageTaken": 38440,
+      "ExperienceContribution": 13210,
+      "HighestKillStreak": 14
+    },
+    {
+      "playerId": 3,
+      "heroName": "Johanna",
+      "Takedowns": 16,
+      "SoloKill": 0,
+      "Assists": 16,
+      "Deaths": 5,
+      "secondsDead": 154,
+      "HeroDamage": 31200,
+      "SiegeDamage": 40120,
+      "Healing": 0,
+      "SelfHealing": 18320,
+      "DamageTaken": 89144,
+      "ExperienceContribution": 12008,
+      "HighestKillStreak": 5
+    },
+    {
+      "playerId": 4,
+      "heroName": "Greymane",
+      "Takedowns": 15,
+      "SoloKill": 2,
+      "Assists": 13,
+      "Deaths": 6,
+      "secondsDead": 188,
+      "HeroDamage": 78110,
+      "SiegeDamage": 44110,
+      "Healing": 0,
+      "SelfHealing": 2700,
+      "DamageTaken": 48100,
+      "ExperienceContribution": 12600,
+      "HighestKillStreak": 4
+    }
+  ],
+  "talents": [
+    {
+      "id": "demo-valla",
+      "player": "Demo",
+      "hero": "Valla",
+      "talents": ["Caltrops", "Arsenal", "Repeating Arrow", "Rain of Vengeance"]
+    },
+    {
+      "id": "raynor",
+      "player": "RaynorMain",
+      "hero": "Raynor",
+      "talents": [
+        "Ace In The Hole",
+        "Fight or Flight",
+        "Bounty Hunter",
+        "Hyperion"
+      ]
+    }
+  ]
+}

@@ -1,8 +1,6 @@
-import moment from 'moment';
-import duration from 'moment-duration-format';
-
 export function secondsToTimeString(seconds) {
-  let duration = moment.duration(seconds, 'seconds');
-  let formatted = duration.format("mm:ss", { trim: false });
-  return formatted;
+  const totalSeconds = Math.max(0, Math.floor(Number(seconds) || 0));
+  const minutes = Math.floor(totalSeconds / 60);
+  const remainingSeconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 }

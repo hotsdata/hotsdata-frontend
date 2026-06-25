@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class MatchSummaryDataTransformer {
   constructor(data) {
     this.originalData = data;
@@ -9,8 +7,8 @@ class MatchSummaryDataTransformer {
     let data = {
       replayId: this.originalData.replayid,
       mapName: this.originalData.replay_data.mapName,
-      stats: this.getStats(this.originalData)
-    }
+      stats: this.getStats(this.originalData),
+    };
 
     return data;
   }
@@ -22,8 +20,8 @@ class MatchSummaryDataTransformer {
         hero: account.hero,
         heroLevel: account.heroLevel,
         team: account.team,
-        playerId: account.playerId
-      }
+        playerId: account.playerId,
+      };
     });
 
     // stats.forEach((stat) => {
@@ -35,7 +33,6 @@ class MatchSummaryDataTransformer {
 
     return stats;
   }
-
 }
 
 export default MatchSummaryDataTransformer;

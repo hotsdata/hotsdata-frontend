@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Demo",
+    "player_id": 101,
+    "toonhandle": "1-Hero-1122",
+    "favoriteHero": "Valla"
+  },
+  {
+    "name": "RaynorMain",
+    "player_id": 102,
+    "toonhandle": "1-Hero-7788",
+    "favoriteHero": "Raynor"
+  },
+  {
+    "name": "Tankline",
+    "player_id": 103,
+    "toonhandle": "1-Hero-3344",
+    "favoriteHero": "Johanna"
+  },
+  {
+    "name": "TotemTime",
+    "player_id": 104,
+    "toonhandle": "1-Hero-8822",
+    "favoriteHero": "Rehgar"
+  }
+]

@@ -1,22 +1,20 @@
 export function hotHeroes(heroes) {
-  let data;
-  data = _.filter(heroes, (hero) => hero.games >= 5);
-  data = _.sortBy(data, ['winRate']);
-  data = _.reverse(data);
-  return _.take(data, 5);
+  return heroes
+    .filter((hero) => hero.games >= 5)
+    .sort((a, b) => b.winRate - a.winRate)
+    .slice(0, 5);
 }
 
 export function coldHeroes(heroes) {
-  let data;
-  data = _.filter(heroes, (hero) => hero.games >= 5);
-  data = _.sortBy(data, ['winRate']);
-  return _.take(data, 5);
+  return heroes
+    .filter((hero) => hero.games >= 5)
+    .sort((a, b) => a.winRate - b.winRate)
+    .slice(0, 5);
 }
 
 export function topFive(heroes, stat) {
-  let data;
-  data = _.filter(heroes, (hero) => hero.games >= 5);
-  data = _.sortBy(data, [stat]);
-  data = _.reverse(data);
-  return _.take(data, 5);
+  return heroes
+    .filter((hero) => hero.games >= 5)
+    .sort((a, b) => b[stat] - a[stat])
+    .slice(0, 5);
 }
