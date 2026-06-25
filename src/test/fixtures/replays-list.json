@@ -1,0 +1,35 @@
+{
+  "data": [
+    {
+      "replayid": "RPL-1001",
+      "mapname": "Towers of Doom",
+      "heroname": "Valla",
+      "gametype": "QuickMatch",
+      "matchresult": "Victory",
+      "uploaded_at": "06/25/2026 09:21:14",
+      "players": "Demo,RaynorMain,Healer"
+    },
+    {
+      "replayid": "RPL-1002",
+      "mapname": "Infernal Shrines",
+      "heroname": "Johanna",
+      "gametype": "Hero League",
+      "matchresult": "Defeat",
+      "uploaded_at": "06/24/2026 21:44:02",
+      "players": "Demo,Tankline,Greymane"
+    },
+    {
+      "replayid": "RPL-1003",
+      "mapname": "Cursed Hollow",
+      "heroname": "Rehgar",
+      "gametype": "Unranked",
+      "matchresult": "Victory",
+      "uploaded_at": "06/23/2026 18:05:55",
+      "players": "Demo,TotemTime,Tracer"
+    }
+  ],
+  "pages": {
+    "prev": null,
+    "next": "/list?page=2"
+  }
+}
